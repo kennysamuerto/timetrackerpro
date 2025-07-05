@@ -17,9 +17,71 @@ class StatsManager {
         console.log('Initializing StatsManager');
         // Initialize i18n first
         await initI18n();
+        await this.initializeCategorySelects();
         this.setupEventListeners();
         await this.loadData();
         this.updateDisplay();
+    }
+
+    async initializeCategorySelects() {
+        try {
+            // Obtener todas las categorías disponibles
+            const allCategories = await this.getAllCategories();
+            
+            // Actualizar el modal select
+            this.updateCategorySelect('modalCategorySelect', allCategories);
+            
+            // Actualizar el filtro de categorías
+            this.updateCategoryFilter('categoryFilter', allCategories);
+        } catch (error) {
+            console.error('Error initializing category selects:', error);
+        }
+    }
+
+    async getAllCategories() {
+        try {
+            const data = await chrome.storage.local.get(['settings']);
+            
+            // Categorías predefinidas
+            const predefinedCategories = ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other'];
+            
+            // Categorías personalizadas
+            const customCategories = data.settings?.categories || [];
+            
+            // Combinar y eliminar duplicados
+            const allCategories = [...new Set([...predefinedCategories, ...customCategories])];
+            
+            return allCategories;
+        } catch (error) {
+            console.error('Error getting categories:', error);
+            return ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other'];
+        }
+    }
+
+    updateCategorySelect(selectId, categories) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
+
+        select.innerHTML = categories.map(categoryKey => {
+            const categoryText = getCategoryTranslation(categoryKey);
+            return `<option value="${categoryKey}" data-i18n="${categoryKey}">${categoryText}</option>`;
+        }).join('');
+    }
+
+    updateCategoryFilter(selectId, categories) {
+        const select = document.getElementById(selectId);
+        if (!select) return;
+
+        // Mantener la opción "All Categories" y agregar todas las categorías
+        const allCategoriesText = getMessage('allCategories');
+        const options = [`<option value="all" data-i18n="allCategories">${allCategoriesText}</option>`];
+        
+        categories.forEach(categoryKey => {
+            const categoryText = getCategoryTranslation(categoryKey);
+            options.push(`<option value="${categoryKey}" data-i18n="${categoryKey}">${categoryText}</option>`);
+        });
+
+        select.innerHTML = options.join('');
     }
 
     setupEventListeners() {
@@ -122,6 +184,9 @@ class StatsManager {
         try {
             // Show loading state
             this.showLoading();
+
+            // Actualizar categorías disponibles
+            await this.initializeCategorySelects();
 
             let period = this.currentPeriod;
             let dateRange = null;

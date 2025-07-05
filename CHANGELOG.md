@@ -1,5 +1,27 @@
 # Changelog - TimeTracker Pro
 
+## [1.1.2] - 05-07-2025
+
+### 🐛 Correcciones Críticas
+- **Bloqueo de Sitios - Manifest**: Restaurados los permisos `host_permissions` necesarios para el bloqueo de sitios web
+- **Categorías Personalizadas en Estadísticas**: Las categorías creadas en opciones ahora aparecen correctamente en los desplegables de estadísticas
+- **Sincronización de Categorías**: Los selects de categorías se actualizan automáticamente cuando se crean nuevas categorías
+- **Funcionalidad de Bloqueo**: El bloqueo de sitios web funciona correctamente después del primer uso
+
+### 🔧 Mejoras Técnicas
+- **getAllCategories()**: Nueva función para obtener todas las categorías disponibles (predefinidas + personalizadas)
+- **initializeCategorySelects()**: Actualización dinámica de desplegables de categorías
+- **Actualización Automática**: Los desplegables se actualizan al inicializar y al refrescar estadísticas
+- **Permisos Restaurados**: `host_permissions` requeridos para `declarativeNetRequest`
+
+### 🎯 Funcionalidades Afectadas
+- **Modal de Cambio de Categoría**: Ahora incluye todas las categorías disponibles
+- **Filtro de Categorías**: Filtrado funciona con categorías personalizadas
+- **Bloqueo/Desbloqueo**: Funciona correctamente en todos los sitios web
+- **Botón de Refresco**: Actualiza categorías disponibles automáticamente
+
+---
+
 ## [1.1.1] - 05-07-2025
 
 ### 🐛 Correcciones

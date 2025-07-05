@@ -321,40 +321,34 @@ async function handleBlockSite(domain, blocked) {
 }
 
 async function handleToggleBlock(domain) {
-  console.log('🔄 handleToggleBlock called with domain:', domain);
+  console.log('🔄 Toggle block for:', domain);
   
   // Normalizar el dominio para asegurar consistencia
   const cleanDomain = timeTracker.normalizeDomain(domain);
-  console.log('🔧 Normalized domain:', domain, '→', cleanDomain);
   
   const data = await timeTracker.getStorageData();
   if (!data.blockedSites) data.blockedSites = [];
   
-  console.log('📋 Current blocked sites:', data.blockedSites);
-  
   // Verificar si el sitio está actualmente bloqueado
   const isCurrentlyBlocked = data.blockedSites.includes(cleanDomain);
-  console.log('🔍 Is currently blocked?', isCurrentlyBlocked);
   
   if (isCurrentlyBlocked) {
     // Desbloquear: remover de la lista
     data.blockedSites = data.blockedSites.filter(site => 
       site !== cleanDomain && site !== domain
     );
-    console.log('🔓 Unblocking site');
+    console.log('🔓 Unblocking:', cleanDomain);
   } else {
     // Bloquear: agregar a la lista
     data.blockedSites.push(cleanDomain);
-    console.log('🔒 Blocking site');
+    console.log('🔒 Blocking:', cleanDomain);
   }
-  
-  console.log('📋 New blocked sites list:', data.blockedSites);
   
   await timeTracker.setStorageData(data);
   await updateBlockingRules(data.blockedSites);
   
   const result = { success: true, blocked: !isCurrentlyBlocked };
-  console.log('✅ handleToggleBlock result:', result);
+  console.log('✅ Result:', result);
   return result;
 }
 
@@ -645,10 +639,30 @@ function calculateCustomRangeStats(data, dateRange) {
 async function updateBlockingRules(blockedSites) {
   console.log('🔄 updateBlockingRules called with sites:', blockedSites);
   
-  const rules = blockedSites.map((domain, index) => {
+  const rules = [];
+  
+  blockedSites.forEach((domain, index) => {
     // El dominio ya viene normalizado de las funciones que llaman a updateBlockingRules
-    const rule = {
-      id: index + 1,
+    
+    // Crear regla para dominio principal (sin www)
+    const mainRule = {
+      id: (index * 2) + 1,
+      priority: 1,
+      action: {
+        type: 'redirect',
+        redirect: {
+          url: chrome.runtime.getURL('blocked.html') + '?site=' + encodeURIComponent(domain)
+        }
+      },
+      condition: {
+        urlFilter: `*://${domain}/*`,
+        resourceTypes: ['main_frame']
+      }
+    };
+    
+    // Crear regla para subdominio (con www y otros)
+    const subdomainRule = {
+      id: (index * 2) + 2,
       priority: 1,
       action: {
         type: 'redirect',
@@ -661,31 +675,30 @@ async function updateBlockingRules(blockedSites) {
         resourceTypes: ['main_frame']
       }
     };
-    console.log(`🔧 Created rule ${index + 1} for domain "${domain}":`, rule);
-    return rule;
+    
+    rules.push(mainRule, subdomainRule);
+    console.log(`🔧 Rules for "${domain}": *://${domain}/* & *://*.${domain}/*`);
   });
   
   try {
-    console.log('🗑️ Removing all existing rules...');
-    // Primero eliminar todas las reglas existentes
+    // Primero eliminar todas las reglas existentes (cada dominio usa 2 IDs)
     await chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: Array.from({ length: 1000 }, (_, i) => i + 1)
+      removeRuleIds: Array.from({ length: 2000 }, (_, i) => i + 1)
     });
     
     // Luego agregar las nuevas reglas
     if (rules.length > 0) {
-      console.log('➕ Adding new rules:', rules);
       await chrome.declarativeNetRequest.updateDynamicRules({
         addRules: rules
       });
-      console.log('✅ Blocking rules updated successfully:', rules.length, 'rules');
+      console.log('✅ Applied', rules.length, 'blocking rules');
     } else {
       console.log('🚫 All blocking rules removed');
     }
     
     // Verificar reglas actuales
     const currentRules = await chrome.declarativeNetRequest.getDynamicRules();
-    console.log('📋 Current active rules:', currentRules);
+    console.log('📋 Active rules:', currentRules.length);
     
   } catch (error) {
     console.error('❌ Error updating blocking rules:', error);

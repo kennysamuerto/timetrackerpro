@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeTracker Pro</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>⏱️ TimeTracker Pro</h1>
+            <div class="status-section">
+                <div class="status-indicator" id="statusIndicator">
+                    <div class="status-line">
+                        <span id="statusText">Activo</span>
+                        <div class="status-dot active" id="statusDot"></div>
+                    </div>
+                    <div class="version-text" id="versionText">v1.0.0</div>
+                </div>
+                <button class="config-btn" id="configBtn" title="Configuración">
+                    <span>⚙️</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="summary-section">
+                <h3 style="margin-bottom: 15px;">Resumen de Hoy</h3>
+                <div class="summary-row">
+                    <div class="summary-item">
+                        <div class="summary-value" id="totalTime">0m</div>
+                        <div class="summary-label">Tiempo Total</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-value" id="totalSites">0</div>
+                        <div class="summary-label">Sitios</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-value" id="totalVisits">0</div>
+                        <div class="summary-label">Visitas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stats-header">
+                    <h3>Top Sitios</h3>
+                </div>
+                <div class="stats-content" id="statsContent">
+                    <div class="loading">Cargando estadísticas...</div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="action-btn primary full-width" id="statsBtn">📊 Ver Estadísticas Completas</button>
+            </div>
+            
+            <div class="actions secondary-actions">
+                <button class="action-btn secondary" id="optionsBtn">⚙️ Ajustes</button>
+                <button class="action-btn secondary" id="refreshBtn">🔄 Actualizar</button>
+                <a href="https://coff.ee/vandertoorm" target="_blank" class="action-btn secondary coffee-btn" id="coffeeBtn" title="Buy Me A Coffee">
+                    <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5c58570cfdd26f0001068f06/0x0.png" alt="Buy Me A Coffee" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-width: 380px;
+    min-height: 500px;
+}
+
+.container {
+    width: 380px;
+    min-height: 500px;
+    max-height: 600px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+}
+
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.status-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 12px;
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.version-text {
+    font-size: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.version-text:hover {
+    opacity: 1;
+}
+
+.config-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
+}
+
+.config-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff4757;
+}
+
+.status-dot.active {
+    background: #2ed573;
+}
+
+.content {
+    padding: 20px;
+}
+
+.summary-section {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.summary-label {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.stats-section {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+}
+
+.stats-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.stats-content {
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.site-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.site-item:last-child {
+    border-bottom: none;
+}
+
+.site-info {
+    flex: 1;
+}
+
+.site-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.site-time {
+    font-size: 12px;
+    color: #666;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.secondary-actions {
+    margin-top: 10px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.action-btn.secondary {
+    background: #f8f9fa;
+    color: #666;
+    border: 1px solid #e9ecef;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+.action-btn.full-width {
+    width: 100%;
+}
+
+/* Coffee button in secondary actions */
+.action-btn.coffee-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.action-btn.coffee-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.action-btn.coffee-btn img {
+    height: 20px;
+    width: auto;
+    border-radius: 4px;
+}
+
+ 

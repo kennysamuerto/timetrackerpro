@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Bienvenido a TimeTracker Pro!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .welcome-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 22px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h4 {
+            font-size: 18px;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #6c757d;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            background: #e8f5e8;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #28a745;
+        }
+
+        .privacy-section ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .privacy-section li {
+            padding: 5px 0;
+            color: #155724;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Steps Grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Tips */
+        .tips-list {
+            margin-top: 20px;
+        }
+
+        .tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            margin-bottom: 15px;
+        }
+
+        .tip-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Coffee Button */
+        .coffee-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            border-radius: 10px;
+            border-left: 4px solid #ff9800;
+            text-align: center;
+        }
+
+        .coffee-section p {
+            color: #e65100;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .btn-coffee {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-coffee:hover {
+            background: #f57c00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        .coffee-icon {
+            font-size: 20px;
+        }
+
+        /* Next Steps */
+        .next-steps {
+            text-align: center;
+            background: #e3f2fd;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid #2196f3;
+        }
+
+        .next-steps h3 {
+            justify-content: center;
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        .next-steps p {
+            color: #1976d2;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .welcome-footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .welcome-footer p {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .welcome-header {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                font-size: 60px;
+            }
+
+            .title-section h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .features-grid,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="welcome-header">
+            <div class="logo">⏱️</div>
+            <div class="title-section">
+                <h1>¡Bienvenido a TimeTracker Pro!</h1>
+                <p class="subtitle">Tu nueva herramienta para controlar el tiempo en línea</p>
+            </div>
+            <div class="status-badge">
+                <span>✅ Instalación Completada</span>
+            </div>
+        </header>
+
+        <div class="content">
+            <!-- Introducción Principal -->
+            <section class="intro-section">
+                <h2>🎉 ¡Gracias por instalar TimeTracker Pro!</h2>
+                <p>
+                    TimeTracker Pro es una extensión completa que te ayuda a ser más consciente de cómo pasas tu tiempo en internet. 
+                    Te permite seguir, analizar y gestionar tu tiempo de navegación de manera inteligente y privada.
+                </p>
+                <div class="coffee-section">
+                    <p>
+                        <strong>Este desarrollo es completamente gratuito</strong> y no se cobra nada por este plugin. 
+                        Pero si valoras el tiempo que dedico desarrollando y manteniendo esta extensión, 
+                        te agradecería que me compraras un café. ¡La cantidad que tú quieras darme! ☕
+                    </p>
+                    <button class="btn-coffee" id="coffee-btn">
+                        <span class="coffee-icon">☕</span>
+                        Cómprame un Café
+                    </button>
+                </div>
+            </section>
+
+            <!-- Privacidad -->
+            <section class="privacy-section">
+                <h3>🔒 100% Privado y Seguro</h3>
+                <p>
+                    <strong>Tu privacidad es nuestra prioridad:</strong> Todos tus datos se almacenan localmente en tu navegador. 
+                    No enviamos ninguna información a servidores externos. Solo tú tienes acceso a tus estadísticas de tiempo.
+                </p>
+                <ul>
+                    <li>✅ Datos almacenados localmente</li>
+                    <li>✅ Sin telemetría o tracking externo</li>
+                    <li>✅ Código abierto y auditable</li>
+                </ul>
+            </section>
+
+            <!-- Cómo Empezar -->
+            <section class="quick-start">
+                <h3>🚀 Cómo Empezar</h3>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Abre el Popup</h4>
+                        <p>Haz clic en el icono ⏱️ de TimeTracker Pro en la barra de herramientas para ver tus estadísticas del día.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Explora las Estadísticas</h4>
+                        <p>Usa el botón "📊 Ver Estadísticas Completas" para análisis detallados y gráficos.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Configura a tu Gusto</h4>
+                        <p>Accede a "⚙️ Ajustes" para personalizar categorías, bloquear sitios y configurar objetivos.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 10px; border-left: 4px solid #2196f3; text-align: center;">
+                    <p style="color: #1565c0; font-size: 16px; margin: 0;">
+                        <strong>💡 Tip:</strong> Para acceso rápido, fija la extensión haciendo clic en el icono de puzzle 🧩 
+                        en la barra de herramientas y luego en el pin 📌 junto a TimeTracker Pro.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Funciones Principales -->
+            <section class="features-section">
+                <h3>✨ Funciones Principales</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h4>Seguimiento Inteligente</h4>
+                        <p>Rastrea automáticamente el tiempo que pasas en cada sitio web con precisión al minuto.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h4>Estadísticas Detalladas</h4>
+                        <p>Analiza tu tiempo por día, semana, mes o períodos personalizados con gráficos visuales.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏷️</div>
+                        <h4>Categorización Automática</h4>
+                        <p>Los sitios se categorizan automáticamente: Trabajo, Entretenimiento, Noticias, etc.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚫</div>
+                        <h4>Bloqueo de Sitios</h4>
+                        <p>Bloquea sitios distractores o permite acceso temporal para mejorar tu productividad.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Objetivos Diarios</h4>
+                        <p>Establece metas de tiempo y monitorea tu progreso hacia una navegación más consciente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h4>Exportar/Importar</h4>
+                        <p>Respalda tus datos o transfiere tu historial entre dispositivos fácilmente.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navegación del Popup -->
+            <section class="popup-guide">
+                <h3>🎮 Guía del Popup</h3>
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-top: 15px;">
+                    <div style="margin-bottom: 20px;">
+                        <h4>📋 Resumen Diario</h4>
+                        <p>Ve tu tiempo total, sitios visitados y número de visitas del día actual.</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>🏆 Top Sitios</h4>
+                        <p>Ranking de los sitios donde más tiempo has pasado hoy, con tiempo y visitas.</p>
+                    </div>
+                    <div>
+                        <h4>🔗 Acciones Rápidas</h4>
+                        <p>
+                            <strong>📊 Ver Estadísticas Completas:</strong> Abre el análisis detallado<br>
+                            <strong>⚙️ Ajustes:</strong> Configura la extensión<br>
+                            <strong>🔄 Actualizar:</strong> Refresca los datos
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tips -->
+            <section class="tips-section">
+                <h3>💡 Tips para Aprovechar al Máximo</h3>
+                <div class="tips-list">
+                    <div class="tip">
+                        <span class="tip-icon">🔍</span>
+                        <p><strong>Busca sitios específicos</strong> en la página de estadísticas para encontrar patrones de uso.</p>
+                    </div>
+                    <div class="tip">
+                        <span class="tip-icon">📅</span>
+                        <p><strong>Compara períodos</strong> para ver cómo ha cambiado tu comportamiento online con el tiempo.</p>
+                    </div>
+                    <div class="tip">
+                        <span class="tip-icon">🎯</span>
+                        <p><strong>Usa el bloqueo temporal</strong> cuando necesites acceso breve a sitios distractores.</p>
+                    </div>
+                    <div class="tip">
+                        <span class="tip-icon">💾</span>
+                        <p><strong>Exporta tus datos</strong> regularmente para mantener un historial a largo plazo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Siguiente Paso -->
+            <section class="next-steps">
+                <h3>🎯 ¡Comienza Ahora!</h3>
+                <p>TimeTracker Pro ya está funcionando en segundo plano, registrando tu tiempo de navegación.</p>
+                <div class="action-buttons">
+                    <button class="btn-primary" id="popup-btn">📊 Ver Mi Popup</button>
+                    <button class="btn-secondary" id="stats-btn">📈 Explorar Estadísticas</button>
+                    <button class="btn-secondary" id="options-btn">⚙️ Ir a Configuración</button>
+                </div>
+            </section>
+        </div>
+
+        <footer class="welcome-footer">
+            <p>
+                ¡Esperamos que TimeTracker Pro te ayude a ser más productivo y consciente de tu tiempo en línea! 🚀
+            </p>
+            <p class="footer-note">
+                Para soporte o sugerencias, no dudes en contactarnos. ¡Gracias por elegir TimeTracker Pro!
+            </p>
+        </footer>
+    </div>
+
+    <script src="welcome.js"></script>
+</body>
+</html> 

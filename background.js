@@ -321,28 +321,41 @@ async function handleBlockSite(domain, blocked) {
 }
 
 async function handleToggleBlock(domain) {
+  console.log('🔄 handleToggleBlock called with domain:', domain);
+  
   // Normalizar el dominio para asegurar consistencia
   const cleanDomain = timeTracker.normalizeDomain(domain);
+  console.log('🔧 Normalized domain:', domain, '→', cleanDomain);
   
   const data = await timeTracker.getStorageData();
   if (!data.blockedSites) data.blockedSites = [];
   
+  console.log('📋 Current blocked sites:', data.blockedSites);
+  
   // Verificar si el sitio está actualmente bloqueado
   const isCurrentlyBlocked = data.blockedSites.includes(cleanDomain);
+  console.log('🔍 Is currently blocked?', isCurrentlyBlocked);
   
   if (isCurrentlyBlocked) {
     // Desbloquear: remover de la lista
     data.blockedSites = data.blockedSites.filter(site => 
       site !== cleanDomain && site !== domain
     );
+    console.log('🔓 Unblocking site');
   } else {
     // Bloquear: agregar a la lista
     data.blockedSites.push(cleanDomain);
+    console.log('🔒 Blocking site');
   }
+  
+  console.log('📋 New blocked sites list:', data.blockedSites);
   
   await timeTracker.setStorageData(data);
   await updateBlockingRules(data.blockedSites);
-  return { success: true, blocked: !isCurrentlyBlocked };
+  
+  const result = { success: true, blocked: !isCurrentlyBlocked };
+  console.log('✅ handleToggleBlock result:', result);
+  return result;
 }
 
 async function handleUnblockTemporary(domain, minutes) {
@@ -630,29 +643,30 @@ function calculateCustomRangeStats(data, dateRange) {
 }
 
 async function updateBlockingRules(blockedSites) {
-  console.log('Updating blocking rules for:', blockedSites);
+  console.log('🔄 updateBlockingRules called with sites:', blockedSites);
   
   const rules = blockedSites.map((domain, index) => {
-    // Normalizar el dominio para asegurar consistencia
-    const cleanDomain = timeTracker.normalizeDomain(domain);
-    
-    return {
+    // El dominio ya viene normalizado de las funciones que llaman a updateBlockingRules
+    const rule = {
       id: index + 1,
       priority: 1,
       action: {
         type: 'redirect',
         redirect: {
-          url: chrome.runtime.getURL('blocked.html') + '?site=' + encodeURIComponent(cleanDomain)
+          url: chrome.runtime.getURL('blocked.html') + '?site=' + encodeURIComponent(domain)
         }
       },
       condition: {
-        urlFilter: `*://*.${cleanDomain}/*`,
+        urlFilter: `*://*.${domain}/*`,
         resourceTypes: ['main_frame']
       }
     };
+    console.log(`🔧 Created rule ${index + 1} for domain "${domain}":`, rule);
+    return rule;
   });
   
   try {
+    console.log('🗑️ Removing all existing rules...');
     // Primero eliminar todas las reglas existentes
     await chrome.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: Array.from({ length: 1000 }, (_, i) => i + 1)
@@ -660,14 +674,20 @@ async function updateBlockingRules(blockedSites) {
     
     // Luego agregar las nuevas reglas
     if (rules.length > 0) {
+      console.log('➕ Adding new rules:', rules);
       await chrome.declarativeNetRequest.updateDynamicRules({
         addRules: rules
       });
-      console.log('Blocking rules updated successfully:', rules.length, 'rules');
+      console.log('✅ Blocking rules updated successfully:', rules.length, 'rules');
     } else {
-      console.log('All blocking rules removed');
+      console.log('🚫 All blocking rules removed');
     }
+    
+    // Verificar reglas actuales
+    const currentRules = await chrome.declarativeNetRequest.getDynamicRules();
+    console.log('📋 Current active rules:', currentRules);
+    
   } catch (error) {
-    console.error('Error updating blocking rules:', error);
+    console.error('❌ Error updating blocking rules:', error);
   }
 } 

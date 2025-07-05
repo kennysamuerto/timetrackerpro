@@ -1,5 +1,21 @@
 # Changelog - TimeTracker Pro
 
+## [1.1.1] - 05-07-2025
+
+### 🐛 Correcciones
+- **Botón de Bloqueo en Estadísticas**: Corregido error en la página de estadísticas donde el botón de bloqueo/desbloqueo no funcionaba
+- **Normalización de Dominios**: Mejorada la normalización de dominios para el cálculo del estado de bloqueo
+- **Sincronización de Estado**: El estado de bloqueo se actualiza correctamente en tiempo real
+- **Notificaciones**: Las notificaciones de bloqueo/desbloqueo muestran el estado correcto
+
+### 🔧 Mejoras Técnicas
+- **Manejador toggleBlock**: Agregado manejador faltante en background.js para la acción 'toggleBlock'
+- **Función handleToggleBlock**: Nueva función que maneja el cambio de estado de bloqueo correctamente
+- **Cálculo de Estado**: Mejorado el cálculo del campo 'blocked' en calculateStats con normalización apropiada
+- **Respuesta del Toggle**: Actualizado stats.js para usar la respuesta correcta del toggle
+
+---
+
 ## [1.1.0] - 05-07-2025
 
 ### 🌍 Soporte Multiidioma

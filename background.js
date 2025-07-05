@@ -262,6 +262,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       handleBlockSite(request.domain, request.blocked).then(sendResponse);
       return true;
     
+    case 'toggleBlock':
+      handleToggleBlock(request.domain).then(sendResponse);
+      return true;
+    
     case 'unblockTemporary':
       handleUnblockTemporary(request.domain, request.minutes).then(sendResponse);
       return true;
@@ -314,6 +318,31 @@ async function handleBlockSite(domain, blocked) {
   await timeTracker.setStorageData(data);
   await updateBlockingRules(data.blockedSites);
   return { success: true };
+}
+
+async function handleToggleBlock(domain) {
+  // Normalizar el dominio para asegurar consistencia
+  const cleanDomain = timeTracker.normalizeDomain(domain);
+  
+  const data = await timeTracker.getStorageData();
+  if (!data.blockedSites) data.blockedSites = [];
+  
+  // Verificar si el sitio está actualmente bloqueado
+  const isCurrentlyBlocked = data.blockedSites.includes(cleanDomain);
+  
+  if (isCurrentlyBlocked) {
+    // Desbloquear: remover de la lista
+    data.blockedSites = data.blockedSites.filter(site => 
+      site !== cleanDomain && site !== domain
+    );
+  } else {
+    // Bloquear: agregar a la lista
+    data.blockedSites.push(cleanDomain);
+  }
+  
+  await timeTracker.setStorageData(data);
+  await updateBlockingRules(data.blockedSites);
+  return { success: true, blocked: !isCurrentlyBlocked };
 }
 
 async function handleUnblockTemporary(domain, minutes) {
@@ -476,7 +505,7 @@ function calculateStats(data, period, dateRange = null) {
       domain,
       ...stats,
       category: data.siteCategories?.[domain] || 'other',
-      blocked: data.blockedSites?.includes(domain) || false
+      blocked: data.blockedSites?.includes(timeTracker.normalizeDomain(domain)) || false
     }))
     .sort((a, b) => b.time - a.time);
   

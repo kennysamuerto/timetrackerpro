@@ -377,12 +377,12 @@ class StatsManager {
                 // Update local data
                 const site = this.filteredData.sites.find(s => s.domain === domain);
                 if (site) {
-                    site.blocked = !site.blocked;
+                    site.blocked = response.blocked;
                 }
                 
                 this.updateDisplay();
                 this.showNotification(
-                    site.blocked ? 
+                    response.blocked ? 
                     getMessage('siteBlocked').replace('{domain}', domain) : 
                     getMessage('siteUnblocked').replace('{domain}', domain)
                 );

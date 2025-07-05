@@ -321,8 +321,6 @@ async function handleBlockSite(domain, blocked) {
 }
 
 async function handleToggleBlock(domain) {
-  console.log('🔄 Toggle block for:', domain);
-  
   // Normalizar el dominio para asegurar consistencia
   const cleanDomain = timeTracker.normalizeDomain(domain);
   
@@ -337,19 +335,15 @@ async function handleToggleBlock(domain) {
     data.blockedSites = data.blockedSites.filter(site => 
       site !== cleanDomain && site !== domain
     );
-    console.log('🔓 Unblocking:', cleanDomain);
   } else {
     // Bloquear: agregar a la lista
     data.blockedSites.push(cleanDomain);
-    console.log('🔒 Blocking:', cleanDomain);
   }
   
   await timeTracker.setStorageData(data);
   await updateBlockingRules(data.blockedSites);
   
-  const result = { success: true, blocked: !isCurrentlyBlocked };
-  console.log('✅ Result:', result);
-  return result;
+  return { success: true, blocked: !isCurrentlyBlocked };
 }
 
 async function handleUnblockTemporary(domain, minutes) {
@@ -637,13 +631,9 @@ function calculateCustomRangeStats(data, dateRange) {
 }
 
 async function updateBlockingRules(blockedSites) {
-  console.log('🔄 updateBlockingRules called with sites:', blockedSites);
-  
   const rules = [];
   
   blockedSites.forEach((domain, index) => {
-    // El dominio ya viene normalizado de las funciones que llaman a updateBlockingRules
-    
     // Crear regla para dominio principal (sin www)
     const mainRule = {
       id: (index * 2) + 1,
@@ -677,7 +667,6 @@ async function updateBlockingRules(blockedSites) {
     };
     
     rules.push(mainRule, subdomainRule);
-    console.log(`🔧 Rules for "${domain}": *://${domain}/* & *://*.${domain}/*`);
   });
   
   try {
@@ -691,16 +680,9 @@ async function updateBlockingRules(blockedSites) {
       await chrome.declarativeNetRequest.updateDynamicRules({
         addRules: rules
       });
-      console.log('✅ Applied', rules.length, 'blocking rules');
-    } else {
-      console.log('🚫 All blocking rules removed');
     }
     
-    // Verificar reglas actuales
-    const currentRules = await chrome.declarativeNetRequest.getDynamicRules();
-    console.log('📋 Active rules:', currentRules.length);
-    
   } catch (error) {
-    console.error('❌ Error updating blocking rules:', error);
+    console.error('Error updating blocking rules:', error);
   }
 } 

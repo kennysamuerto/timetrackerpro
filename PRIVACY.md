@@ -84,7 +84,7 @@ Any updates to this privacy policy will be reflected in the extension's version 
 
 ### Contact Information
 For questions about this privacy policy:
-- GitHub Issues: https://github.com/vandertoorm/timetracker-pro/issues
+- GitHub Issues: https://github.com/kennysamuerto/timetrackerpro/issues
 - Support: https://coff.ee/vandertoorm
 
 ---
@@ -168,7 +168,7 @@ Cualquier actualización a esta política de privacidad se reflejará en las not
 
 ### Información de Contacto
 Para preguntas sobre esta política de privacidad:
-- GitHub Issues: https://github.com/vandertoorm/timetracker-pro/issues
+- GitHub Issues: https://github.com/kennysamuerto/timetrackerpro/issues
 - Soporte: https://coff.ee/vandertoorm
 
 ---

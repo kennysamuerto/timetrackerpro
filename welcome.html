@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Bienvenido a TimeTracker Pro!</title>
+    <title data-i18n="welcomeTitle">Welcome to TimeTracker Pro!</title>
     <style>
         * {
             margin: 0;
@@ -27,12 +27,53 @@
             min-height: 100vh;
         }
 
+        /* Language Selector */
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
         /* Header */
         .welcome-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 40px;
             text-align: center;
+            position: relative;
         }
 
         .logo {
@@ -327,6 +368,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .language-selector {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
             .welcome-header {
                 padding: 30px 20px;
             }
@@ -364,134 +415,140 @@
 <body>
     <div class="container">
         <header class="welcome-header">
+            <div class="language-selector">
+                <div class="language-toggle">
+                    <button class="lang-btn" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="es">Español</button>
+                </div>
+            </div>
             <div class="logo">⏱️</div>
             <div class="title-section">
-                <h1>¡Bienvenido a TimeTracker Pro!</h1>
-                <p class="subtitle">Tu nueva herramienta para controlar el tiempo en línea</p>
+                <h1 data-i18n="welcomeTitle">Welcome to TimeTracker Pro!</h1>
+                <p class="subtitle" data-i18n="welcomeSubtitle">Your new tool to control online time</p>
             </div>
             <div class="status-badge">
-                <span>✅ Instalación Completada</span>
+                <span data-i18n="installationCompleted">✅ Installation Completed</span>
             </div>
         </header>
 
         <div class="content">
             <!-- Introducción Principal -->
             <section class="intro-section">
-                <h2>🎉 ¡Gracias por instalar TimeTracker Pro!</h2>
-                <p>
-                    TimeTracker Pro es una extensión completa que te ayuda a ser más consciente de cómo pasas tu tiempo en internet. 
-                    Te permite seguir, analizar y gestionar tu tiempo de navegación de manera inteligente y privada.
+                <h2 data-i18n="welcomeIntroTitle">🎉 Thank you for installing TimeTracker Pro!</h2>
+                <p data-i18n="welcomeIntroDesc">
+                    TimeTracker Pro is a complete extension that helps you become more aware of how you spend your time on the internet. 
+                    It allows you to track, analyze, and manage your browsing time intelligently and privately.
                 </p>
                 <div class="coffee-section">
-                    <p>
-                        <strong>Este desarrollo es completamente gratuito</strong> y no se cobra nada por este plugin. 
-                        Pero si valoras el tiempo que dedico desarrollando y manteniendo esta extensión, 
-                        te agradecería que me compraras un café. ¡La cantidad que tú quieras darme! ☕
+                    <p data-i18n="welcomeCoffeeDesc">
+                        <strong>This development is completely free</strong> and nothing is charged for this plugin. 
+                        But if you value the time I spend developing and maintaining this extension, 
+                        I would appreciate if you buy me a coffee. Any amount you want to give me! ☕
                     </p>
                     <button class="btn-coffee" id="coffee-btn">
                         <span class="coffee-icon">☕</span>
-                        Cómprame un Café
+                        <span data-i18n="buyMeACoffee">Buy Me a Coffee</span>
                     </button>
                 </div>
             </section>
 
             <!-- Privacidad -->
             <section class="privacy-section">
-                <h3>🔒 100% Privado y Seguro</h3>
-                <p>
-                    <strong>Tu privacidad es nuestra prioridad:</strong> Todos tus datos se almacenan localmente en tu navegador. 
-                    No enviamos ninguna información a servidores externos. Solo tú tienes acceso a tus estadísticas de tiempo.
+                <h3 data-i18n="privacyTitle">🔒 100% Private and Secure</h3>
+                <p data-i18n="privacyDesc">
+                    <strong>Your privacy is our priority:</strong> All your data is stored locally on your browser. 
+                    We don't send any information to external servers. Only you have access to your time statistics.
                 </p>
                 <ul>
-                    <li>✅ Datos almacenados localmente</li>
-                    <li>✅ Sin telemetría o tracking externo</li>
-                    <li>✅ Código abierto y auditable</li>
+                    <li data-i18n="privacyPoint1">✅ Data stored locally</li>
+                    <li data-i18n="privacyPoint2">✅ No telemetry or external tracking</li>
+                    <li data-i18n="privacyPoint3">✅ Open source and auditable code</li>
                 </ul>
             </section>
 
             <!-- Cómo Empezar -->
             <section class="quick-start">
-                <h3>🚀 Cómo Empezar</h3>
+                <h3 data-i18n="quickStartTitle">🚀 How to Get Started</h3>
                 <div class="steps-grid">
                     <div class="step">
                         <div class="step-number">1</div>
-                        <h4>Abre el Popup</h4>
-                        <p>Haz clic en el icono ⏱️ de TimeTracker Pro en la barra de herramientas para ver tus estadísticas del día.</p>
+                        <h4 data-i18n="step1Title">Open the Popup</h4>
+                        <p data-i18n="step1Desc">Click on the ⏱️ TimeTracker Pro icon in the toolbar to see your daily statistics.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h4>Explora las Estadísticas</h4>
-                        <p>Usa el botón "📊 Ver Estadísticas Completas" para análisis detallados y gráficos.</p>
+                        <h4 data-i18n="step2Title">Explore Statistics</h4>
+                        <p data-i18n="step2Desc">Use the "📊 View Complete Statistics" button for detailed analysis and charts.</p>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <h4>Configura a tu Gusto</h4>
-                        <p>Accede a "⚙️ Ajustes" para personalizar categorías, bloquear sitios y configurar objetivos.</p>
+                        <h4 data-i18n="step3Title">Configure to Your Liking</h4>
+                        <p data-i18n="step3Desc">Access "⚙️ Settings" to customize categories, block sites, and set goals.</p>
                     </div>
                 </div>
                 <div style="margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 10px; border-left: 4px solid #2196f3; text-align: center;">
-                    <p style="color: #1565c0; font-size: 16px; margin: 0;">
-                        <strong>💡 Tip:</strong> Para acceso rápido, fija la extensión haciendo clic en el icono de puzzle 🧩 
-                        en la barra de herramientas y luego en el pin 📌 junto a TimeTracker Pro.
+                    <p style="color: #1565c0; font-size: 16px; margin: 0;" data-i18n="quickAccessTip">
+                        <strong>💡 Tip:</strong> For quick access, pin the extension by clicking the puzzle icon 🧩 
+                        in the toolbar and then the pin 📌 next to TimeTracker Pro.
                     </p>
                 </div>
             </section>
 
             <!-- Funciones Principales -->
             <section class="features-section">
-                <h3>✨ Funciones Principales</h3>
+                <h3 data-i18n="mainFeaturesTitle">✨ Main Features</h3>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">📊</div>
-                        <h4>Seguimiento Inteligente</h4>
-                        <p>Rastrea automáticamente el tiempo que pasas en cada sitio web con precisión al minuto.</p>
+                        <h4 data-i18n="feature1Title">Smart Tracking</h4>
+                        <p data-i18n="feature1Desc">Automatically tracks the time you spend on each website with minute precision.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">📈</div>
-                        <h4>Estadísticas Detalladas</h4>
-                        <p>Analiza tu tiempo por día, semana, mes o períodos personalizados con gráficos visuales.</p>
+                        <h4 data-i18n="feature2Title">Detailed Statistics</h4>
+                        <p data-i18n="feature2Desc">Analyze your time by day, week, month, or custom periods with visual charts.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🏷️</div>
-                        <h4>Categorización Automática</h4>
-                        <p>Los sitios se categorizan automáticamente: Trabajo, Entretenimiento, Noticias, etc.</p>
+                        <h4 data-i18n="feature3Title">Automatic Categorization</h4>
+                        <p data-i18n="feature3Desc">Sites are automatically categorized: Work, Entertainment, News, etc.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🚫</div>
-                        <h4>Bloqueo de Sitios</h4>
-                        <p>Bloquea sitios distractores o permite acceso temporal para mejorar tu productividad.</p>
+                        <h4 data-i18n="feature4Title">Site Blocking</h4>
+                        <p data-i18n="feature4Desc">Block distracting sites or allow temporary access to improve your productivity.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">🎯</div>
-                        <h4>Objetivos Diarios</h4>
-                        <p>Establece metas de tiempo y monitorea tu progreso hacia una navegación más consciente.</p>
+                        <h4 data-i18n="feature5Title">Daily Goals</h4>
+                        <p data-i18n="feature5Desc">Set time goals and monitor your progress towards more conscious browsing.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-icon">💾</div>
-                        <h4>Exportar/Importar</h4>
-                        <p>Respalda tus datos o transfiere tu historial entre dispositivos fácilmente.</p>
+                        <h4 data-i18n="feature6Title">Export/Import</h4>
+                        <p data-i18n="feature6Desc">Back up your data or transfer your history between devices easily.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Navegación del Popup -->
             <section class="popup-guide">
-                <h3>🎮 Guía del Popup</h3>
+                <h3 data-i18n="popupGuideTitle">🎮 Popup Guide</h3>
                 <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin-top: 15px;">
                     <div style="margin-bottom: 20px;">
-                        <h4>📋 Resumen Diario</h4>
-                        <p>Ve tu tiempo total, sitios visitados y número de visitas del día actual.</p>
+                        <h4 data-i18n="dailySummaryTitle">📋 Daily Summary</h4>
+                        <p data-i18n="dailySummaryDesc">See your total time, sites visited, and number of visits for the current day.</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <h4>🏆 Top Sitios</h4>
-                        <p>Ranking de los sitios donde más tiempo has pasado hoy, con tiempo y visitas.</p>
+                        <h4 data-i18n="topSitesTitle">🏆 Top Sites</h4>
+                        <p data-i18n="topSitesDesc">Ranking of the sites where you've spent the most time today, with time and visits.</p>
                     </div>
                     <div>
-                        <h4>🔗 Acciones Rápidas</h4>
-                        <p>
-                            <strong>📊 Ver Estadísticas Completas:</strong> Abre el análisis detallado<br>
-                            <strong>⚙️ Ajustes:</strong> Configura la extensión<br>
-                            <strong>🔄 Actualizar:</strong> Refresca los datos
+                        <h4 data-i18n="quickActionsTitle">🔗 Quick Actions</h4>
+                        <p data-i18n="quickActionsDesc">
+                            <strong>📊 View Complete Statistics:</strong> Opens detailed analysis<br>
+                            <strong>⚙️ Settings:</strong> Configure the extension<br>
+                            <strong>🔄 Update:</strong> Refresh data
                         </p>
                     </div>
                 </div>
@@ -499,49 +556,50 @@
 
             <!-- Tips -->
             <section class="tips-section">
-                <h3>💡 Tips para Aprovechar al Máximo</h3>
+                <h3 data-i18n="tipsTitle">💡 Tips to Make the Most of It</h3>
                 <div class="tips-list">
                     <div class="tip">
                         <span class="tip-icon">🔍</span>
-                        <p><strong>Busca sitios específicos</strong> en la página de estadísticas para encontrar patrones de uso.</p>
+                        <p data-i18n="welcomeTip1"><strong>Search for specific sites</strong> on the statistics page to find usage patterns.</p>
                     </div>
                     <div class="tip">
                         <span class="tip-icon">📅</span>
-                        <p><strong>Compara períodos</strong> para ver cómo ha cambiado tu comportamiento online con el tiempo.</p>
+                        <p data-i18n="welcomeTip2"><strong>Compare periods</strong> to see how your online behavior has changed over time.</p>
                     </div>
                     <div class="tip">
                         <span class="tip-icon">🎯</span>
-                        <p><strong>Usa el bloqueo temporal</strong> cuando necesites acceso breve a sitios distractores.</p>
+                        <p data-i18n="welcomeTip3"><strong>Use temporary blocking</strong> when you need brief access to distracting sites.</p>
                     </div>
                     <div class="tip">
                         <span class="tip-icon">💾</span>
-                        <p><strong>Exporta tus datos</strong> regularmente para mantener un historial a largo plazo.</p>
+                        <p data-i18n="welcomeTip4"><strong>Export your data</strong> regularly to maintain a long-term history.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Siguiente Paso -->
             <section class="next-steps">
-                <h3>🎯 ¡Comienza Ahora!</h3>
-                <p>TimeTracker Pro ya está funcionando en segundo plano, registrando tu tiempo de navegación.</p>
+                <h3 data-i18n="startNowTitle">🎯 Start Now!</h3>
+                <p data-i18n="startNowDesc">TimeTracker Pro is already working in the background, recording your browsing time.</p>
                 <div class="action-buttons">
-                    <button class="btn-primary" id="popup-btn">📊 Ver Mi Popup</button>
-                    <button class="btn-secondary" id="stats-btn">📈 Explorar Estadísticas</button>
-                    <button class="btn-secondary" id="options-btn">⚙️ Ir a Configuración</button>
+                    <button class="btn-primary" id="popup-btn" data-i18n="viewMyPopup">📊 View My Popup</button>
+                    <button class="btn-secondary" id="stats-btn" data-i18n="exploreStats">📈 Explore Statistics</button>
+                    <button class="btn-secondary" id="options-btn" data-i18n="goToSettings">⚙️ Go to Settings</button>
                 </div>
             </section>
         </div>
 
         <footer class="welcome-footer">
-            <p>
-                ¡Esperamos que TimeTracker Pro te ayude a ser más productivo y consciente de tu tiempo en línea! 🚀
+            <p data-i18n="footerMessage">
+                We hope TimeTracker Pro helps you be more productive and aware of your online time! 🚀
             </p>
-            <p class="footer-note">
-                Para soporte o sugerencias, no dudes en contactarnos. ¡Gracias por elegir TimeTracker Pro!
+            <p class="footer-note" data-i18n="footerNote">
+                For support or suggestions, don't hesitate to contact us. Thank you for choosing TimeTracker Pro!
             </p>
         </footer>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="welcome.js"></script>
 </body>
 </html> 

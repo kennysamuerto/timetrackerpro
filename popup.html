@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +13,12 @@
             <div class="status-section">
                 <div class="status-indicator" id="statusIndicator">
                     <div class="status-line">
-                        <span id="statusText">Activo</span>
+                        <span id="statusText" data-i18n="activeTime">Active</span>
                         <div class="status-dot active" id="statusDot"></div>
                     </div>
-                    <div class="version-text" id="versionText">v1.0.0</div>
+                    <div class="version-text" id="versionText">v1.1.0</div>
                 </div>
-                <button class="config-btn" id="configBtn" title="Configuración">
+                <button class="config-btn" id="configBtn" data-i18n-title="settings" title="Settings">
                     <span>⚙️</span>
                 </button>
             </div>
@@ -26,46 +26,47 @@
 
         <div class="content">
             <div class="summary-section">
-                <h3 style="margin-bottom: 15px;">Resumen de Hoy</h3>
+                <h3 style="margin-bottom: 15px;" data-i18n="todayStats">Today's Summary</h3>
                 <div class="summary-row">
                     <div class="summary-item">
                         <div class="summary-value" id="totalTime">0m</div>
-                        <div class="summary-label">Tiempo Total</div>
+                        <div class="summary-label" data-i18n="totalTime">Total Time</div>
                     </div>
                     <div class="summary-item">
                         <div class="summary-value" id="totalSites">0</div>
-                        <div class="summary-label">Sitios</div>
+                        <div class="summary-label" data-i18n="sites">Sites</div>
                     </div>
                     <div class="summary-item">
                         <div class="summary-value" id="totalVisits">0</div>
-                        <div class="summary-label">Visitas</div>
+                        <div class="summary-label" data-i18n="visits">Visits</div>
                     </div>
                 </div>
             </div>
 
             <div class="stats-section">
                 <div class="stats-header">
-                    <h3>Top Sitios</h3>
+                    <h3 data-i18n="topSites">Top Sites</h3>
                 </div>
                 <div class="stats-content" id="statsContent">
-                    <div class="loading">Cargando estadísticas...</div>
+                    <div class="loading" data-i18n="loading">Loading statistics...</div>
                 </div>
             </div>
 
             <div class="actions">
-                <button class="action-btn primary full-width" id="statsBtn">📊 Ver Estadísticas Completas</button>
+                <button class="action-btn primary full-width" id="statsBtn" data-i18n="fullStats">📊 View Full Statistics</button>
             </div>
             
             <div class="actions secondary-actions">
-                <button class="action-btn secondary" id="optionsBtn">⚙️ Ajustes</button>
-                <button class="action-btn secondary" id="refreshBtn">🔄 Actualizar</button>
-                <a href="https://coff.ee/vandertoorm" target="_blank" class="action-btn secondary coffee-btn" id="coffeeBtn" title="Buy Me A Coffee">
+                <button class="action-btn secondary" id="optionsBtn" data-i18n="settings">⚙️ Settings</button>
+                <button class="action-btn secondary" id="refreshBtn" data-i18n="refresh">🔄 Refresh</button>
+                <a href="https://coff.ee/vandertoorm" target="_blank" class="action-btn secondary coffee-btn" id="coffeeBtn" data-i18n-title="coffee" title="Buy Me A Coffee">
                     <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5c58570cfdd26f0001068f06/0x0.png" alt="Buy Me A Coffee" />
                 </a>
             </div>
         </div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="popup.js"></script>
 </body>
 </html> 

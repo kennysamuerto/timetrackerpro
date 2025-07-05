@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estadísticas Completas - TimeTracker Pro</title>
+    <title data-i18n="statistics">Complete Statistics - TimeTracker Pro</title>
     <link rel="stylesheet" href="stats.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="header-left">
-                <h1>📊 Estadísticas Completas</h1>
-                <p class="subtitle">Análisis detallado de tu tiempo en línea</p>
+                <h1 data-i18n="statistics">📊 Complete Statistics</h1>
+                <p class="subtitle" data-i18n="statsSubtitle">Detailed analysis of your online time</p>
             </div>
             <div class="header-right">
-                <button class="header-btn" id="refreshBtn" title="Actualizar datos">🔄</button>
-                <button class="header-btn" id="optionsBtn" title="Configuración">⚙️</button>
-                <button class="header-btn" id="exportBtn" title="Exportar datos">📤</button>
-                <button class="header-btn" id="closeBtn" title="Cerrar">❌</button>
+                <button class="header-btn" id="refreshBtn" data-i18n-title="updateStats" title="Update data">🔄</button>
+                <button class="header-btn" id="optionsBtn" data-i18n-title="settings" title="Settings">⚙️</button>
+                <button class="header-btn" id="exportBtn" data-i18n-title="exportData" title="Export data">📤</button>
+                <button class="header-btn" id="closeBtn" data-i18n-title="close" title="Close">❌</button>
             </div>
         </header>
 
@@ -33,27 +33,27 @@
             <!-- Filtros y Controles -->
             <div class="controls-section">
                 <div class="period-selector">
-                    <label for="periodSelect">Período:</label>
+                    <label for="periodSelect" data-i18n="timeFilter">Period:</label>
                     <select id="periodSelect">
-                        <option value="today">Hoy</option>
-                        <option value="week">Esta Semana</option>
-                        <option value="month">Este Mes</option>
-                        <option value="year">Este Año</option>
-                        <option value="all">Todo el Tiempo</option>
-                        <option value="custom">Rango Personalizado</option>
+                        <option value="today" data-i18n="today">Today</option>
+                        <option value="week" data-i18n="thisWeek">This Week</option>
+                        <option value="month" data-i18n="thisMonth">This Month</option>
+                        <option value="year" data-i18n="thisYear">This Year</option>
+                        <option value="all" data-i18n="allTime">All Time</option>
+                        <option value="custom" data-i18n="customRange">Custom Range</option>
                     </select>
                 </div>
 
                 <div class="date-range" id="dateRange" style="display: none;">
-                    <label for="startDate">Desde:</label>
+                    <label for="startDate" data-i18n="from">From:</label>
                     <input type="date" id="startDate">
-                    <label for="endDate">Hasta:</label>
+                    <label for="endDate" data-i18n="to">To:</label>
                     <input type="date" id="endDate">
-                    <button id="applyDateRange" class="btn-primary">Aplicar</button>
+                    <button id="applyDateRange" class="btn-primary" data-i18n="apply">Apply</button>
                 </div>
 
                 <div class="search-section">
-                    <input type="text" id="searchInput" placeholder="Buscar sitio web...">
+                    <input type="text" id="searchInput" data-i18n-placeholder="searchWebsite" placeholder="Search website...">
                     <button id="searchBtn" class="btn-secondary">🔍</button>
                 </div>
             </div>
@@ -64,57 +64,57 @@
                     <div class="card-icon">⏱️</div>
                     <div class="card-content">
                         <div class="card-value" id="totalTime">0h 0m</div>
-                        <div class="card-label">Tiempo Total</div>
+                        <div class="card-label" data-i18n="totalTime">Total Time</div>
                     </div>
                 </div>
                 <div class="summary-card">
                     <div class="card-icon">🌐</div>
                     <div class="card-content">
                         <div class="card-value" id="totalSites">0</div>
-                        <div class="card-label">Sitios Visitados</div>
+                        <div class="card-label" data-i18n="totalSites">Sites Visited</div>
                     </div>
                 </div>
                 <div class="summary-card">
                     <div class="card-icon">👆</div>
                     <div class="card-content">
                         <div class="card-value" id="totalVisits">0</div>
-                        <div class="card-label">Visitas Totales</div>
+                        <div class="card-label" data-i18n="totalVisits">Total Visits</div>
                     </div>
                 </div>
                 <div class="summary-card">
                     <div class="card-icon">📊</div>
                     <div class="card-content">
                         <div class="card-value" id="avgSession">0m</div>
-                        <div class="card-label">Sesión Promedio</div>
+                        <div class="card-label" data-i18n="avgSession">Average Session</div>
                     </div>
                 </div>
             </div>
 
             <!-- Gráfico -->
             <div class="chart-section">
-                <h3>Distribución del Tiempo</h3>
+                <h3 data-i18n="chartTitle">Time Distribution</h3>
                 <canvas id="timeChart" width="800" height="400"></canvas>
             </div>
 
             <!-- Tabla de Estadísticas -->
             <div class="stats-table-section">
                 <div class="table-header">
-                    <h3>Detalle por Sitio Web</h3>
+                    <h3 data-i18n="websiteDetails">Website Details</h3>
                     <div class="table-controls">
                         <select id="categoryFilter">
-                            <option value="all">Todas las Categorías</option>
-                            <option value="Trabajo">Trabajo</option>
-                            <option value="Entretenimiento">Entretenimiento</option>
-                            <option value="Noticias">Noticias</option>
-                            <option value="Compras">Compras</option>
-                            <option value="Educación">Educación</option>
-                            <option value="Redes Sociales">Redes Sociales</option>
-                            <option value="General">General</option>
+                            <option value="all" data-i18n="allCategories">All Categories</option>
+                            <option value="work" data-i18n="work">Work</option>
+                            <option value="entertainment" data-i18n="entertainment">Entertainment</option>
+                            <option value="news" data-i18n="news">News</option>
+                            <option value="shopping" data-i18n="shopping">Shopping</option>
+                            <option value="education" data-i18n="education">Education</option>
+                            <option value="social" data-i18n="social">Social</option>
+                            <option value="other" data-i18n="other">Other</option>
                         </select>
                         <select id="sortBy">
-                            <option value="time">Ordenar por Tiempo</option>
-                            <option value="visits">Ordenar por Visitas</option>
-                            <option value="domain">Ordenar por Dominio</option>
+                            <option value="time" data-i18n="sortByTime">Sort by Time</option>
+                            <option value="visits" data-i18n="sortByVisits">Sort by Visits</option>
+                            <option value="domain" data-i18n="sortByDomain">Sort by Domain</option>
                         </select>
                     </div>
                 </div>
@@ -123,18 +123,18 @@
                     <table id="statsTable">
                         <thead>
                             <tr>
-                                <th>Sitio Web</th>
-                                <th>Categoría</th>
-                                <th>Tiempo</th>
-                                <th>Visitas</th>
-                                <th>Última Visita</th>
-                                <th>% del Total</th>
-                                <th>Acciones</th>
+                                <th data-i18n="website">Website</th>
+                                <th data-i18n="category">Category</th>
+                                <th data-i18n="time">Time</th>
+                                <th data-i18n="visits">Visits</th>
+                                <th data-i18n="lastVisit">Last Visit</th>
+                                <th data-i18n="percentage">% of Total</th>
+                                <th data-i18n="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="statsTableBody">
                             <tr>
-                                <td colspan="7" class="loading">Cargando estadísticas...</td>
+                                <td colspan="7" class="loading" data-i18n="loading">Loading statistics...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -143,7 +143,7 @@
 
             <!-- Estadísticas por Categoría -->
             <div class="category-stats-section">
-                <h3>Estadísticas por Categoría</h3>
+                <h3 data-i18n="categoryStats">Statistics by Category</h3>
                 <div class="category-grid" id="categoryGrid">
                     <!-- Se llenará dinámicamente -->
                 </div>
@@ -154,24 +154,25 @@
     <!-- Modal para Cambiar Categoría -->
     <div id="categoryModal" class="modal">
         <div class="modal-content">
-            <h3>Cambiar Categoría</h3>
-            <p>Sitio: <span id="modalSiteName"></span></p>
+            <h3 data-i18n="changeCategory">Change Category</h3>
+            <p><span data-i18n="website">Site:</span> <span id="modalSiteName"></span></p>
             <select id="modalCategorySelect">
-                <option value="Trabajo">Trabajo</option>
-                <option value="Entretenimiento">Entretenimiento</option>
-                <option value="Noticias">Noticias</option>
-                <option value="Compras">Compras</option>
-                <option value="Educación">Educación</option>
-                <option value="Redes Sociales">Redes Sociales</option>
-                <option value="General">General</option>
+                <option value="work" data-i18n="work">Work</option>
+                <option value="entertainment" data-i18n="entertainment">Entertainment</option>
+                <option value="news" data-i18n="news">News</option>
+                <option value="shopping" data-i18n="shopping">Shopping</option>
+                <option value="education" data-i18n="education">Education</option>
+                <option value="social" data-i18n="social">Social</option>
+                <option value="other" data-i18n="other">Other</option>
             </select>
             <div class="modal-actions">
-                <button id="cancelCategoryChange" class="btn-secondary">Cancelar</button>
-                <button id="confirmCategoryChange" class="btn-primary">Guardar</button>
+                <button id="cancelCategoryChange" class="btn-secondary" data-i18n="cancel">Cancel</button>
+                <button id="confirmCategoryChange" class="btn-primary" data-i18n="save">Save</button>
             </div>
         </div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="stats.js"></script>
 </body>
 </html> 

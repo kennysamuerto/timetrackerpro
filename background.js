@@ -195,7 +195,7 @@ class TimeTracker {
       }
     }
     
-    return 'General';
+    return 'other';
   }
 
   async getStorageData() {
@@ -228,7 +228,7 @@ class TimeTracker {
         trackingEnabled: true,
         showNotifications: true,
         dailyGoal: 8 * 60 * 60 * 1000, // 8 horas en milisegundos
-        categories: ['Trabajo', 'Entretenimiento', 'Noticias', 'Compras', 'Educación', 'Redes Sociales', 'General']
+        categories: ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other']
       };
     }
     
@@ -475,7 +475,7 @@ function calculateStats(data, period, dateRange = null) {
     .map(([domain, stats]) => ({
       domain,
       ...stats,
-      category: data.siteCategories?.[domain] || 'General',
+      category: data.siteCategories?.[domain] || 'other',
       blocked: data.blockedSites?.includes(domain) || false
     }))
     .sort((a, b) => b.time - a.time);

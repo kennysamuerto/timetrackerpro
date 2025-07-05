@@ -570,4 +570,245 @@ body {
     width: auto;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Version Page Styles */
+.version-section {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.current-version {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.version-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.version-header h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.version-date {
+    font-size: 16px;
+    opacity: 0.9;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.version-badge {
+    margin-top: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.current {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.5);
+}
+
+.versions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.version-item {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.version-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+.version-item.future {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: 2px dashed #6c757d;
+}
+
+.version-info {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.version-item.future .version-info {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+}
+
+.version-info h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.version-info .version-date {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.version-type {
+    background: rgba(255,255,255,0.25);
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 15px;
+}
+
+.version-type.release {
+    background: rgba(40, 167, 69, 0.9);
+}
+
+.version-type.feature {
+    background: rgba(0, 123, 255, 0.9);
+}
+
+.version-type.upcoming {
+    background: rgba(108, 117, 125, 0.9);
+}
+
+.version-content {
+    padding: 30px;
+}
+
+.version-content h4 {
+    color: #2d3748;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 25px 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.version-content h4:first-child {
+    margin-top: 0;
+}
+
+.version-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.version-content li {
+    padding: 8px 0;
+    line-height: 1.6;
+    color: #4a5568;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.info-section {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    text-align: center;
+    border: 1px solid #e9ecef;
+}
+
+.info-section h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.info-section p {
+    color: #6c757d;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.contact-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+/* Responsive for version page */
+@media (max-width: 768px) {
+    .version-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .version-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .version-type {
+        margin-left: 0;
+    }
+    
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-btn {
+        width: 200px;
+        justify-content: center;
+    }
 } 

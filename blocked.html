@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sitio Bloqueado - TimeTracker Pro</title>
+    <title data-i18n="siteBlocked">Site Blocked - TimeTracker Pro</title>
     <style>
         * {
             margin: 0;
@@ -225,57 +225,58 @@
 <body>
     <div class="container">
         <div class="blocked-icon">🚫</div>
-        <h1>Sitio Bloqueado</h1>
-        <div class="site-name" id="siteName">ejemplo.com</div>
-        <div class="message">
-            Este sitio ha sido bloqueado por TimeTracker Pro para ayudarte a mantener la productividad y el enfoque en tus tareas importantes.
+        <h1 data-i18n="siteBlocked">Site Blocked</h1>
+        <div class="site-name" id="siteName">example.com</div>
+        <div class="message" data-i18n="blockedMessage">
+            This site has been blocked by TimeTracker Pro to help you maintain productivity and focus on your important tasks.
         </div>
 
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-value" id="timeToday">0m</div>
-                <div class="stat-label">Tiempo hoy</div>
+                <div class="stat-label" data-i18n="timeToday">Time Today</div>
             </div>
             <div class="stat-item">
                 <div class="stat-value" id="visitsToday">0</div>
-                <div class="stat-label">Visitas hoy</div>
+                <div class="stat-label" data-i18n="visitsToday">Visits Today</div>
             </div>
             <div class="stat-item">
                 <div class="stat-value" id="blockedTime">0m</div>
-                <div class="stat-label">Tiempo ahorrado</div>
+                <div class="stat-label" data-i18n="timeSaved">Time Saved</div>
             </div>
         </div>
 
         <div class="time-display" id="currentTime">00:00:00</div>
 
         <div class="actions">
-            <button class="btn btn-primary" id="unblockBtn">
-                🔓 Desbloquear Temporalmente
+            <button class="btn btn-primary" id="unblockBtn" data-i18n="unblockTemporarily">
+                🔓 Unblock Temporarily
             </button>
-            <button class="btn btn-secondary" id="settingsBtn">
-                ⚙️ Configurar Bloqueo
+            <button class="btn btn-secondary" id="settingsBtn" data-i18n="configureBlocking">
+                ⚙️ Configure Blocking
             </button>
-            <button class="btn btn-danger" id="permanentUnblockBtn">
-                🗑️ Eliminar Bloqueo
+            <button class="btn btn-danger" id="permanentUnblockBtn" data-i18n="removeBlocking">
+                🗑️ Remove Blocking
             </button>
         </div>
 
         <div class="quote">
-            <div class="quote-text" id="quoteText">
-                "El éxito es la suma de pequeños esfuerzos repetidos día tras día."
+            <div class="quote-text" id="quoteText" data-i18n="quote">
+                "Success is the sum of small efforts repeated day in and day out."
             </div>
-            <div class="quote-author" id="quoteAuthor">- Robert Collier</div>
+            <div class="quote-author" id="quoteAuthor" data-i18n="quoteAuthor">- Robert Collier</div>
         </div>
 
         <div class="productivity-tip">
-            <h3>💡 Consejo de Productividad</h3>
-            <p id="productivityTip">
-                Aprovecha este momento para hacer una pausa, respirar profundamente y reflexionar sobre tus objetivos del día. 
-                A veces, los mejores insights vienen cuando nos alejamos de las distracciones.
+            <h3 data-i18n="productivityTipTitle">💡 Productivity Tip</h3>
+            <p id="productivityTip" data-i18n="productivityTip">
+                Take advantage of this moment to pause, breathe deeply, and reflect on your goals for the day. 
+                Sometimes the best insights come when we step away from distractions.
             </p>
         </div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="blocked.js"></script>
 </body>
 </html> 

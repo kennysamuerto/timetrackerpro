@@ -3,42 +3,48 @@ class BlockedPage {
         this.siteName = this.getSiteFromUrl();
         this.quotes = [
             {
-                text: "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+                text: "Success is the sum of small efforts repeated day in and day out.",
                 author: "Robert Collier"
             },
             {
-                text: "La concentración es el secreto de la fuerza.",
+                text: "Concentration is the secret of strength.",
                 author: "Ralph Waldo Emerson"
             },
             {
-                text: "Lo que obtienes al alcanzar tus metas no es tan importante como en lo que te conviertes al alcanzarlas.",
+                text: "What you get by achieving your goals is not as important as what you become by achieving your goals.",
                 author: "Zig Ziglar"
             },
             {
-                text: "La disciplina es el puente entre las metas y los logros.",
+                text: "Discipline is the bridge between goals and accomplishment.",
                 author: "Jim Rohn"
             },
             {
-                text: "No se trata de tener tiempo. Se trata de hacer tiempo.",
-                author: "Anónimo"
+                text: "It's not about having time. It's about making time.",
+                author: "Anonymous"
             }
         ];
         
         this.productivityTips = [
-            "Aprovecha este momento para hacer una pausa, respirar profundamente y reflexionar sobre tus objetivos del día.",
-            "¿Qué tal si usas estos minutos para beber agua, estirar o hacer ejercicios de respiración?",
-            "Considera escribir una lista de tareas pendientes o revisar tus prioridades del día.",
-            "Este es un buen momento para contactar a un amigo o familiar que no has visto en mucho tiempo.",
-            "¿Por qué no aprovechas para leer un artículo educativo o aprender algo nuevo?",
-            "Toma un descanso visual: mira por la ventana o enfoca tu vista en algo distante.",
-            "Es un buen momento para organizar tu espacio de trabajo o escritorio.",
-            "¿Qué tal si planificas tu próxima comida saludable o preparas un snack nutritivo?"
+            "Take advantage of this moment to pause, breathe deeply, and reflect on your goals for the day.",
+            "How about using these minutes to drink water, stretch, or do breathing exercises?",
+            "Consider writing a to-do list or reviewing your daily priorities.",
+            "This is a good time to contact a friend or family member you haven't seen in a while.",
+            "Why not take advantage of this time to read an educational article or learn something new?",
+            "Take a visual break: look out the window or focus your sight on something distant.",
+            "It's a good time to organize your workspace or desk.",
+            "How about planning your next healthy meal or preparing a nutritious snack?"
         ];
         
         this.init();
     }
 
-    init() {
+    async init() {
+        // Initialize i18n first
+        await initI18n();
+        
+        // Update quotes and tips based on language
+        await this.updateTranslatedContent();
+        
         this.setupUI();
         this.setupEventListeners();
         this.loadStats();
@@ -47,14 +53,52 @@ class BlockedPage {
         this.showRandomTip();
     }
 
+    async updateTranslatedContent() {
+        // Update quotes array with translated content
+        this.quotes = [
+            {
+                text: getMessage('quote1'),
+                author: getMessage('quote1Author')
+            },
+            {
+                text: getMessage('quote2'),
+                author: getMessage('quote2Author')
+            },
+            {
+                text: getMessage('quote3'),
+                author: getMessage('quote3Author')
+            },
+            {
+                text: getMessage('quote4'),
+                author: getMessage('quote4Author')
+            },
+            {
+                text: getMessage('quote5'),
+                author: getMessage('quote5Author')
+            }
+        ];
+        
+        // Update productivity tips with translated content
+        this.productivityTips = [
+            getMessage('tip1'),
+            getMessage('tip2'),
+            getMessage('tip3'),
+            getMessage('tip4'),
+            getMessage('tip5'),
+            getMessage('tip6'),
+            getMessage('tip7'),
+            getMessage('tip8')
+        ];
+    }
+
     setupUI() {
         console.log('Setting up UI for site:', this.siteName);
         document.getElementById('siteName').textContent = this.siteName;
-        document.title = `${this.siteName} - Sitio Bloqueado`;
+        document.title = `${this.siteName} - ${getMessage('siteBlocked')}`;
         
         // Mostrar mensaje inicial
         setTimeout(() => {
-            this.showMessage(`🚫 ${this.siteName} está bloqueado por TimeTracker Pro`, 'info');
+            this.showMessage(`🚫 ${this.siteName} ${getMessage('blockedBy')} TimeTracker Pro`, 'info');
         }, 1000);
     }
 
@@ -88,7 +132,7 @@ class BlockedPage {
             const site = params.get('site');
             console.log('Site from URL params:', site);
             
-            if (site && site !== 'ejemplo.com') {
+            if (site && site !== 'example.com') {
                 return site;
             }
             
@@ -104,10 +148,10 @@ class BlockedPage {
             }
             
             // Último fallback
-            return 'sitio desconocido';
+            return getMessage('unknownSite');
         } catch (error) {
             console.error('Error getting site from URL:', error);
-            return 'sitio desconocido';
+            return getMessage('unknownSite');
         }
     }
 
@@ -168,7 +212,7 @@ class BlockedPage {
     startClock() {
         const updateClock = () => {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('es-ES', { 
+            const timeString = now.toLocaleTimeString(undefined, { 
                 hour12: false,
                 hour: '2-digit',
                 minute: '2-digit',
@@ -195,14 +239,14 @@ class BlockedPage {
     async unblockTemporarily() {
         console.log('Attempting temporary unblock for:', this.siteName);
         
-        const minutes = prompt('¿Por cuántos minutos quieres desbloquear este sitio?', '10');
+        const minutes = prompt(getMessage('unblockPrompt'), '10');
         
         if (minutes && !isNaN(minutes) && parseInt(minutes) > 0) {
             try {
                 // Mostrar indicador de carga
                 const btn = document.getElementById('unblockBtn');
                 const originalText = btn.textContent;
-                btn.textContent = '⏳ Desbloqueando...';
+                btn.textContent = `⏳ ${getMessage('unblocking')}...`;
                 btn.disabled = true;
                 
                 console.log('Sending unblockTemporary message:', {
@@ -229,17 +273,17 @@ class BlockedPage {
                         window.location.href = `https://${this.siteName}`;
                     }, 2000);
                 } else {
-                    this.showMessage(`❌ ${response?.error || 'Error al desbloquear'}`, 'error');
+                    this.showMessage(`❌ ${response?.error || getMessage('errorUnblocking')}`, 'error');
                     btn.textContent = originalText;
                     btn.disabled = false;
                 }
             } catch (error) {
                 console.error('Error unblocking site:', error);
-                this.showMessage('❌ Error de comunicación con la extensión', 'error');
+                this.showMessage(`❌ ${getMessage('communicationError')}`, 'error');
                 
                 // Restaurar botón
                 const btn = document.getElementById('unblockBtn');
-                btn.textContent = '🔓 Desbloquear Temporalmente';
+                btn.textContent = `🔓 ${getMessage('unblockTemporarily')}`;
                 btn.disabled = false;
             }
         }
@@ -248,14 +292,14 @@ class BlockedPage {
     async permanentUnblock() {
         console.log('Attempting permanent unblock for:', this.siteName);
         
-        const confirmed = confirm(`¿Estás seguro de que quieres eliminar el bloqueo permanente de ${this.siteName}?`);
+        const confirmed = confirm(getMessage('permanentUnblockConfirm').replace('{site}', this.siteName));
         
         if (confirmed) {
             try {
                 // Mostrar indicador de carga
                 const btn = document.getElementById('permanentUnblockBtn');
                 const originalText = btn.textContent;
-                btn.textContent = '⏳ Eliminando bloqueo...';
+                btn.textContent = `⏳ ${getMessage('removingBlock')}...`;
                 btn.disabled = true;
                 
                 console.log('Sending blockSite message:', {
@@ -273,7 +317,7 @@ class BlockedPage {
                 console.log('Permanent unblock response:', response);
                 
                 if (response && response.success) {
-                    this.showMessage('✅ Bloqueo eliminado permanentemente', 'success');
+                    this.showMessage(`✅ ${getMessage('blockRemovedPermanently')}`, 'success');
                     
                     // Esperar un momento y redirigir
                     setTimeout(() => {
@@ -281,17 +325,17 @@ class BlockedPage {
                         window.location.href = `https://${this.siteName}`;
                     }, 2000);
                 } else {
-                    this.showMessage('❌ Error al eliminar el bloqueo', 'error');
+                    this.showMessage(`❌ ${getMessage('errorRemovingBlock')}`, 'error');
                     btn.textContent = originalText;
                     btn.disabled = false;
                 }
             } catch (error) {
                 console.error('Error unblocking site:', error);
-                this.showMessage('❌ Error de comunicación con la extensión', 'error');
+                this.showMessage(`❌ ${getMessage('communicationError')}`, 'error');
                 
                 // Restaurar botón
                 const btn = document.getElementById('permanentUnblockBtn');
-                btn.textContent = '🗑️ Eliminar Bloqueo';
+                btn.textContent = `🗑️ ${getMessage('removeBlocking')}`;
                 btn.disabled = false;
             }
         }

@@ -3,12 +3,52 @@ console.log('TimeTracker Pro popup loaded');
 class SimplePopupManager {
     constructor() {
         console.log('SimplePopupManager constructor called');
+        this.i18nReady = false;
         this.init();
     }
 
     async init() {
         console.log('SimplePopupManager init called');
+        
+        // Inicializar sistema i18n
+        await this.initializeI18n();
+        
         this.setupEventListeners();
+        this.loadStats();
+    }
+
+    async initializeI18n() {
+        try {
+            if (typeof i18n !== 'undefined') {
+                await i18n.init();
+                this.i18nReady = true;
+                console.log('i18n initialized in popup');
+                
+                // Escuchar cambios de idioma
+                document.addEventListener('languageChanged', (event) => {
+                    console.log('Language changed in popup:', event.detail.locale);
+                    this.updateDynamicTexts();
+                });
+            }
+        } catch (error) {
+            console.error('Error initializing i18n in popup:', error);
+        }
+    }
+
+    updateDynamicTexts() {
+        // Actualizar textos que se cargan dinámicamente
+        const statusText = document.getElementById('statusText');
+        if (statusText && this.i18nReady) {
+            // Verificar si el tracking está activo
+            chrome.runtime.sendMessage({ action: 'getSettings' }, (response) => {
+                if (response && response.settings) {
+                    const isActive = response.settings.trackingEnabled !== false;
+                    statusText.textContent = isActive ? getMessage('activeTime') : getMessage('trackingDisabled');
+                }
+            });
+        }
+        
+        // Recargar stats para actualizar textos
         this.loadStats();
     }
 
@@ -64,7 +104,8 @@ class SimplePopupManager {
             // Mostrar estado de carga
             const statsContent = document.getElementById('statsContent');
             if (statsContent) {
-                statsContent.innerHTML = '<div class="loading">Cargando estadísticas...</div>';
+                const loadingText = this.i18nReady ? getMessage('loading') : 'Loading statistics...';
+                statsContent.innerHTML = `<div class="loading">${loadingText}</div>`;
             }
 
             const response = await chrome.runtime.sendMessage({
@@ -80,14 +121,16 @@ class SimplePopupManager {
             } else {
                 console.log('No response from background script');
                 if (statsContent) {
-                    statsContent.innerHTML = '<div class="loading">No hay datos disponibles</div>';
+                    const noDataText = this.i18nReady ? getMessage('noDataToday') : 'No data available';
+                    statsContent.innerHTML = `<div class="loading">${noDataText}</div>`;
                 }
             }
         } catch (error) {
             console.error('Error loading stats:', error);
             const statsContent = document.getElementById('statsContent');
             if (statsContent) {
-                statsContent.innerHTML = '<div class="loading">Error al cargar estadísticas</div>';
+                const errorText = this.i18nReady ? getMessage('error') : 'Error loading statistics';
+                statsContent.innerHTML = `<div class="loading">${errorText}</div>`;
             }
         }
     }
@@ -117,15 +160,18 @@ class SimplePopupManager {
         }
         
         if (!sites || sites.length === 0) {
-            container.innerHTML = '<div class="loading">No hay datos disponibles</div>';
+            const noDataText = this.i18nReady ? getMessage('noDataToday') : 'No data available';
+            container.innerHTML = `<div class="loading">${noDataText}</div>`;
             return;
         }
+
+        const visitsText = this.i18nReady ? getMessage('visits').toLowerCase() : 'visits';
 
         const html = sites.slice(0, 5).map(site => `
             <div class="site-item">
                 <div class="site-info">
                     <div class="site-name">${site.domain}</div>
-                    <div class="site-time">${this.formatTime(site.time)} • ${site.visits || 0} visitas</div>
+                    <div class="site-time">${this.formatTime(site.time)} • ${site.visits || 0} ${visitsText}</div>
                 </div>
             </div>
         `).join('');
@@ -164,7 +210,7 @@ function initializePopup() {
         if (content) {
             content.innerHTML = `
                 <div class="loading">
-                    Error al inicializar: ${error.message}
+                    Error initializing: ${error.message}
                 </div>
             `;
         }

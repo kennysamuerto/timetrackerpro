@@ -15,6 +15,8 @@ class StatsManager {
 
     async init() {
         console.log('Initializing StatsManager');
+        // Initialize i18n first
+        await initI18n();
         this.setupEventListeners();
         await this.loadData();
         this.updateDisplay();
@@ -107,7 +109,7 @@ class StatsManager {
         const endDate = document.getElementById('endDate').value;
         
         if (!startDate || !endDate) {
-            alert('Por favor selecciona ambas fechas');
+            alert(getMessage('selectBothDates'));
             return;
         }
 
@@ -142,11 +144,11 @@ class StatsManager {
                 this.applyFilters();
             } else {
                 console.error('No response from background script');
-                this.showError('No se pudieron cargar los datos');
+                this.showError(getMessage('couldNotLoadData'));
             }
         } catch (error) {
             console.error('Error loading stats:', error);
-            this.showError('Error al cargar las estadísticas: ' + error.message);
+            this.showError(getMessage('errorLoadingStats') + ': ' + error.message);
         }
     }
 
@@ -200,15 +202,11 @@ class StatsManager {
     }
 
     updateSummaryCards() {
-        const data = this.filteredData;
-        
-        // Calculate totals
-        const totalTime = data.sites.reduce((sum, site) => sum + site.time, 0);
-        const totalSites = data.sites.length;
-        const totalVisits = data.sites.reduce((sum, site) => sum + site.visits, 0);
+        const totalTime = this.filteredData.sites.reduce((sum, site) => sum + site.time, 0);
+        const totalSites = this.filteredData.sites.length;
+        const totalVisits = this.filteredData.sites.reduce((sum, site) => sum + site.visits, 0);
         const avgSession = totalVisits > 0 ? totalTime / totalVisits : 0;
 
-        // Update display
         document.getElementById('totalTime').textContent = this.formatTime(totalTime);
         document.getElementById('totalSites').textContent = totalSites;
         document.getElementById('totalVisits').textContent = totalVisits;
@@ -217,169 +215,184 @@ class StatsManager {
 
     updateTable() {
         const tbody = document.getElementById('statsTableBody');
-        const sites = this.filteredData.sites;
         
-        if (sites.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" class="loading">No hay datos disponibles</td></tr>';
+        if (!this.filteredData.sites || this.filteredData.sites.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7" class="loading">${getMessage('noDataToShow')}</td></tr>`;
             return;
         }
 
-        const totalTime = sites.reduce((sum, site) => sum + site.time, 0);
-
-        const html = sites.map(site => {
-            const percentage = totalTime > 0 ? ((site.time / totalTime) * 100).toFixed(1) : '0.0';
-            const lastVisit = this.getLastVisitDate(site);
+        const totalTime = this.filteredData.sites.reduce((sum, site) => sum + site.time, 0);
+        
+        tbody.innerHTML = this.filteredData.sites.map(site => {
+            const percentage = totalTime > 0 ? ((site.time / totalTime) * 100).toFixed(1) : 0;
+            const isBlocked = site.blocked;
+            
+            // Normalizar categoría y obtener traducción
+            const categoryKey = normalizeCategoryToKey(site.category);
+            const categoryText = getCategoryTranslation(categoryKey);
             
             return `
                 <tr>
-                    <td>
-                        <div class="site-name" title="${site.domain}">${site.domain}</div>
+                    <td class="site-cell">
+                        <div class="site-info">
+                            <span class="site-domain">${site.domain}</span>
+                            ${site.title ? `<span class="site-title">${site.title}</span>` : ''}
+                        </div>
                     </td>
                     <td>
-                        <span class="category-badge" style="background: ${this.getCategoryColor(site.category)}">${site.category}</span>
+                        <span class="category-badge" style="background-color: ${this.getCategoryColor(categoryKey)}">${categoryText}</span>
                     </td>
                     <td class="time-cell">${this.formatTime(site.time)}</td>
                     <td class="visits-cell">${site.visits}</td>
-                    <td>${lastVisit}</td>
+                    <td class="date-cell">${this.getLastVisitDate(site)}</td>
                     <td class="percentage-cell">${percentage}%</td>
                     <td class="actions-cell">
-                        <button class="action-btn block-btn ${site.blocked ? 'blocked' : ''}" 
-                                data-action="toggle-block"
-                                data-domain="${site.domain}"
-                                title="${site.blocked ? 'Desbloquear' : 'Bloquear'}">
-                            ${site.blocked ? '🔓' : '🔒'}
+                        <button 
+                            class="btn-action ${isBlocked ? 'btn-unblock' : 'btn-block'}"
+                            data-action="toggle-block"
+                            data-domain="${site.domain}"
+                            title="${isBlocked ? getMessage('unblock') : getMessage('block')}"
+                        >
+                            ${isBlocked ? '🔓' : '🔒'}
                         </button>
-                        <button class="action-btn category-btn" 
-                                data-action="change-category"
-                                data-domain="${site.domain}"
-                                data-category="${site.category}"
-                                title="Cambiar categoría">
+                        <button 
+                            class="btn-action btn-category"
+                            data-action="change-category"
+                            data-domain="${site.domain}"
+                            data-category="${categoryKey}"
+                            title="${getMessage('changeCategory')}"
+                        >
                             🏷️
                         </button>
                     </td>
                 </tr>
             `;
         }).join('');
-
-        tbody.innerHTML = html;
     }
 
     updateCategoryStats() {
         const categoryGrid = document.getElementById('categoryGrid');
-        const data = this.filteredData;
-        
-        // Calculate category statistics
         const categoryStats = {};
-        data.sites.forEach(site => {
-            if (!categoryStats[site.category]) {
-                categoryStats[site.category] = { time: 0, visits: 0, sites: 0 };
+
+        // Calculate stats by category using normalized keys
+        this.filteredData.sites.forEach(site => {
+            const categoryKey = normalizeCategoryToKey(site.category);
+            if (!categoryStats[categoryKey]) {
+                categoryStats[categoryKey] = {
+                    time: 0,
+                    visits: 0,
+                    sites: 0
+                };
             }
-            categoryStats[site.category].time += site.time;
-            categoryStats[site.category].visits += site.visits;
-            categoryStats[site.category].sites += 1;
+            categoryStats[categoryKey].time += site.time;
+            categoryStats[categoryKey].visits += site.visits;
+            categoryStats[categoryKey].sites += 1;
         });
 
-        const html = Object.entries(categoryStats)
-            .sort((a, b) => b[1].time - a[1].time)
-            .map(([category, stats]) => `
+        categoryGrid.innerHTML = Object.entries(categoryStats).map(([categoryKey, stats]) => {
+            const categoryText = getCategoryTranslation(categoryKey);
+            return `
                 <div class="category-card">
-                    <div class="category-name" style="color: ${this.getCategoryColor(category)}">${category}</div>
+                    <div class="category-header">
+                        <span class="category-name">${categoryText}</span>
+                        <span class="category-color" style="background-color: ${this.getCategoryColor(categoryKey)}"></span>
+                    </div>
                     <div class="category-stats">
-                        <span>${this.formatTime(stats.time)}</span>
-                        <span>${stats.visits} visitas</span>
-                        <span>${stats.sites} sitios</span>
+                        <div class="stat-item">
+                            <span class="stat-label">${getMessage('time')}:</span>
+                            <span class="stat-value">${this.formatTime(stats.time)}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">${getMessage('visits')}:</span>
+                            <span class="stat-value">${stats.visits}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">${getMessage('sites')}:</span>
+                            <span class="stat-value">${stats.sites}</span>
+                        </div>
                     </div>
                 </div>
-            `).join('');
-
-        categoryGrid.innerHTML = html || '<p>No hay datos disponibles</p>';
+            `;
+        }).join('');
     }
 
     updateChart() {
         const canvas = document.getElementById('timeChart');
         const ctx = canvas.getContext('2d');
-        const data = this.filteredData;
         
-        if (data.sites.length === 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#666';
-            ctx.font = '16px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('No hay datos para mostrar', canvas.width / 2, canvas.height / 2);
-            return;
-        }
-
         // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Get top 10 sites for chart
-        const topSites = data.sites.slice(0, 10);
+        if (!this.filteredData.sites || this.filteredData.sites.length === 0) {
+            ctx.fillStyle = '#666';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(getMessage('noDataToShow'), canvas.width / 2, canvas.height / 2);
+            return;
+        }
+
+        // Get top 10 sites
+        const topSites = this.filteredData.sites.slice(0, 10);
         const maxTime = Math.max(...topSites.map(site => site.time));
+        
+        const barHeight = 30;
+        const barSpacing = 10;
+        const leftPadding = 200;
+        const rightPadding = 60;
+        const topPadding = 20;
 
-        // Chart dimensions
-        const margin = 60;
-        const chartWidth = canvas.width - 2 * margin;
-        const chartHeight = canvas.height - 2 * margin;
-        const barHeight = chartHeight / topSites.length;
-
-        // Draw bars
         topSites.forEach((site, index) => {
-            const barWidth = (site.time / maxTime) * chartWidth;
-            const y = margin + index * barHeight;
+            const y = topPadding + (barHeight + barSpacing) * index;
+            const barWidth = ((site.time / maxTime) * (canvas.width - leftPadding - rightPadding));
             
-            // Bar
-            ctx.fillStyle = this.getCategoryColor(site.category);
-            ctx.fillRect(margin, y + barHeight * 0.2, barWidth, barHeight * 0.6);
+            // Normalizar categoría para color consistente
+            const categoryKey = normalizeCategoryToKey(site.category);
             
-            // Site name
+            // Draw bar
+            ctx.fillStyle = this.getCategoryColor(categoryKey);
+            ctx.fillRect(leftPadding, y, barWidth, barHeight);
+            
+            // Draw site name
             ctx.fillStyle = '#333';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'right';
+            ctx.fillText(site.domain, leftPadding - 10, y + 20);
+            
+            // Draw time
+            ctx.fillStyle = '#666';
             ctx.font = '12px Arial';
             ctx.textAlign = 'left';
-            ctx.fillText(site.domain, margin - 5, y + barHeight * 0.6);
-            
-            // Time value
-            ctx.textAlign = 'right';
-            ctx.fillText(this.formatTime(site.time), margin + barWidth + 5, y + barHeight * 0.6);
+            ctx.fillText(this.formatTime(site.time), leftPadding + barWidth + 10, y + 20);
         });
-
-        // Draw axes
-        ctx.strokeStyle = '#ddd';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(margin, margin);
-        ctx.lineTo(margin, margin + chartHeight);
-        ctx.lineTo(margin + chartWidth, margin + chartHeight);
-        ctx.stroke();
     }
 
     async toggleBlock(domain) {
         try {
-            // Find the current blocked state
-            const site = this.filteredData.sites.find(s => s.domain === domain);
-            const newBlockedState = !site.blocked;
-
-            console.log(`Toggling block for ${domain}: ${newBlockedState}`);
-
             const response = await chrome.runtime.sendMessage({
-                action: 'blockSite',
-                domain: domain,
-                blocked: newBlockedState
+                action: 'toggleBlock',
+                domain: domain
             });
 
             if (response && response.success) {
                 // Update local data
-                site.blocked = newBlockedState;
-                this.updateTable();
+                const site = this.filteredData.sites.find(s => s.domain === domain);
+                if (site) {
+                    site.blocked = !site.blocked;
+                }
                 
-                // Show success message
-                this.showNotification(`${domain} ${newBlockedState ? 'bloqueado' : 'desbloqueado'} correctamente`);
+                this.updateDisplay();
+                this.showNotification(
+                    site.blocked ? 
+                    getMessage('siteBlocked').replace('{domain}', domain) : 
+                    getMessage('siteUnblocked').replace('{domain}', domain)
+                );
             } else {
                 console.error('Error toggling block:', response);
-                this.showNotification('Error al cambiar el estado de bloqueo', 'error');
+                this.showNotification(getMessage('errorToggleBlock'), 'error');
             }
         } catch (error) {
             console.error('Error toggling block:', error);
-            this.showNotification('Error al cambiar el estado de bloqueo', 'error');
+            this.showNotification(getMessage('errorToggleBlock'), 'error');
         }
     }
 
@@ -416,20 +429,20 @@ class StatsManager {
                 
                 this.updateDisplay();
                 this.closeModal();
-                this.showNotification(`Categoría actualizada para ${this.currentModalDomain}`);
+                this.showNotification(getMessage('categoryUpdated').replace('{domain}', this.currentModalDomain));
             } else {
                 console.error('Error updating category:', response);
-                this.showNotification('Error al actualizar la categoría', 'error');
+                this.showNotification(getMessage('errorUpdateCategory'), 'error');
             }
         } catch (error) {
             console.error('Error updating category:', error);
-            this.showNotification('Error al actualizar la categoría', 'error');
+            this.showNotification(getMessage('errorUpdateCategory'), 'error');
         }
     }
 
     exportData() {
         if (!this.filteredData) {
-            this.showNotification('No hay datos para exportar', 'error');
+            this.showNotification(getMessage('noDataToExport'), 'error');
             return;
         }
 
@@ -445,7 +458,7 @@ class StatsManager {
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
         
-        this.showNotification('Datos exportados correctamente');
+        this.showNotification(getMessage('dataExported'));
     }
 
     openOptions() {
@@ -453,14 +466,22 @@ class StatsManager {
     }
 
     convertToCSV(sites) {
-        const headers = ['Sitio Web', 'Categoría', 'Tiempo (ms)', 'Tiempo (legible)', 'Visitas', 'Bloqueado'];
+        const headers = [
+            getMessage('website'),
+            getMessage('category'),
+            getMessage('time') + ' (ms)',
+            getMessage('time') + ' (' + getMessage('readable') + ')',
+            getMessage('visits'),
+            getMessage('blocked')
+        ];
+        
         const rows = sites.map(site => [
             site.domain,
-            site.category,
+            getCategoryTranslation(normalizeCategoryToKey(site.category)),
             site.time,
             this.formatTime(site.time),
             site.visits,
-            site.blocked ? 'Sí' : 'No'
+            site.blocked ? getMessage('yes') : getMessage('no')
         ]);
 
         return [headers, ...rows]
@@ -470,7 +491,7 @@ class StatsManager {
 
     showLoading() {
         const tbody = document.getElementById('statsTableBody');
-        tbody.innerHTML = '<tr><td colspan="7" class="loading">Cargando estadísticas...</td></tr>';
+        tbody.innerHTML = `<tr><td colspan="7" class="loading">${getMessage('loading')}</td></tr>`;
         
         // Clear other sections
         document.getElementById('totalTime').textContent = '...';
@@ -481,7 +502,7 @@ class StatsManager {
 
     showError(message) {
         const tbody = document.getElementById('statsTableBody');
-        tbody.innerHTML = `<tr><td colspan="7" class="loading">Error: ${message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="loading">${getMessage('error')}: ${message}</td></tr>`;
     }
 
     showNotification(message, type = 'success') {
@@ -542,13 +563,13 @@ class StatsManager {
 
     getCategoryColor(category) {
         const colors = {
-            'Trabajo': '#667eea',
-            'Entretenimiento': '#ff6b6b',
-            'Noticias': '#4ecdc4',
-            'Compras': '#45b7d1',
-            'Educación': '#96ceb4',
-            'Redes Sociales': '#feca57',
-            'General': '#6c757d'
+            'work': '#667eea',
+            'entertainment': '#ff6b6b',
+            'news': '#4ecdc4',
+            'shopping': '#45b7d1',
+            'education': '#96ceb4',
+            'social': '#feca57',
+            'other': '#6c757d'
         };
         return colors[category] || '#6c757d';
     }
@@ -556,7 +577,7 @@ class StatsManager {
     getLastVisitDate(site) {
         // This would need to be implemented in the background script
         // For now, return a placeholder
-        return 'Hoy';
+        return getMessage('today');
     }
 }
 

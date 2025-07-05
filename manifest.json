@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "TimeTracker Pro",
-  "version": "1.0.0",
-  "description": "Controla el tiempo que pasas en cada página web con estadísticas detalladas y bloqueo de sitios",
+  "name": "__MSG_extensionName__",
+  "version": "1.1.0",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "permissions": [
     "activeTab",
     "tabs",
@@ -18,7 +19,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "TimeTracker Pro"
+    "default_title": "__MSG_extensionName__"
   },
   "options_page": "options.html",
   "icons": {
@@ -37,7 +38,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["blocked.html", "blocked.js"],
+      "resources": ["blocked.html", "blocked.js", "i18n.js"],
       "matches": ["<all_urls>"]
     }
   ]

@@ -4,13 +4,103 @@ class OptionsManager {
         this.settings = {};
         this.categories = [];
         this.blockedSites = [];
+        this.i18nReady = false;
+        this.currentLanguage = 'es'; // idioma por defecto
         this.init();
     }
 
-    init() {
+    async init() {
+        // Esperar a que el sistema i18n esté listo
+        await this.initializeI18n();
         this.setupEventListeners();
         this.loadSettings();
         this.loadGlobalStats();
+    }
+
+    async initializeI18n() {
+        // Esperar a que el sistema i18n esté inicializado
+        await initI18n();
+        this.i18nReady = true;
+        
+        // Configurar el selector de idioma
+        await this.setupLanguageSelector();
+    }
+
+    async setupLanguageSelector() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        if (langButtons.length === 0) return;
+
+        // Obtener idioma actual del sistema i18n
+        this.currentLanguage = getCurrentLanguage();
+        
+        // Establecer botón activo
+        this.updateLanguageButtons();
+        
+        // Configurar event listeners para botones
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const selectedLang = e.target.getAttribute('data-lang');
+                await this.changeLanguage(selectedLang);
+            });
+        });
+    }
+
+    updateLanguageButtons() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(btn => {
+            const btnLang = btn.getAttribute('data-lang');
+            if (btnLang === this.currentLanguage) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    }
+
+    async changeLanguage(language) {
+        if (language === this.currentLanguage) return;
+        
+        try {
+            console.log(`Changing language to: ${language}`);
+            
+            // Cambiar idioma usando el sistema i18n
+            await setLanguage(language);
+            this.currentLanguage = language;
+            
+            // Actualizar botones
+            this.updateLanguageButtons();
+            
+            // Actualizar textos dinámicos después del cambio de idioma
+            setTimeout(() => {
+                this.updateDynamicTexts();
+            }, 100);
+            
+            // Mostrar notificación de cambio exitoso
+            this.showLanguageChangeNotification(language);
+            
+        } catch (error) {
+            console.error('Error changing language:', error);
+            this.showAlert('Error al cambiar idioma', 'error');
+        }
+    }
+
+    showLanguageChangeNotification(language) {
+        const messages = {
+            'en': 'Language changed to English',
+            'es': 'Idioma cambiado a Español'
+        };
+        
+        const message = messages[language] || messages['en'];
+        this.showAlert(message, 'success');
+    }
+
+    updateDynamicTexts() {
+        // Actualizar textos que no son automáticamente traducidos
+        this.renderCategories();
+        this.renderBlockedSites();
+        
+        // Actualizar estado de botones de idioma
+        this.updateLanguageButtons();
     }
 
     setupEventListeners() {
@@ -148,12 +238,18 @@ class OptionsManager {
     async renderCategories() {
         const categoryList = document.getElementById('categoryList');
         
-        // Incluir categorías predefinidas y personalizadas
-        const allCategories = ['Trabajo', 'Entretenimiento', 'Noticias', 'Compras', 'Educación', 'Redes Sociales', 'General', ...this.categories];
-        const uniqueCategories = [...new Set(allCategories)];
+        // Categorías predefinidas (siempre usar keys)
+        const predefinedCategoryKeys = ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other'];
+
+        // Incluir categorías personalizadas (normalizar a keys)
+        const customCategoryKeys = this.categories.map(cat => normalizeCategoryToKey(cat));
         
-        if (uniqueCategories.length === 0) {
-            categoryList.innerHTML = '<div style="text-align: center; color: #6c757d; padding: 20px;">No hay categorías disponibles</div>';
+        // Combinar y eliminar duplicados
+        const allCategoryKeys = [...new Set([...predefinedCategoryKeys, ...customCategoryKeys])];
+        
+        if (allCategoryKeys.length === 0) {
+            const noCategoriesText = this.i18nReady ? getMessage('noCategoriesAvailable') : 'No hay categorías disponibles';
+            categoryList.innerHTML = `<div style="text-align: center; color: #6c757d; padding: 20px;">${noCategoriesText}</div>`;
             return;
         }
 
@@ -161,30 +257,37 @@ class OptionsManager {
         const data = await this.getStorageData();
         const siteCategories = data.siteCategories || {};
         
-        // Agrupar dominios por categoría
+        // Agrupar dominios por categoría (normalizar keys)
         const categoriesWithDomains = {};
-        uniqueCategories.forEach(category => {
-            categoriesWithDomains[category] = [];
+        allCategoryKeys.forEach(categoryKey => {
+            categoriesWithDomains[categoryKey] = [];
         });
         
         Object.entries(siteCategories).forEach(([domain, category]) => {
-            if (categoriesWithDomains[category]) {
-                categoriesWithDomains[category].push(domain);
+            const categoryKey = normalizeCategoryToKey(category);
+            if (categoriesWithDomains[categoryKey]) {
+                categoriesWithDomains[categoryKey].push(domain);
             }
         });
 
-        const html = uniqueCategories.map(category => {
-            const domains = categoriesWithDomains[category];
-            const isCustomCategory = this.categories.includes(category);
+        const removeText = this.i18nReady ? getMessage('remove') : 'Eliminar';
+        const addDomainText = this.i18nReady ? getMessage('addDomain') : 'Agregar';
+        const enterDomainText = this.i18nReady ? getMessage('enterDomain') : 'Introducir dominio (ej. google.com)';
+        const noDomainsText = this.i18nReady ? getMessage('noDomains') : 'No hay dominios asignados';
+
+        const html = allCategoryKeys.map(categoryKey => {
+            const domains = categoriesWithDomains[categoryKey];
+            const categoryText = getCategoryTranslation(categoryKey);
+            const isCustomCategory = customCategoryKeys.includes(categoryKey) && !predefinedCategoryKeys.includes(categoryKey);
             
             return `
                 <div class="category-card">
                     <div class="category-header">
-                        <div class="category-name">${category}</div>
+                        <div class="category-name">${categoryText}</div>
                         ${isCustomCategory ? `
                             <button class="btn btn-danger" style="padding: 4px 8px; font-size: 12px;"
                                     data-action="remove-category" 
-                                    data-category="${category}">Eliminar</button>
+                                    data-category="${categoryKey}">${removeText}</button>
                         ` : ''}
                     </div>
                     
@@ -196,19 +299,19 @@ class OptionsManager {
                                     <button class="remove-domain-btn"
                                             data-action="remove-domain"
                                             data-domain="${domain}"
-                                            data-category="${category}">×</button>
+                                            data-category="${categoryKey}">×</button>
                                 </div>
-                            `).join('') : '<span class="empty-domains">Sin dominios asignados</span>'}
+                            `).join('') : `<span class="empty-domains">${noDomainsText}</span>`}
                         </div>
                         
                         <div class="add-domain-form">
                             <input type="text" 
-                                   placeholder="ejemplo.com" 
-                                   data-category="${category}"
+                                   placeholder="${enterDomainText}" 
+                                   data-category="${categoryKey}"
                                    class="domain-input">
                             <button class="btn btn-primary"
                                     data-action="add-domain"
-                                    data-category="${category}">Añadir</button>
+                                    data-category="${categoryKey}">${addDomainText}</button>
                         </div>
                     </div>
                 </div>
@@ -221,8 +324,11 @@ class OptionsManager {
     renderBlockedSites() {
         const blockedList = document.getElementById('blockedSitesList');
         
+        const noBlockedSitesText = this.i18nReady ? getMessage('noBlockedSites') : 'No hay sitios bloqueados';
+        const unblockText = this.i18nReady ? getMessage('unblock') : 'Desbloquear';
+        
         if (this.blockedSites.length === 0) {
-            blockedList.innerHTML = '<div style="text-align: center; color: #6c757d; padding: 20px;">No hay sitios bloqueados</div>';
+            blockedList.innerHTML = `<div style="text-align: center; color: #6c757d; padding: 20px;">${noBlockedSitesText}</div>`;
             return;
         }
 
@@ -232,7 +338,7 @@ class OptionsManager {
                 <button class="btn btn-danger" style="padding: 4px 8px; font-size: 12px;" 
                         data-action="unblock-site" 
                         data-site="${site}">
-                    Desbloquear
+                    ${unblockText}
                 </button>
             </div>
         `).join('');
@@ -252,10 +358,13 @@ class OptionsManager {
             data.settings.trackingInterval = parseInt(document.getElementById('trackingInterval').value);
 
             await this.setStorageData(data);
-            this.showAlert('Configuración guardada correctamente', 'success');
+            
+            const successMessage = this.i18nReady ? getMessage('settingsSaved') : 'Configuración guardada correctamente';
+            this.showAlert(successMessage, 'success');
         } catch (error) {
             console.error('Error saving settings:', error);
-            this.showAlert('Error al guardar configuración', 'error');
+            const errorMessage = this.i18nReady ? getMessage('errorSavingSettings') : 'Error al guardar configuración';
+            this.showAlert(errorMessage, 'error');
         }
     }
 
@@ -264,12 +373,14 @@ class OptionsManager {
         const categoryName = input.value.trim();
 
         if (!categoryName) {
-            this.showAlert('Por favor ingresa un nombre para la categoría', 'error');
+            const message = this.i18nReady ? getMessage('pleaseEnterCategoryName') : 'Por favor ingresa un nombre para la categoría';
+            this.showAlert(message, 'error');
             return;
         }
 
         if (this.categories.includes(categoryName)) {
-            this.showAlert('Esta categoría ya existe', 'error');
+            const message = this.i18nReady ? getMessage('categoryAlreadyExists') : 'Esta categoría ya existe';
+            this.showAlert(message, 'error');
             return;
         }
 
@@ -286,10 +397,12 @@ class OptionsManager {
             await this.renderCategories();
             input.value = '';
             
-            this.showAlert('Categoría agregada correctamente', 'success');
+            const successMessage = this.i18nReady ? getMessage('categoryAdded') : 'Categoría agregada correctamente';
+            this.showAlert(successMessage, 'success');
         } catch (error) {
             console.error('Error adding category:', error);
-            this.showAlert('Error al agregar categoría', 'error');
+            const errorMessage = this.i18nReady ? getMessage('errorAddingCategory') : 'Error al agregar categoría';
+            this.showAlert(errorMessage, 'error');
         }
     }
 
@@ -532,7 +645,9 @@ class OptionsManager {
 
             // Verificar si el dominio ya está asignado a otra categoría
             if (data.siteCategories[domain] && data.siteCategories[domain] !== category) {
-                const confirmed = confirm(`El dominio ${domain} ya está asignado a "${data.siteCategories[domain]}". ¿Quieres reasignarlo a "${category}"?`);
+                const currentCategoryText = getCategoryTranslation(normalizeCategoryToKey(data.siteCategories[domain]));
+                const newCategoryText = getCategoryTranslation(category);
+                const confirmed = confirm(`El dominio ${domain} ya está asignado a "${currentCategoryText}". ¿Quieres reasignarlo a "${newCategoryText}"?`);
                 if (!confirmed) return;
             }
 
@@ -544,7 +659,8 @@ class OptionsManager {
             input.value = '';
             await this.renderCategories();
             
-            this.showAlert(`Dominio ${domain} asignado a ${category}`, 'success');
+            const categoryText = getCategoryTranslation(category);
+            this.showAlert(`Dominio ${domain} asignado a ${categoryText}`, 'success');
         } catch (error) {
             console.error('Error adding domain to category:', error);
             this.showAlert('Error al asignar dominio a categoría', 'error');
@@ -552,7 +668,8 @@ class OptionsManager {
     }
 
     async removeDomainFromCategory(domain, category) {
-        if (!confirm(`¿Estás seguro de que quieres quitar ${domain} de la categoría "${category}"?`)) {
+        const categoryText = getCategoryTranslation(category);
+        if (!confirm(`¿Estás seguro de que quieres quitar ${domain} de la categoría "${categoryText}"?`)) {
             return;
         }
 
@@ -563,7 +680,7 @@ class OptionsManager {
                 await this.setStorageData(data);
                 
                 await this.renderCategories();
-                this.showAlert(`Dominio ${domain} eliminado de ${category}`, 'success');
+                this.showAlert(`Dominio ${domain} eliminado de ${categoryText}`, 'success');
             }
         } catch (error) {
             console.error('Error removing domain from category:', error);

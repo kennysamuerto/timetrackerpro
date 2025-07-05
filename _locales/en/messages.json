@@ -1,0 +1,1538 @@
+{
+  "extensionName": {
+    "message": "TimeTracker Pro",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Track time spent on each website with detailed statistics and site blocking",
+    "description": "Description of the extension"
+  },
+  
+  "popup": {
+    "message": "Popup",
+    "description": "Popup section"
+  },
+  "todayStats": {
+    "message": "Today's Statistics",
+    "description": "Today's statistics section"
+  },
+  "totalTime": {
+    "message": "Total Time",
+    "description": "Total time label"
+  },
+  "totalSites": {
+    "message": "Sites Visited",
+    "description": "Sites visited label"
+  },
+  "totalVisits": {
+    "message": "Total Visits",
+    "description": "Total visits label"
+  },
+  "activeTime": {
+    "message": "Active Time",
+    "description": "Active time label"
+  },
+  "topSites": {
+    "message": "Top Sites",
+    "description": "Top sites label"
+  },
+  "noDataToday": {
+    "message": "No data for today",
+    "description": "No data message"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Settings button"
+  },
+  "refresh": {
+    "message": "Refresh",
+    "description": "Refresh button"
+  },
+  "fullStats": {
+    "message": "📊 View Full Statistics",
+    "description": "Full statistics button"
+  },
+  "coffee": {
+    "message": "☕",
+    "description": "Coffee button"
+  },
+  
+  "options": {
+    "message": "Options",
+    "description": "Options page title"
+  },
+  "generalTab": {
+    "message": "General",
+    "description": "General tab"
+  },
+  "categoriesTab": {
+    "message": "Categories",
+    "description": "Categories tab"
+  },
+  "blockedSitesTab": {
+    "message": "Blocked Sites",
+    "description": "Blocked sites tab"
+  },
+  "advancedTab": {
+    "message": "Advanced",
+    "description": "Advanced tab"
+  },
+  
+  "language": {
+    "message": "Language",
+    "description": "Language setting"
+  },
+  "selectLanguage": {
+    "message": "Select Language",
+    "description": "Select language dropdown"
+  },
+  "english": {
+    "message": "English",
+    "description": "English language option"
+  },
+  "spanish": {
+    "message": "Spanish",
+    "description": "Spanish language option"
+  },
+  
+  "timeTracking": {
+    "message": "Time Tracking",
+    "description": "Time tracking section"
+  },
+  "enableTimeTracking": {
+    "message": "Enable time tracking",
+    "description": "Enable time tracking checkbox"
+  },
+  "trackingEnabled": {
+    "message": "Tracking is enabled",
+    "description": "Tracking enabled status"
+  },
+  "trackingDisabled": {
+    "message": "Tracking is disabled",
+    "description": "Tracking disabled status"
+  },
+  
+  "siteBlocking": {
+    "message": "Site Blocking",
+    "description": "Site blocking section"
+  },
+  "enableSiteBlocking": {
+    "message": "Enable site blocking",
+    "description": "Enable site blocking checkbox"
+  },
+  "blockingEnabled": {
+    "message": "Blocking is enabled",
+    "description": "Blocking enabled status"
+  },
+  "blockingDisabled": {
+    "message": "Blocking is disabled",
+    "description": "Blocking disabled status"
+  },
+  
+  "notifications": {
+    "message": "Notifications",
+    "description": "Notifications section"
+  },
+  "enableNotifications": {
+    "message": "Enable notifications",
+    "description": "Enable notifications checkbox"
+  },
+  "notificationsEnabled": {
+    "message": "Notifications are enabled",
+    "description": "Notifications enabled status"
+  },
+  "notificationsDisabled": {
+    "message": "Notifications are disabled",
+    "description": "Notifications disabled status"
+  },
+  
+  "categories": {
+    "message": "Categories",
+    "description": "Categories section"
+  },
+  "work": {
+    "message": "Work",
+    "description": "Work category"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Social category"
+  },
+  "entertainment": {
+    "message": "Entertainment",
+    "description": "Entertainment category"
+  },
+  "news": {
+    "message": "News",
+    "description": "News category"
+  },
+  "shopping": {
+    "message": "Shopping",
+    "description": "Shopping category"
+  },
+  "education": {
+    "message": "Education",
+    "description": "Education category"
+  },
+  "other": {
+    "message": "Other",
+    "description": "Other category"
+  },
+  
+  "addDomain": {
+    "message": "Add Domain",
+    "description": "Add domain button"
+  },
+  "enterDomain": {
+    "message": "Enter domain (e.g., google.com)",
+    "description": "Enter domain placeholder"
+  },
+  "noDomains": {
+    "message": "No domains assigned",
+    "description": "No domains message"
+  },
+  
+  "currentlyBlocked": {
+    "message": "Currently Blocked Sites",
+    "description": "Currently blocked sites section"
+  },
+  "noBlockedSites": {
+    "message": "No sites are currently blocked",
+    "description": "No blocked sites message"
+  },
+  "unblock": {
+    "message": "Unblock",
+    "description": "Unblock button"
+  },
+  "unblockConfirm": {
+    "message": "Are you sure you want to unblock this site?",
+    "description": "Unblock confirmation message"
+  },
+  
+  "dataManagement": {
+    "message": "Data Management",
+    "description": "Data management section"
+  },
+  "exportData": {
+    "message": "Export Data",
+    "description": "Export data button"
+  },
+  "importData": {
+    "message": "Import Data",
+    "description": "Import data button"
+  },
+  "clearAllData": {
+    "message": "Clear All Data",
+    "description": "Clear all data button"
+  },
+  "clearDataConfirm": {
+    "message": "Are you sure you want to clear all data? This action cannot be undone.",
+    "description": "Clear data confirmation message"
+  },
+  "dataExported": {
+    "message": "Data exported successfully",
+    "description": "Data exported message"
+  },
+  "dataImported": {
+    "message": "Data imported successfully",
+    "description": "Data imported message"
+  },
+  "dataCleared": {
+    "message": "All data cleared successfully",
+    "description": "Data cleared message"
+  },
+  
+  "statistics": {
+    "message": "Statistics",
+    "description": "Statistics page title"
+  },
+  "timeFilter": {
+    "message": "Time Filter",
+    "description": "Time filter section"
+  },
+  "today": {
+    "message": "Today",
+    "description": "Today filter"
+  },
+  "thisWeek": {
+    "message": "This Week",
+    "description": "This week filter"
+  },
+  "thisMonth": {
+    "message": "This Month",
+    "description": "This month filter"
+  },
+  "thisYear": {
+    "message": "This Year",
+    "description": "This year filter"
+  },
+  "allTime": {
+    "message": "All Time",
+    "description": "All time filter"
+  },
+  "customRange": {
+    "message": "Custom Range",
+    "description": "Custom range filter"
+  },
+  
+  "website": {
+    "message": "Website",
+    "description": "Website column"
+  },
+  "category": {
+    "message": "Category",
+    "description": "Category column"
+  },
+  "time": {
+    "message": "Time",
+    "description": "Time column"
+  },
+  "visits": {
+    "message": "Visits",
+    "description": "Visits column"
+  },
+  "lastVisit": {
+    "message": "Last Visit",
+    "description": "Last visit column"
+  },
+  "percentage": {
+    "message": "% of Total",
+    "description": "Percentage column"
+  },
+  "actions": {
+    "message": "Actions",
+    "description": "Actions column"
+  },
+  
+  "block": {
+    "message": "Block",
+    "description": "Block button"
+  },
+  "changeCategory": {
+    "message": "Change Category",
+    "description": "Change category button"
+  },
+  "blockConfirm": {
+    "message": "Are you sure you want to block this site?",
+    "description": "Block confirmation message"
+  },
+  "categoryChanged": {
+    "message": "Category changed successfully",
+    "description": "Category changed message"
+  },
+  "siteBlocked": {
+    "message": "Site blocked successfully",
+    "description": "Site blocked message"
+  },
+  "siteUnblocked": {
+    "message": "Site unblocked successfully",
+    "description": "Site unblocked message"
+  },
+  
+  "exportCSV": {
+    "message": "Export CSV",
+    "description": "Export CSV button"
+  },
+  "updateStats": {
+    "message": "Update",
+    "description": "Update stats button"
+  },
+  
+  "chartTitle": {
+    "message": "Top 10 Sites by Time Spent",
+    "description": "Chart title"
+  },
+  "noDataChart": {
+    "message": "No data available for chart",
+    "description": "No data for chart message"
+  },
+  
+  "summaryCards": {
+    "message": "Summary",
+    "description": "Summary cards section"
+  },
+  "avgSession": {
+    "message": "Avg Session",
+    "description": "Average session label"
+  },
+  
+  "categoryStats": {
+    "message": "Statistics by Category",
+    "description": "Category statistics section"
+  },
+  "sites": {
+    "message": "Sites",
+    "description": "Sites label"
+  },
+  
+  "blocked": {
+    "message": "Blocked",
+    "description": "Blocked page title"
+  },
+  "siteBlockedTitle": {
+    "message": "Site Blocked",
+    "description": "Site blocked title"
+  },
+  "siteBlockedMessage": {
+    "message": "This site has been blocked by TimeTracker Pro.",
+    "description": "Site blocked message"
+  },
+  "unblockTemp": {
+    "message": "Unblock for 5 minutes",
+    "description": "Unblock temporarily button"
+  },
+  "unblockPermanent": {
+    "message": "Unblock permanently",
+    "description": "Unblock permanently button"
+  },
+  "backToSafety": {
+    "message": "Back to Safety",
+    "description": "Back to safety button"
+  },
+  
+  "welcome": {
+    "message": "Welcome",
+    "description": "Welcome page title"
+  },
+  "welcomeTitle": {
+    "message": "Welcome to TimeTracker Pro!",
+    "description": "Welcome title"
+  },
+  "welcomeSubtitle": {
+    "message": "Your personal time management companion for web browsing",
+    "description": "Welcome subtitle"
+  },
+  "welcomeDescription": {
+    "message": "TimeTracker Pro helps you understand and control your web browsing habits with detailed statistics, automatic categorization, and site blocking capabilities.",
+    "description": "Welcome description"
+  },
+  
+  "privacyTitle": {
+    "message": "Your Privacy is Protected",
+    "description": "Privacy title"
+  },
+  "privacyDescription": {
+    "message": "All your data is stored locally on your computer. Nothing is sent to external servers.",
+    "description": "Privacy description"
+  },
+  
+  "gettingStarted": {
+    "message": "Getting Started",
+    "description": "Getting started section"
+  },
+  "step1": {
+    "message": "Browse normally - TimeTracker Pro will automatically track your time",
+    "description": "Step 1 description"
+  },
+  "step2": {
+    "message": "Click the extension icon to see your daily statistics",
+    "description": "Step 2 description"
+  },
+  "step3": {
+    "message": "Visit the options page to customize categories and blocking settings",
+    "description": "Step 3 description"
+  },
+  
+  "features": {
+    "message": "Key Features",
+    "description": "Features section"
+  },
+  "featureTracking": {
+    "message": "Automatic Time Tracking",
+    "description": "Tracking feature title"
+  },
+  "featureTrackingDesc": {
+    "message": "Precisely tracks time spent on each website with second-level accuracy",
+    "description": "Tracking feature description"
+  },
+  "featureCategories": {
+    "message": "Smart Categorization",
+    "description": "Categories feature title"
+  },
+  "featureCategoriesDesc": {
+    "message": "Automatically categorizes websites and allows custom domain assignments",
+    "description": "Categories feature description"
+  },
+  "featureBlocking": {
+    "message": "Site Blocking",
+    "description": "Blocking feature title"
+  },
+  "featureBlockingDesc": {
+    "message": "Block distracting websites with temporary unblock options",
+    "description": "Blocking feature description"
+  },
+  "featureStats": {
+    "message": "Detailed Statistics",
+    "description": "Statistics feature title"
+  },
+  "featureStatsDesc": {
+    "message": "View comprehensive statistics with charts and time period filters",
+    "description": "Statistics feature description"
+  },
+  
+  "popupGuide": {
+    "message": "Understanding the Popup",
+    "description": "Popup guide section"
+  },
+  "popupStatsDesc": {
+    "message": "Shows today's browsing summary with total time, sites visited, and visits",
+    "description": "Popup stats description"
+  },
+  "popupTopSitesDesc": {
+    "message": "Displays your top 5 most visited sites for today",
+    "description": "Popup top sites description"
+  },
+  "popupButtonsDesc": {
+    "message": "Quick access to settings, statistics, and support",
+    "description": "Popup buttons description"
+  },
+  
+  "tips": {
+    "message": "Pro Tips",
+    "description": "Tips section"
+  },
+  "tip1": {
+    "message": "Use categories to organize your browsing habits and identify time patterns",
+    "description": "Tip 1"
+  },
+  "tip2": {
+    "message": "Block social media sites during work hours to improve productivity",
+    "description": "Tip 2"
+  },
+  "tip3": {
+    "message": "Check weekly statistics to understand your browsing trends",
+    "description": "Tip 3"
+  },
+  "tip4": {
+    "message": "Use the temporary unblock feature when you need quick access to blocked sites",
+    "description": "Tip 4"
+  },
+  
+  "openPopup": {
+    "message": "Open Popup",
+    "description": "Open popup button"
+  },
+  "openStats": {
+    "message": "View Statistics",
+    "description": "Open statistics button"
+  },
+  "openOptions": {
+    "message": "Open Settings",
+    "description": "Open options button"
+  },
+  "startTracking": {
+    "message": "Start Tracking",
+    "description": "Start tracking button"
+  },
+  
+  "versions": {
+    "message": "Versions",
+    "description": "Versions page title"
+  },
+  "versionHistory": {
+    "message": "Version History",
+    "description": "Version history section"
+  },
+  "currentVersion": {
+    "message": "Current Version",
+    "description": "Current version label"
+  },
+  "releaseDate": {
+    "message": "Release Date",
+    "description": "Release date label"
+  },
+  "newFeatures": {
+    "message": "New Features",
+    "description": "New features label"
+  },
+  "improvements": {
+    "message": "Improvements",
+    "description": "Improvements label"
+  },
+  "bugFixes": {
+    "message": "Bug Fixes",
+    "description": "Bug fixes label"
+  },
+  
+  "save": {
+    "message": "Save",
+    "description": "Save button"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel button"
+  },
+  "yes": {
+    "message": "Yes",
+    "description": "Yes button"
+  },
+  "no": {
+    "message": "No",
+    "description": "No button"
+  },
+  "ok": {
+    "message": "OK",
+    "description": "OK button"
+  },
+  "error": {
+    "message": "Error",
+    "description": "Error message"
+  },
+  "success": {
+    "message": "Success",
+    "description": "Success message"
+  },
+  "loading": {
+    "message": "Loading...",
+    "description": "Loading message"
+  },
+  
+  "noCategoriesAvailable": {
+    "message": "No categories available",
+    "description": "No categories available message"
+  },
+  "remove": {
+    "message": "Remove",
+    "description": "Remove button"
+  },
+  "enterCategory": {
+    "message": "Category name",
+    "description": "Enter category placeholder"
+  },
+  "settingsSaved": {
+    "message": "Settings saved successfully",
+    "description": "Settings saved message"
+  },
+  "errorSavingSettings": {
+    "message": "Error saving settings",
+    "description": "Error saving settings message"
+  },
+  "pleaseEnterCategoryName": {
+    "message": "Please enter a category name",
+    "description": "Please enter category name message"
+  },
+  "categoryAlreadyExists": {
+    "message": "This category already exists",
+    "description": "Category already exists message"
+  },
+  "categoryAdded": {
+    "message": "Category added successfully",
+    "description": "Category added message"
+  },
+  "errorAddingCategory": {
+    "message": "Error adding category",
+    "description": "Error adding category message"
+  },
+  "timeTrackingDesc": {
+    "message": "Customize time tracking behavior",
+    "description": "Time tracking description"
+  },
+  "categoriesDesc": {
+    "message": "Customize categories to organize your websites",
+    "description": "Categories description"
+  },
+  "siteBlockingDesc": {
+    "message": "Manage blocked websites to improve your productivity",
+    "description": "Site blocking description"
+  },
+  "addBlockedSite": {
+    "message": "Add site to block",
+    "description": "Add blocked site label"
+  },
+  "dailyGoal": {
+    "message": "Daily goal (hours)",
+    "description": "Daily goal label"
+  },
+  "trackingInterval": {
+    "message": "Tracking interval (minutes)",
+    "description": "Tracking interval label"
+  },
+  "addCategory": {
+    "message": "Add new category",
+    "description": "Add category label"
+  },
+  "sinceStart": {
+    "message": "Since start",
+    "description": "Since start label"
+  },
+  "visited": {
+    "message": "Visited",
+    "description": "Visited label"
+  },
+  "withActivity": {
+    "message": "With activity",
+    "description": "With activity label"
+  },
+  "uniqueSites": {
+    "message": "Unique Sites",
+    "description": "Unique sites label"
+  },
+  "activeDays": {
+    "message": "Active Days",
+    "description": "Active days label"
+  },
+  "dataManagementDesc": {
+    "message": "Export, import or delete your tracking data",
+    "description": "Data management description"
+  },
+  "dangerZone": {
+    "message": "Danger Zone",
+    "description": "Danger zone title"
+  },
+  "dangerZoneDesc": {
+    "message": "These actions are irreversible. Proceed with caution.",
+    "description": "Danger zone description"
+  },
+  "appName": {
+    "message": "TimeTracker Pro",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Advanced time tracking and website blocking extension to boost your productivity.",
+    "description": "The description of the application"
+  },
+  "blockSite": {
+    "message": "Block Site",
+    "description": "Button text to block a website"
+  },
+  "unblockSite": {
+    "message": "Unblock Site",
+    "description": "Button text to unblock a website"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Settings menu item"
+  },
+  "statistics": {
+    "message": "📊 Complete Statistics",
+    "description": "Statistics page title"
+  },
+  "todayStats": {
+    "message": "Today's Statistics",
+    "description": "Today's statistics section title"
+  },
+  "productivity": {
+    "message": "Productivity",
+    "description": "Productivity metrics section"
+  },
+  "topSites": {
+    "message": "Top Sites",
+    "description": "Top sites section title"
+  },
+  "noData": {
+    "message": "No data available",
+    "description": "Message when no data is available"
+  },
+  "totalTime": {
+    "message": "Total Time",
+    "description": "Total time spent label"
+  },
+  "visits": {
+    "message": "Visits",
+    "description": "Number of visits label"
+  },
+  "blocked": {
+    "message": "Blocked",
+    "description": "Blocked status label"
+  },
+  "active": {
+    "message": "Active",
+    "description": "Active status label"
+  },
+  "category": {
+    "message": "Category",
+    "description": "Category label"
+  },
+  "work": {
+    "message": "Work",
+    "description": "Work category"
+  },
+  "entertainment": {
+    "message": "Entertainment",
+    "description": "Entertainment category"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Social media category"
+  },
+  "news": {
+    "message": "News",
+    "description": "News category"
+  },
+  "shopping": {
+    "message": "Shopping",
+    "description": "Shopping category"
+  },
+  "education": {
+    "message": "Education",
+    "description": "Education category"
+  },
+  "other": {
+    "message": "Other",
+    "description": "Other category"
+  },
+  "timeTracking": {
+    "message": "Time Tracking",
+    "description": "Time tracking section title"
+  },
+  "siteBlocking": {
+    "message": "Site Blocking",
+    "description": "Site blocking section title"
+  },
+  "categories": {
+    "message": "Categories",
+    "description": "Categories section title"
+  },
+  "data": {
+    "message": "Data",
+    "description": "Data section title"
+  },
+  "enable": {
+    "message": "Enable",
+    "description": "Enable button text"
+  },
+  "disable": {
+    "message": "Disable",
+    "description": "Disable button text"
+  },
+  "save": {
+    "message": "Save",
+    "description": "Save button text"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel button text"
+  },
+  "delete": {
+    "message": "Delete",
+    "description": "Delete button text"
+  },
+  "add": {
+    "message": "Add",
+    "description": "Add button text"
+  },
+  "edit": {
+    "message": "Edit",
+    "description": "Edit button text"
+  },
+  "close": {
+    "message": "Close",
+    "description": "Close button text"
+  },
+  "apply": {
+    "message": "Apply",
+    "description": "Apply button text"
+  },
+  "reset": {
+    "message": "Reset",
+    "description": "Reset button text"
+  },
+  "confirm": {
+    "message": "Confirm",
+    "description": "Confirm button text"
+  },
+  "yes": {
+    "message": "Yes",
+    "description": "Yes button text"
+  },
+  "no": {
+    "message": "No",
+    "description": "No button text"
+  },
+  "loading": {
+    "message": "Loading statistics...",
+    "description": "Loading message"
+  },
+  "error": {
+    "message": "Error",
+    "description": "Error message"
+  },
+  "success": {
+    "message": "Success",
+    "description": "Success message"
+  },
+  "warning": {
+    "message": "Warning",
+    "description": "Warning message"
+  },
+  "info": {
+    "message": "Info",
+    "description": "Info message"
+  },
+  "update": {
+    "message": "Update",
+    "description": "Update button text"
+  },
+  "statsSubtitle": {
+    "message": "Detailed analysis of your online time",
+    "description": "Statistics page subtitle"
+  },
+  "updateStats": {
+    "message": "Update data",
+    "description": "Update statistics button tooltip"
+  },
+  "exportData": {
+    "message": "Export data",
+    "description": "Export data button tooltip"
+  },
+  "timeFilter": {
+    "message": "Period:",
+    "description": "Time filter label"
+  },
+  "today": {
+    "message": "Today",
+    "description": "Today filter option"
+  },
+  "thisWeek": {
+    "message": "This Week",
+    "description": "This week filter option"
+  },
+  "thisMonth": {
+    "message": "This Month",
+    "description": "This month filter option"
+  },
+  "thisYear": {
+    "message": "This Year",
+    "description": "This year filter option"
+  },
+  "allTime": {
+    "message": "All Time",
+    "description": "All time filter option"
+  },
+  "customRange": {
+    "message": "Custom Range",
+    "description": "Custom range filter option"
+  },
+  "from": {
+    "message": "From:",
+    "description": "From date label"
+  },
+  "to": {
+    "message": "To:",
+    "description": "To date label"
+  },
+  "searchWebsite": {
+    "message": "Search website...",
+    "description": "Search website placeholder"
+  },
+  "totalSites": {
+    "message": "Sites Visited",
+    "description": "Total sites visited label"
+  },
+  "totalVisits": {
+    "message": "Total Visits",
+    "description": "Total visits label"
+  },
+  "avgSession": {
+    "message": "Average Session",
+    "description": "Average session duration label"
+  },
+  "chartTitle": {
+    "message": "Time Distribution",
+    "description": "Chart title"
+  },
+  "websiteDetails": {
+    "message": "Website Details",
+    "description": "Website details section title"
+  },
+  "allCategories": {
+    "message": "All Categories",
+    "description": "All categories filter option"
+  },
+  "sortByTime": {
+    "message": "Sort by Time",
+    "description": "Sort by time option"
+  },
+  "sortByVisits": {
+    "message": "Sort by Visits",
+    "description": "Sort by visits option"
+  },
+  "sortByDomain": {
+    "message": "Sort by Domain",
+    "description": "Sort by domain option"
+  },
+  "website": {
+    "message": "Website",
+    "description": "Website column header"
+  },
+  "time": {
+    "message": "Time",
+    "description": "Time column header"
+  },
+  "lastVisit": {
+    "message": "Last Visit",
+    "description": "Last visit column header"
+  },
+  "percentage": {
+    "message": "% of Total",
+    "description": "Percentage column header"
+  },
+  "actions": {
+    "message": "Actions",
+    "description": "Actions column header"
+  },
+  "categoryStats": {
+    "message": "Statistics by Category",
+    "description": "Category statistics section title"
+  },
+  "changeCategory": {
+    "message": "Change Category",
+    "description": "Change category modal title"
+  },
+  "sites": {
+    "message": "Sites",
+    "description": "Sites label"
+  },
+  "noDataToShow": {
+    "message": "No data to show",
+    "description": "No data available message"
+  },
+  "block": {
+    "message": "Block",
+    "description": "Block button text"
+  },
+  "unblock": {
+    "message": "Unblock",
+    "description": "Unblock button text"
+  },
+  "selectBothDates": {
+    "message": "Please select both dates",
+    "description": "Error message for date selection"
+  },
+  "couldNotLoadData": {
+    "message": "Could not load data",
+    "description": "Error message for data loading"
+  },
+  "errorLoadingStats": {
+    "message": "Error loading statistics",
+    "description": "Error message for statistics loading"
+  },
+  "siteBlocked": {
+    "message": "Site blocked",
+    "description": "Site blocked notification"
+  },
+  "siteUnblocked": {
+    "message": "Site unblocked",
+    "description": "Site unblocked notification"
+  },
+  "errorToggleBlock": {
+    "message": "Error changing block status",
+    "description": "Error message for block toggle"
+  },
+  "categoryUpdated": {
+    "message": "Category updated for {domain}",
+    "description": "Category update success message"
+  },
+  "errorUpdateCategory": {
+    "message": "Error updating category",
+    "description": "Error message for category update"
+  },
+  "noDataToExport": {
+    "message": "No data to export",
+    "description": "Error message for data export"
+  },
+  "dataExported": {
+    "message": "Data exported successfully",
+    "description": "Success message for data export"
+  },
+  "readable": {
+    "message": "readable",
+    "description": "Readable format label"
+  },
+  "blockedMessage": {
+    "message": "This site has been blocked by TimeTracker Pro to help you maintain productivity and focus on your important tasks.",
+    "description": "Blocked site message"
+  },
+  "timeToday": {
+    "message": "Time Today",
+    "description": "Time today label"
+  },
+  "visitsToday": {
+    "message": "Visits Today",
+    "description": "Visits today label"
+  },
+  "timeSaved": {
+    "message": "Time Saved",
+    "description": "Time saved label"
+  },
+  "unblockTemporarily": {
+    "message": "🔓 Unblock Temporarily",
+    "description": "Unblock temporarily button text"
+  },
+  "configureBlocking": {
+    "message": "⚙️ Configure Blocking",
+    "description": "Configure blocking button text"
+  },
+  "removeBlocking": {
+    "message": "🗑️ Remove Blocking",
+    "description": "Remove blocking button text"
+  },
+  "quote": {
+    "message": "Success is the sum of small efforts repeated day in and day out.",
+    "description": "Default quote text"
+  },
+  "quoteAuthor": {
+    "message": "- Robert Collier",
+    "description": "Default quote author"
+  },
+  "productivityTipTitle": {
+    "message": "💡 Productivity Tip",
+    "description": "Productivity tip title"
+  },
+  "productivityTip": {
+    "message": "Take advantage of this moment to pause, breathe deeply, and reflect on your goals for the day. Sometimes the best insights come when we step away from distractions.",
+    "description": "Default productivity tip"
+  },
+  "quote1": {
+    "message": "Success is the sum of small efforts repeated day in and day out.",
+    "description": "Quote 1"
+  },
+  "quote1Author": {
+    "message": "Robert Collier",
+    "description": "Quote 1 author"
+  },
+  "quote2": {
+    "message": "Concentration is the secret of strength.",
+    "description": "Quote 2"
+  },
+  "quote2Author": {
+    "message": "Ralph Waldo Emerson",
+    "description": "Quote 2 author"
+  },
+  "quote3": {
+    "message": "What you get by achieving your goals is not as important as what you become by achieving your goals.",
+    "description": "Quote 3"
+  },
+  "quote3Author": {
+    "message": "Zig Ziglar",
+    "description": "Quote 3 author"
+  },
+  "quote4": {
+    "message": "Discipline is the bridge between goals and accomplishment.",
+    "description": "Quote 4"
+  },
+  "quote4Author": {
+    "message": "Jim Rohn",
+    "description": "Quote 4 author"
+  },
+  "quote5": {
+    "message": "It's not about having time. It's about making time.",
+    "description": "Quote 5"
+  },
+  "quote5Author": {
+    "message": "Anonymous",
+    "description": "Quote 5 author"
+  },
+  "tip1": {
+    "message": "Take advantage of this moment to pause, breathe deeply, and reflect on your goals for the day.",
+    "description": "Productivity tip 1"
+  },
+  "tip2": {
+    "message": "How about using these minutes to drink water, stretch, or do breathing exercises?",
+    "description": "Productivity tip 2"
+  },
+  "tip3": {
+    "message": "Consider writing a to-do list or reviewing your daily priorities.",
+    "description": "Productivity tip 3"
+  },
+  "tip4": {
+    "message": "This is a good time to contact a friend or family member you haven't seen in a while.",
+    "description": "Productivity tip 4"
+  },
+  "tip5": {
+    "message": "Why not take advantage of this time to read an educational article or learn something new?",
+    "description": "Productivity tip 5"
+  },
+  "tip6": {
+    "message": "Take a visual break: look out the window or focus your sight on something distant.",
+    "description": "Productivity tip 6"
+  },
+  "tip7": {
+    "message": "It's a good time to organize your workspace or desk.",
+    "description": "Productivity tip 7"
+  },
+  "tip8": {
+    "message": "How about planning your next healthy meal or preparing a nutritious snack?",
+    "description": "Productivity tip 8"
+  },
+  "blockedBy": {
+    "message": "is blocked by",
+    "description": "Blocked by message"
+  },
+  "unknownSite": {
+    "message": "unknown site",
+    "description": "Unknown site label"
+  },
+  "unblockPrompt": {
+    "message": "How many minutes do you want to unblock this site?",
+    "description": "Unblock prompt message"
+  },
+  "unblocking": {
+    "message": "Unblocking",
+    "description": "Unblocking status message"
+  },
+  "errorUnblocking": {
+    "message": "Error unblocking site",
+    "description": "Error unblocking message"
+  },
+  "communicationError": {
+    "message": "Communication error with extension",
+    "description": "Communication error message"
+  },
+  "permanentUnblockConfirm": {
+    "message": "Are you sure you want to permanently remove the block from {site}?",
+    "description": "Permanent unblock confirmation"
+  },
+  "removingBlock": {
+    "message": "Removing block",
+    "description": "Removing block status message"
+  },
+  "blockRemovedPermanently": {
+    "message": "Block removed permanently",
+    "description": "Block removed permanently message"
+  },
+  "errorRemovingBlock": {
+    "message": "Error removing block",
+    "description": "Error removing block message"
+  },
+  
+  "welcomeTitle": {
+    "message": "Welcome to TimeTracker Pro!",
+    "description": "Welcome page title"
+  },
+  "welcomeSubtitle": {
+    "message": "Your new tool to control online time",
+    "description": "Welcome page subtitle"
+  },
+  "installationCompleted": {
+    "message": "✅ Installation Completed",
+    "description": "Installation completed badge"
+  },
+  "welcomeIntroTitle": {
+    "message": "🎉 Thank you for installing TimeTracker Pro!",
+    "description": "Welcome intro title"
+  },
+  "welcomeIntroDesc": {
+    "message": "TimeTracker Pro is a complete extension that helps you become more aware of how you spend your time on the internet. It allows you to track, analyze, and manage your browsing time intelligently and privately.",
+    "description": "Welcome intro description"
+  },
+  "welcomeCoffeeDesc": {
+    "message": "This development is completely free and nothing is charged for this plugin. But if you value the time I spend developing and maintaining this extension, I would appreciate if you buy me a coffee. Any amount you want to give me! ☕",
+    "description": "Welcome coffee description"
+  },
+  "buyMeACoffee": {
+    "message": "Buy Me a Coffee",
+    "description": "Buy me a coffee button"
+  },
+  "privacyTitle": {
+    "message": "🔒 100% Private and Secure",
+    "description": "Privacy section title"
+  },
+  "privacyDesc": {
+    "message": "Your privacy is our priority: All your data is stored locally on your browser. We don't send any information to external servers. Only you have access to your time statistics.",
+    "description": "Privacy description"
+  },
+  "privacyPoint1": {
+    "message": "✅ Data stored locally",
+    "description": "Privacy point 1"
+  },
+  "privacyPoint2": {
+    "message": "✅ No telemetry or external tracking",
+    "description": "Privacy point 2"
+  },
+  "privacyPoint3": {
+    "message": "✅ Open source and auditable code",
+    "description": "Privacy point 3"
+  },
+  "quickStartTitle": {
+    "message": "🚀 How to Get Started",
+    "description": "Quick start title"
+  },
+  "step1Title": {
+    "message": "Open the Popup",
+    "description": "Step 1 title"
+  },
+  "step1Desc": {
+    "message": "Click on the ⏱️ TimeTracker Pro icon in the toolbar to see your daily statistics.",
+    "description": "Step 1 description"
+  },
+  "step2Title": {
+    "message": "Explore Statistics",
+    "description": "Step 2 title"
+  },
+  "step2Desc": {
+    "message": "Use the \"📊 View Complete Statistics\" button for detailed analysis and charts.",
+    "description": "Step 2 description"
+  },
+  "step3Title": {
+    "message": "Configure to Your Liking",
+    "description": "Step 3 title"
+  },
+  "step3Desc": {
+    "message": "Access \"⚙️ Settings\" to customize categories, block sites, and set goals.",
+    "description": "Step 3 description"
+  },
+  "quickAccessTip": {
+    "message": "💡 Tip: For quick access, pin the extension by clicking the puzzle icon 🧩 in the toolbar and then the pin 📌 next to TimeTracker Pro.",
+    "description": "Quick access tip"
+  },
+  "mainFeaturesTitle": {
+    "message": "✨ Main Features",
+    "description": "Main features title"
+  },
+  "feature1Title": {
+    "message": "Smart Tracking",
+    "description": "Feature 1 title"
+  },
+  "feature1Desc": {
+    "message": "Automatically tracks the time you spend on each website with minute precision.",
+    "description": "Feature 1 description"
+  },
+  "feature2Title": {
+    "message": "Detailed Statistics",
+    "description": "Feature 2 title"
+  },
+  "feature2Desc": {
+    "message": "Analyze your time by day, week, month, or custom periods with visual charts.",
+    "description": "Feature 2 description"
+  },
+  "feature3Title": {
+    "message": "Automatic Categorization",
+    "description": "Feature 3 title"
+  },
+  "feature3Desc": {
+    "message": "Sites are automatically categorized: Work, Entertainment, News, etc.",
+    "description": "Feature 3 description"
+  },
+  "feature4Title": {
+    "message": "Site Blocking",
+    "description": "Feature 4 title"
+  },
+  "feature4Desc": {
+    "message": "Block distracting sites or allow temporary access to improve your productivity.",
+    "description": "Feature 4 description"
+  },
+  "feature5Title": {
+    "message": "Daily Goals",
+    "description": "Feature 5 title"
+  },
+  "feature5Desc": {
+    "message": "Set time goals and monitor your progress towards more conscious browsing.",
+    "description": "Feature 5 description"
+  },
+  "feature6Title": {
+    "message": "Export/Import",
+    "description": "Feature 6 title"
+  },
+  "feature6Desc": {
+    "message": "Back up your data or transfer your history between devices easily.",
+    "description": "Feature 6 description"
+  },
+  "popupGuideTitle": {
+    "message": "🎮 Popup Guide",
+    "description": "Popup guide title"
+  },
+  "dailySummaryTitle": {
+    "message": "📋 Daily Summary",
+    "description": "Daily summary title"
+  },
+  "dailySummaryDesc": {
+    "message": "See your total time, sites visited, and number of visits for the current day.",
+    "description": "Daily summary description"
+  },
+  "topSitesTitle": {
+    "message": "🏆 Top Sites",
+    "description": "Top sites title"
+  },
+  "topSitesDesc": {
+    "message": "Ranking of the sites where you've spent the most time today, with time and visits.",
+    "description": "Top sites description"
+  },
+  "quickActionsTitle": {
+    "message": "🔗 Quick Actions",
+    "description": "Quick actions title"
+  },
+  "quickActionsDesc": {
+    "message": "📊 View Complete Statistics: Opens detailed analysis<br>⚙️ Settings: Configure the extension<br>🔄 Update: Refresh data",
+    "description": "Quick actions description"
+  },
+  "tipsTitle": {
+    "message": "💡 Tips to Make the Most of It",
+    "description": "Tips title"
+  },
+  "welcomeTip1": {
+    "message": "Search for specific sites on the statistics page to find usage patterns.",
+    "description": "Welcome Tip 1"
+  },
+  "welcomeTip2": {
+    "message": "Compare periods to see how your online behavior has changed over time.",
+    "description": "Welcome Tip 2"
+  },
+  "welcomeTip3": {
+    "message": "Use temporary blocking when you need brief access to distracting sites.",
+    "description": "Welcome Tip 3"
+  },
+  "welcomeTip4": {
+    "message": "Export your data regularly to maintain a long-term history.",
+    "description": "Welcome Tip 4"
+  },
+  "startNowTitle": {
+    "message": "🎯 Start Now!",
+    "description": "Start now title"
+  },
+  "startNowDesc": {
+    "message": "TimeTracker Pro is already working in the background, recording your browsing time.",
+    "description": "Start now description"
+  },
+  "viewMyPopup": {
+    "message": "📊 View My Popup",
+    "description": "View my popup button"
+  },
+  "exploreStats": {
+    "message": "📈 Explore Statistics",
+    "description": "Explore statistics button"
+  },
+  "goToSettings": {
+    "message": "⚙️ Go to Settings",
+    "description": "Go to settings button"
+  },
+  "footerMessage": {
+    "message": "We hope TimeTracker Pro helps you be more productive and aware of your online time! 🚀",
+    "description": "Footer message"
+  },
+  "footerNote": {
+    "message": "For support or suggestions, don't hesitate to contact us. Thank you for choosing TimeTracker Pro!",
+    "description": "Footer note"
+  },
+  
+  "siteBlocked": {
+    "message": "Site Blocked",
+    "description": "Title for blocked site page"
+  },
+  "blockedBy": {
+    "message": "blocked by",
+    "description": "Text for blocked by message"
+  },
+  "blockedMessage": {
+    "message": "This site has been blocked by TimeTracker Pro to help you maintain productivity and focus on your important tasks.",
+    "description": "Message shown on blocked pages"
+  },
+  "unknownSite": {
+    "message": "Unknown Site",
+    "description": "Fallback for unknown sites"
+  },
+  "unblockTemporarily": {
+    "message": "Unblock Temporarily",
+    "description": "Button to temporarily unblock site"
+  },
+  "configureBlocking": {
+    "message": "Configure Blocking",
+    "description": "Button to configure blocking"
+  },
+  "removeBlocking": {
+    "message": "Remove Blocking",
+    "description": "Button to permanently remove blocking"
+  },
+  "timeToday": {
+    "message": "Time Today",
+    "description": "Label for time today stat"
+  },
+  "visitsToday": {
+    "message": "Visits Today",
+    "description": "Label for visits today stat"
+  },
+  "timeSaved": {
+    "message": "Time Saved",
+    "description": "Label for time saved stat"
+  },
+  "productivityTipTitle": {
+    "message": "Productivity Tip",
+    "description": "Title for productivity tip section"
+  },
+  "productivityTip": {
+    "message": "Take advantage of this moment to pause, breathe deeply, and reflect on your goals for the day. Sometimes the best insights come when we step away from distractions.",
+    "description": "Default productivity tip"
+  },
+  "quote": {
+    "message": "Success is the sum of small efforts repeated day in and day out.",
+    "description": "Default quote"
+  },
+  "quoteAuthor": {
+    "message": "Robert Collier",
+    "description": "Default quote author"
+  },
+  
+  "quote1": {
+    "message": "Success is the sum of small efforts repeated day in and day out.",
+    "description": "Motivational quote 1"
+  },
+  "quote1Author": {
+    "message": "Robert Collier",
+    "description": "Author of quote 1"
+  },
+  "quote2": {
+    "message": "Concentration is the secret of strength.",
+    "description": "Motivational quote 2"
+  },
+  "quote2Author": {
+    "message": "Ralph Waldo Emerson",
+    "description": "Author of quote 2"
+  },
+  "quote3": {
+    "message": "What you get by achieving your goals is not as important as what you become by achieving your goals.",
+    "description": "Motivational quote 3"
+  },
+  "quote3Author": {
+    "message": "Zig Ziglar",
+    "description": "Author of quote 3"
+  },
+  "quote4": {
+    "message": "Discipline is the bridge between goals and accomplishment.",
+    "description": "Motivational quote 4"
+  },
+  "quote4Author": {
+    "message": "Jim Rohn",
+    "description": "Author of quote 4"
+  },
+  "quote5": {
+    "message": "It's not about having time. It's about making time.",
+    "description": "Motivational quote 5"
+  },
+  "quote5Author": {
+    "message": "Anonymous",
+    "description": "Author of quote 5"
+  },
+  
+  "tip1": {
+    "message": "Take advantage of this moment to pause, breathe deeply, and reflect on your goals for the day.",
+    "description": "Productivity tip 1"
+  },
+  "tip2": {
+    "message": "How about using these minutes to drink water, stretch, or do breathing exercises?",
+    "description": "Productivity tip 2"
+  },
+  "tip3": {
+    "message": "Consider writing a to-do list or reviewing your daily priorities.",
+    "description": "Productivity tip 3"
+  },
+  "tip4": {
+    "message": "This is a good time to contact a friend or family member you haven't seen in a while.",
+    "description": "Productivity tip 4"
+  },
+  "tip5": {
+    "message": "Why not take advantage of this time to read an educational article or learn something new?",
+    "description": "Productivity tip 5"
+  },
+  "tip6": {
+    "message": "Take a visual break: look out the window or focus your sight on something distant.",
+    "description": "Productivity tip 6"
+  },
+  "tip7": {
+    "message": "It's a good time to organize your workspace or desk.",
+    "description": "Productivity tip 7"
+  },
+  "tip8": {
+    "message": "How about planning your next healthy meal or preparing a nutritious snack?",
+    "description": "Productivity tip 8"
+  }
+} 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimeTracker Pro - Opciones</title>
+    <title data-i18n="options">TimeTracker Pro - Options</title>
     <style>
         * {
             margin: 0;
@@ -402,6 +402,21 @@
             border-color: #bee5eb;
         }
 
+        /* Language selector specific styles */
+        .language-selector {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .language-selector h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
         @media (max-width: 768px) {
             .nav-tabs {
                 flex-direction: column;
@@ -445,48 +460,101 @@
             border-radius: 10px;
             box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
+
+        /* Language Toggle Styles */
+        .language-toggle {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: flex-start;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(103, 126, 234, 0.3);
+            border-radius: 25px;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(103, 126, 234, 0.1);
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+            box-shadow: 0 4px 15px rgba(103, 126, 234, 0.4);
+        }
+
+        .lang-btn.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(103, 126, 234, 0.5);
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1>⏱️ TimeTracker Pro</h1>
-            <p>Configuración y opciones avanzadas</p>
+            <p data-i18n="options">Configuración y opciones avanzadas</p>
         </div>
 
         <div class="nav-tabs">
-            <button class="nav-tab active" data-tab="general">General</button>
-            <button class="nav-tab" data-tab="categories">Categorías</button>
-            <button class="nav-tab" data-tab="blocking">Bloqueo</button>
-            <button class="nav-tab" data-tab="data">Datos</button>
+            <button class="nav-tab active" data-tab="general" data-i18n="generalTab">General</button>
+            <button class="nav-tab" data-tab="categories" data-i18n="categoriesTab">Categorías</button>
+            <button class="nav-tab" data-tab="blocking" data-i18n="blockedSitesTab">Bloqueo</button>
+            <button class="nav-tab" data-tab="data" data-i18n="advancedTab">Datos</button>
         </div>
 
         <div id="general" class="tab-content active">
+            <!-- Language Selector Section -->
             <div class="section">
-                <h2>Configuración General</h2>
-                <p>Personaliza el comportamiento básico de TimeTracker Pro</p>
+                <div class="language-selector">
+                    <h3 data-i18n="language">Idioma</h3>
+                    <div class="form-group">
+                        <label data-i18n="selectLanguage">Seleccionar Idioma</label>
+                        <div class="language-toggle">
+                            <button class="lang-btn" data-lang="en">🇺🇸 English</button>
+                            <button class="lang-btn" data-lang="es">🇪🇸 Español</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 data-i18n="timeTracking">Seguimiento de Tiempo</h2>
+                <p data-i18n="timeTrackingDesc">Personaliza el comportamiento del seguimiento de tiempo</p>
                 
                 <div class="form-group">
                     <div class="checkbox-group">
                         <input type="checkbox" id="trackingEnabled" checked>
-                        <label for="trackingEnabled">Activar seguimiento de tiempo</label>
+                        <label for="trackingEnabled" data-i18n="enableTimeTracking">Activar seguimiento de tiempo</label>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="checkbox-group">
                         <input type="checkbox" id="showNotifications" checked>
-                        <label for="showNotifications">Mostrar notificaciones</label>
+                        <label for="showNotifications" data-i18n="enableNotifications">Mostrar notificaciones</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="dailyGoal">Objetivo diario (horas)</label>
+                    <label for="dailyGoal" data-i18n="dailyGoal">Objetivo diario (horas)</label>
                     <input type="number" id="dailyGoal" min="1" max="24" value="8">
                 </div>
 
                 <div class="form-group">
-                    <label for="trackingInterval">Intervalo de seguimiento (minutos)</label>
+                    <label for="trackingInterval" data-i18n="trackingInterval">Intervalo de seguimiento (minutos)</label>
                     <select id="trackingInterval">
                         <option value="1">1 minuto</option>
                         <option value="5">5 minutos</option>
@@ -495,7 +563,7 @@
                     </select>
                 </div>
 
-                <button class="btn btn-primary" id="saveGeneralSettings">Guardar Configuración</button>
+                <button class="btn btn-primary" id="saveGeneralSettings" data-i18n="save">Guardar Configuración</button>
             </div>
             
             <!-- Buy Me a Coffee Section -->
@@ -509,15 +577,15 @@
 
         <div id="categories" class="tab-content">
             <div class="section">
-                <h2>Gestión de Categorías</h2>
-                <p>Personaliza las categorías para organizar tus sitios web</p>
+                <h2 data-i18n="categories">Gestión de Categorías</h2>
+                <p data-i18n="categoriesDesc">Personaliza las categorías para organizar tus sitios web</p>
                 
                 <div class="category-manager">
                     <div class="form-group">
-                        <label for="newCategory">Agregar nueva categoría</label>
+                        <label for="newCategory" data-i18n="addCategory">Agregar nueva categoría</label>
                         <div style="display: flex; gap: 10px;">
-                            <input type="text" id="newCategory" placeholder="Nombre de la categoría">
-                            <button class="btn btn-primary" id="addCategory">Agregar</button>
+                            <input type="text" id="newCategory" data-i18n-placeholder="enterCategory">
+                            <button class="btn btn-primary" id="addCategory" data-i18n="addDomain">Agregar</button>
                         </div>
                     </div>
                     
@@ -538,19 +606,19 @@
 
         <div id="blocking" class="tab-content">
             <div class="section">
-                <h2>Bloqueo de Sitios</h2>
-                <p>Gestiona los sitios web bloqueados para mejorar tu productividad</p>
+                <h2 data-i18n="siteBlocking">Bloqueo de Sitios</h2>
+                <p data-i18n="siteBlockingDesc">Gestiona los sitios web bloqueados para mejorar tu productividad</p>
                 
                 <div class="form-group">
-                    <label for="newBlockedSite">Agregar sitio a bloquear</label>
+                    <label for="newBlockedSite" data-i18n="addBlockedSite">Agregar sitio a bloquear</label>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newBlockedSite" placeholder="ejemplo.com">
-                        <button class="btn btn-danger" id="addBlockedSite">Bloquear</button>
+                        <input type="text" id="newBlockedSite" data-i18n-placeholder="enterDomain">
+                        <button class="btn btn-danger" id="addBlockedSite" data-i18n="block">Bloquear</button>
                     </div>
                 </div>
 
                 <div class="blocked-sites-list" id="blockedSitesList">
-                    <div style="text-align: center; color: #6c757d; padding: 20px;">
+                    <div style="text-align: center; color: #6c757d; padding: 20px;" data-i18n="noBlockedSites">
                         No hay sitios bloqueados
                     </div>
                 </div>
@@ -567,42 +635,42 @@
 
         <div id="data" class="tab-content">
             <div class="section">
-                <h2>Estadísticas Globales</h2>
+                <h2 data-i18n="statistics">Estadísticas Globales</h2>
                 <div class="stats-grid" id="globalStats">
                     <div class="stat-card">
-                        <h3>Tiempo Total</h3>
+                        <h3 data-i18n="totalTime">Tiempo Total</h3>
                         <div class="stat-value" id="totalTimeAll">0h</div>
-                        <div class="stat-label">Desde el inicio</div>
+                        <div class="stat-label" data-i18n="sinceStart">Desde el inicio</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Sitios Únicos</h3>
+                        <h3 data-i18n="uniqueSites">Sitios Únicos</h3>
                         <div class="stat-value" id="uniqueSites">0</div>
-                        <div class="stat-label">Visitados</div>
+                        <div class="stat-label" data-i18n="visited">Visitados</div>
                     </div>
                     <div class="stat-card">
-                        <h3>Días Activos</h3>
+                        <h3 data-i18n="activeDays">Días Activos</h3>
                         <div class="stat-value" id="activeDays">0</div>
-                        <div class="stat-label">Con actividad</div>
+                        <div class="stat-label" data-i18n="withActivity">Con actividad</div>
                     </div>
                 </div>
             </div>
 
             <div class="section">
-                <h2>Gestión de Datos</h2>
-                <p>Exporta, importa o elimina tus datos de seguimiento</p>
+                <h2 data-i18n="dataManagement">Gestión de Datos</h2>
+                <p data-i18n="dataManagementDesc">Exporta, importa o elimina tus datos de seguimiento</p>
                 
                 <div class="export-import">
-                    <button class="btn btn-secondary" id="exportData">📤 Exportar Datos</button>
-                    <button class="btn btn-secondary" id="importDataBtn">📥 Importar Datos</button>
+                    <button class="btn btn-secondary" id="exportData">📤 <span data-i18n="exportData">Exportar Datos</span></button>
+                    <button class="btn btn-secondary" id="importDataBtn">📥 <span data-i18n="importData">Importar Datos</span></button>
                     <input type="file" id="importData" class="file-input" accept=".json">
                 </div>
 
                 <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid #e9ecef;">
-                    <h3 style="color: #ff4757; margin-bottom: 15px;">Zona Peligrosa</h3>
-                    <p style="color: #6c757d; margin-bottom: 20px;">
+                    <h3 style="color: #ff4757; margin-bottom: 15px;" data-i18n="dangerZone">Zona Peligrosa</h3>
+                    <p style="color: #6c757d; margin-bottom: 20px;" data-i18n="dangerZoneDesc">
                         Estas acciones son irreversibles. Procede con precaución.
                     </p>
-                    <button class="btn btn-danger" id="clearAllData">🗑️ Eliminar Todos los Datos</button>
+                    <button class="btn btn-danger" id="clearAllData">🗑️ <span data-i18n="clearAllData">Eliminar Todos los Datos</span></button>
                 </div>
             </div>
             
@@ -616,6 +684,7 @@
         </div>
     </div>
 
+    <script src="i18n.js"></script>
     <script src="options.js"></script>
 </body>
 </html> 

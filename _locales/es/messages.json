@@ -1,0 +1,1538 @@
+{
+  "extensionName": {
+    "message": "TimeTracker Pro",
+    "description": "Nombre de la extensión"
+  },
+  "extensionDescription": {
+    "message": "Controla el tiempo que pasas en cada página web con estadísticas detalladas y bloqueo de sitios",
+    "description": "Descripción de la extensión"
+  },
+  
+  "popup": {
+    "message": "Popup",
+    "description": "Sección popup"
+  },
+  "todayStats": {
+    "message": "Estadísticas de Hoy",
+    "description": "Sección estadísticas de hoy"
+  },
+  "totalTime": {
+    "message": "Tiempo Total",
+    "description": "Etiqueta tiempo total"
+  },
+  "totalSites": {
+    "message": "Sitios Visitados",
+    "description": "Etiqueta sitios visitados"
+  },
+  "totalVisits": {
+    "message": "Visitas Totales",
+    "description": "Etiqueta visitas totales"
+  },
+  "activeTime": {
+    "message": "Tiempo Activo",
+    "description": "Etiqueta tiempo activo"
+  },
+  "topSites": {
+    "message": "Sitios Principales",
+    "description": "Etiqueta sitios principales"
+  },
+  "noDataToday": {
+    "message": "No hay datos para hoy",
+    "description": "Mensaje sin datos"
+  },
+  "settings": {
+    "message": "Ajustes",
+    "description": "Botón ajustes"
+  },
+  "refresh": {
+    "message": "Actualizar",
+    "description": "Botón actualizar"
+  },
+  "fullStats": {
+    "message": "📊 Ver Estadísticas Completas",
+    "description": "Botón estadísticas completas"
+  },
+  "coffee": {
+    "message": "☕",
+    "description": "Botón café"
+  },
+  
+  "options": {
+    "message": "Opciones",
+    "description": "Título página opciones"
+  },
+  "generalTab": {
+    "message": "General",
+    "description": "Pestaña general"
+  },
+  "categoriesTab": {
+    "message": "Categorías",
+    "description": "Pestaña categorías"
+  },
+  "blockedSitesTab": {
+    "message": "Sitios Bloqueados",
+    "description": "Pestaña sitios bloqueados"
+  },
+  "advancedTab": {
+    "message": "Avanzado",
+    "description": "Pestaña avanzado"
+  },
+  
+  "language": {
+    "message": "Idioma",
+    "description": "Configuración idioma"
+  },
+  "selectLanguage": {
+    "message": "Seleccionar Idioma",
+    "description": "Selector de idioma"
+  },
+  "english": {
+    "message": "Inglés",
+    "description": "Opción idioma inglés"
+  },
+  "spanish": {
+    "message": "Español",
+    "description": "Opción idioma español"
+  },
+  
+  "timeTracking": {
+    "message": "Seguimiento de Tiempo",
+    "description": "Sección seguimiento de tiempo"
+  },
+  "enableTimeTracking": {
+    "message": "Habilitar seguimiento de tiempo",
+    "description": "Checkbox habilitar seguimiento"
+  },
+  "trackingEnabled": {
+    "message": "El seguimiento está habilitado",
+    "description": "Estado seguimiento habilitado"
+  },
+  "trackingDisabled": {
+    "message": "El seguimiento está deshabilitado",
+    "description": "Estado seguimiento deshabilitado"
+  },
+  
+  "siteBlocking": {
+    "message": "Bloqueo de Sitios",
+    "description": "Sección bloqueo de sitios"
+  },
+  "enableSiteBlocking": {
+    "message": "Habilitar bloqueo de sitios",
+    "description": "Checkbox habilitar bloqueo"
+  },
+  "blockingEnabled": {
+    "message": "El bloqueo está habilitado",
+    "description": "Estado bloqueo habilitado"
+  },
+  "blockingDisabled": {
+    "message": "El bloqueo está deshabilitado",
+    "description": "Estado bloqueo deshabilitado"
+  },
+  
+  "notifications": {
+    "message": "Notificaciones",
+    "description": "Sección notificaciones"
+  },
+  "enableNotifications": {
+    "message": "Habilitar notificaciones",
+    "description": "Checkbox habilitar notificaciones"
+  },
+  "notificationsEnabled": {
+    "message": "Las notificaciones están habilitadas",
+    "description": "Estado notificaciones habilitadas"
+  },
+  "notificationsDisabled": {
+    "message": "Las notificaciones están deshabilitadas",
+    "description": "Estado notificaciones deshabilitadas"
+  },
+  
+  "categories": {
+    "message": "Categorías",
+    "description": "Sección categorías"
+  },
+  "work": {
+    "message": "Trabajo",
+    "description": "Categoría trabajo"
+  },
+  "social": {
+    "message": "Social",
+    "description": "Categoría social"
+  },
+  "entertainment": {
+    "message": "Entretenimiento",
+    "description": "Categoría entretenimiento"
+  },
+  "news": {
+    "message": "Noticias",
+    "description": "Categoría noticias"
+  },
+  "shopping": {
+    "message": "Compras",
+    "description": "Categoría compras"
+  },
+  "education": {
+    "message": "Educación",
+    "description": "Categoría educación"
+  },
+  "other": {
+    "message": "Otros",
+    "description": "Categoría otros"
+  },
+  
+  "addDomain": {
+    "message": "Añadir Dominio",
+    "description": "Botón añadir dominio"
+  },
+  "enterDomain": {
+    "message": "Introducir dominio (ej. google.com)",
+    "description": "Placeholder introducir dominio"
+  },
+  "noDomains": {
+    "message": "No hay dominios asignados",
+    "description": "Mensaje sin dominios"
+  },
+  
+  "currentlyBlocked": {
+    "message": "Sitios Actualmente Bloqueados",
+    "description": "Sección sitios bloqueados"
+  },
+  "noBlockedSites": {
+    "message": "No hay sitios bloqueados actualmente",
+    "description": "Mensaje sin sitios bloqueados"
+  },
+  "unblock": {
+    "message": "Desbloquear",
+    "description": "Botón desbloquear"
+  },
+  "unblockConfirm": {
+    "message": "¿Estás seguro de que quieres desbloquear este sitio?",
+    "description": "Mensaje confirmación desbloquear"
+  },
+  
+  "dataManagement": {
+    "message": "Gestión de Datos",
+    "description": "Sección gestión de datos"
+  },
+  "exportData": {
+    "message": "Exportar Datos",
+    "description": "Botón exportar datos"
+  },
+  "importData": {
+    "message": "Importar Datos",
+    "description": "Botón importar datos"
+  },
+  "clearAllData": {
+    "message": "Limpiar Todos los Datos",
+    "description": "Botón limpiar datos"
+  },
+  "clearDataConfirm": {
+    "message": "¿Estás seguro de que quieres limpiar todos los datos? Esta acción no se puede deshacer.",
+    "description": "Mensaje confirmación limpiar datos"
+  },
+  "dataExported": {
+    "message": "Datos exportados exitosamente",
+    "description": "Mensaje datos exportados"
+  },
+  "dataImported": {
+    "message": "Datos importados exitosamente",
+    "description": "Mensaje datos importados"
+  },
+  "dataCleared": {
+    "message": "Todos los datos han sido limpiados exitosamente",
+    "description": "Mensaje datos limpiados"
+  },
+  
+  "statistics": {
+    "message": "Estadísticas",
+    "description": "Título página estadísticas"
+  },
+  "timeFilter": {
+    "message": "Filtro de Tiempo",
+    "description": "Sección filtro de tiempo"
+  },
+  "today": {
+    "message": "Hoy",
+    "description": "Filtro hoy"
+  },
+  "thisWeek": {
+    "message": "Esta Semana",
+    "description": "Filtro esta semana"
+  },
+  "thisMonth": {
+    "message": "Este Mes",
+    "description": "Filtro este mes"
+  },
+  "thisYear": {
+    "message": "Este Año",
+    "description": "Filtro este año"
+  },
+  "allTime": {
+    "message": "Todo el Tiempo",
+    "description": "Filtro todo el tiempo"
+  },
+  "customRange": {
+    "message": "Rango Personalizado",
+    "description": "Filtro rango personalizado"
+  },
+  
+  "website": {
+    "message": "Sitio Web",
+    "description": "Columna sitio web"
+  },
+  "category": {
+    "message": "Categoría",
+    "description": "Columna categoría"
+  },
+  "time": {
+    "message": "Tiempo",
+    "description": "Columna tiempo"
+  },
+  "visits": {
+    "message": "Visitas",
+    "description": "Columna visitas"
+  },
+  "lastVisit": {
+    "message": "Última Visita",
+    "description": "Columna última visita"
+  },
+  "percentage": {
+    "message": "% del Total",
+    "description": "Columna porcentaje"
+  },
+  "actions": {
+    "message": "Acciones",
+    "description": "Columna acciones"
+  },
+  
+  "block": {
+    "message": "Bloquear",
+    "description": "Botón bloquear"
+  },
+  "changeCategory": {
+    "message": "Cambiar Categoría",
+    "description": "Botón cambiar categoría"
+  },
+  "blockConfirm": {
+    "message": "¿Estás seguro de que quieres bloquear este sitio?",
+    "description": "Mensaje confirmación bloquear"
+  },
+  "categoryChanged": {
+    "message": "Categoría cambiada exitosamente",
+    "description": "Mensaje categoría cambiada"
+  },
+  "siteBlocked": {
+    "message": "Sitio bloqueado exitosamente",
+    "description": "Mensaje sitio bloqueado"
+  },
+  "siteUnblocked": {
+    "message": "Sitio desbloqueado exitosamente",
+    "description": "Mensaje sitio desbloqueado"
+  },
+  
+  "exportCSV": {
+    "message": "Exportar CSV",
+    "description": "Botón exportar CSV"
+  },
+  "updateStats": {
+    "message": "Actualizar",
+    "description": "Botón actualizar estadísticas"
+  },
+  
+  "chartTitle": {
+    "message": "Top 10 Sitios por Tiempo Empleado",
+    "description": "Título gráfico"
+  },
+  "noDataChart": {
+    "message": "No hay datos disponibles para el gráfico",
+    "description": "Mensaje sin datos para gráfico"
+  },
+  
+  "summaryCards": {
+    "message": "Resumen",
+    "description": "Sección tarjetas resumen"
+  },
+  "avgSession": {
+    "message": "Sesión Promedio",
+    "description": "Etiqueta sesión promedio"
+  },
+  
+  "categoryStats": {
+    "message": "Estadísticas por Categoría",
+    "description": "Sección estadísticas por categoría"
+  },
+  "sites": {
+    "message": "Sitios",
+    "description": "Etiqueta sitios"
+  },
+  
+  "blocked": {
+    "message": "Bloqueado",
+    "description": "Título página bloqueado"
+  },
+  "siteBlockedTitle": {
+    "message": "Sitio Bloqueado",
+    "description": "Título sitio bloqueado"
+  },
+  "siteBlockedMessage": {
+    "message": "Este sitio ha sido bloqueado por TimeTracker Pro.",
+    "description": "Mensaje sitio bloqueado"
+  },
+  "unblockTemp": {
+    "message": "Desbloquear por 5 minutos",
+    "description": "Botón desbloquear temporalmente"
+  },
+  "unblockPermanent": {
+    "message": "Desbloquear permanentemente",
+    "description": "Botón desbloquear permanentemente"
+  },
+  "backToSafety": {
+    "message": "Volver a la Seguridad",
+    "description": "Botón volver a la seguridad"
+  },
+  
+  "welcome": {
+    "message": "Bienvenido",
+    "description": "Título página bienvenida"
+  },
+  "welcomeTitle": {
+    "message": "¡Bienvenido a TimeTracker Pro!",
+    "description": "Título bienvenida"
+  },
+  "welcomeSubtitle": {
+    "message": "Tu compañero personal de gestión de tiempo para navegación web",
+    "description": "Subtítulo bienvenida"
+  },
+  "welcomeDescription": {
+    "message": "TimeTracker Pro te ayuda a entender y controlar tus hábitos de navegación web con estadísticas detalladas, categorización automática y capacidades de bloqueo de sitios.",
+    "description": "Descripción bienvenida"
+  },
+  
+  "privacyTitle": {
+    "message": "Tu Privacidad está Protegida",
+    "description": "Título privacidad"
+  },
+  "privacyDescription": {
+    "message": "Todos tus datos se almacenan localmente en tu computadora. No se envía nada a servidores externos.",
+    "description": "Descripción privacidad"
+  },
+  
+  "gettingStarted": {
+    "message": "Comenzando",
+    "description": "Sección comenzando"
+  },
+  "step1": {
+    "message": "Navega normalmente - TimeTracker Pro rastreará automáticamente tu tiempo",
+    "description": "Descripción paso 1"
+  },
+  "step2": {
+    "message": "Haz clic en el icono de la extensión para ver tus estadísticas diarias",
+    "description": "Descripción paso 2"
+  },
+  "step3": {
+    "message": "Visita la página de opciones para personalizar categorías y configuraciones de bloqueo",
+    "description": "Descripción paso 3"
+  },
+  
+  "features": {
+    "message": "Características Principales",
+    "description": "Sección características"
+  },
+  "featureTracking": {
+    "message": "Seguimiento Automático de Tiempo",
+    "description": "Título característica seguimiento"
+  },
+  "featureTrackingDesc": {
+    "message": "Rastrea con precisión el tiempo gastado en cada sitio web con exactitud de segundos",
+    "description": "Descripción característica seguimiento"
+  },
+  "featureCategories": {
+    "message": "Categorización Inteligente",
+    "description": "Título característica categorías"
+  },
+  "featureCategoriesDesc": {
+    "message": "Categoriza automáticamente los sitios web y permite asignaciones personalizadas de dominios",
+    "description": "Descripción característica categorías"
+  },
+  "featureBlocking": {
+    "message": "Bloqueo de Sitios",
+    "description": "Título característica bloqueo"
+  },
+  "featureBlockingDesc": {
+    "message": "Bloquea sitios web que distraen con opciones de desbloqueo temporal",
+    "description": "Descripción característica bloqueo"
+  },
+  "featureStats": {
+    "message": "Estadísticas Detalladas",
+    "description": "Título característica estadísticas"
+  },
+  "featureStatsDesc": {
+    "message": "Ver estadísticas completas con gráficos y filtros de período de tiempo",
+    "description": "Descripción característica estadísticas"
+  },
+  
+  "popupGuide": {
+    "message": "Entendiendo el Popup",
+    "description": "Sección guía popup"
+  },
+  "popupStatsDesc": {
+    "message": "Muestra el resumen de navegación de hoy con tiempo total, sitios visitados y visitas",
+    "description": "Descripción estadísticas popup"
+  },
+  "popupTopSitesDesc": {
+    "message": "Muestra tus 5 sitios más visitados para hoy",
+    "description": "Descripción sitios principales popup"
+  },
+  "popupButtonsDesc": {
+    "message": "Acceso rápido a configuraciones, estadísticas y soporte",
+    "description": "Descripción botones popup"
+  },
+  
+  "tips": {
+    "message": "Consejos Pro",
+    "description": "Sección consejos"
+  },
+  "tip1": {
+    "message": "Usa categorías para organizar tus hábitos de navegación e identificar patrones de tiempo",
+    "description": "Consejo 1"
+  },
+  "tip2": {
+    "message": "Bloquea sitios de redes sociales durante horas de trabajo para mejorar la productividad",
+    "description": "Consejo 2"
+  },
+  "tip3": {
+    "message": "Revisa las estadísticas semanales para entender tus tendencias de navegación",
+    "description": "Consejo 3"
+  },
+  "tip4": {
+    "message": "Usa la función de desbloqueo temporal cuando necesites acceso rápido a sitios bloqueados",
+    "description": "Consejo 4"
+  },
+  
+  "openPopup": {
+    "message": "Abrir Popup",
+    "description": "Botón abrir popup"
+  },
+  "openStats": {
+    "message": "Ver Estadísticas",
+    "description": "Botón abrir estadísticas"
+  },
+  "openOptions": {
+    "message": "Abrir Configuración",
+    "description": "Botón abrir opciones"
+  },
+  "startTracking": {
+    "message": "Comenzar Seguimiento",
+    "description": "Botón comenzar seguimiento"
+  },
+  
+  "versions": {
+    "message": "Versiones",
+    "description": "Título página versiones"
+  },
+  "versionHistory": {
+    "message": "Historial de Versiones",
+    "description": "Sección historial versiones"
+  },
+  "currentVersion": {
+    "message": "Versión Actual",
+    "description": "Etiqueta versión actual"
+  },
+  "releaseDate": {
+    "message": "Fecha de Lanzamiento",
+    "description": "Etiqueta fecha lanzamiento"
+  },
+  "newFeatures": {
+    "message": "Nuevas Características",
+    "description": "Etiqueta nuevas características"
+  },
+  "improvements": {
+    "message": "Mejoras",
+    "description": "Etiqueta mejoras"
+  },
+  "bugFixes": {
+    "message": "Corrección de Errores",
+    "description": "Etiqueta corrección errores"
+  },
+  
+  "save": {
+    "message": "Guardar",
+    "description": "Botón guardar"
+  },
+  "cancel": {
+    "message": "Cancelar",
+    "description": "Botón cancelar"
+  },
+  "yes": {
+    "message": "Sí",
+    "description": "Botón sí"
+  },
+  "no": {
+    "message": "No",
+    "description": "Botón no"
+  },
+  "ok": {
+    "message": "OK",
+    "description": "Botón OK"
+  },
+  "error": {
+    "message": "Error",
+    "description": "Mensaje error"
+  },
+  "success": {
+    "message": "Éxito",
+    "description": "Mensaje éxito"
+  },
+  "loading": {
+    "message": "Cargando...",
+    "description": "Mensaje cargando"
+  },
+  
+  "noCategoriesAvailable": {
+    "message": "No hay categorías disponibles",
+    "description": "Mensaje sin categorías disponibles"
+  },
+  "remove": {
+    "message": "Eliminar",
+    "description": "Botón eliminar"
+  },
+  "enterCategory": {
+    "message": "Nombre de la categoría",
+    "description": "Placeholder introducir categoría"
+  },
+  "settingsSaved": {
+    "message": "Configuración guardada exitosamente",
+    "description": "Mensaje configuración guardada"
+  },
+  "errorSavingSettings": {
+    "message": "Error al guardar configuración",
+    "description": "Mensaje error guardar configuración"
+  },
+  "pleaseEnterCategoryName": {
+    "message": "Por favor ingresa un nombre para la categoría",
+    "description": "Mensaje ingresar nombre categoría"
+  },
+  "categoryAlreadyExists": {
+    "message": "Esta categoría ya existe",
+    "description": "Mensaje categoría ya existe"
+  },
+  "categoryAdded": {
+    "message": "Categoría agregada exitosamente",
+    "description": "Mensaje categoría agregada"
+  },
+  "errorAddingCategory": {
+    "message": "Error al agregar categoría",
+    "description": "Mensaje error agregar categoría"
+  },
+  "timeTrackingDesc": {
+    "message": "Personaliza el comportamiento del seguimiento de tiempo",
+    "description": "Descripción seguimiento tiempo"
+  },
+  "categoriesDesc": {
+    "message": "Personaliza las categorías para organizar tus sitios web",
+    "description": "Descripción categorías"
+  },
+  "siteBlockingDesc": {
+    "message": "Gestiona los sitios web bloqueados para mejorar tu productividad",
+    "description": "Descripción bloqueo sitios"
+  },
+  "addBlockedSite": {
+    "message": "Agregar sitio a bloquear",
+    "description": "Etiqueta agregar sitio bloqueado"
+  },
+  "dailyGoal": {
+    "message": "Objetivo diario (horas)",
+    "description": "Etiqueta objetivo diario"
+  },
+  "trackingInterval": {
+    "message": "Intervalo de seguimiento (minutos)",
+    "description": "Etiqueta intervalo seguimiento"
+  },
+  "addCategory": {
+    "message": "Agregar nueva categoría",
+    "description": "Etiqueta agregar categoría"
+  },
+  "sinceStart": {
+    "message": "Desde el inicio",
+    "description": "Etiqueta desde inicio"
+  },
+  "visited": {
+    "message": "Visitados",
+    "description": "Etiqueta visitados"
+  },
+  "withActivity": {
+    "message": "Con actividad",
+    "description": "Etiqueta con actividad"
+  },
+  "uniqueSites": {
+    "message": "Sitios Únicos",
+    "description": "Etiqueta sitios únicos"
+  },
+  "activeDays": {
+    "message": "Días Activos",
+    "description": "Etiqueta días activos"
+  },
+  "dataManagementDesc": {
+    "message": "Exporta, importa o elimina tus datos de seguimiento",
+    "description": "Descripción gestión datos"
+  },
+  "dangerZone": {
+    "message": "Zona Peligrosa",
+    "description": "Título zona peligrosa"
+  },
+  "dangerZoneDesc": {
+    "message": "Estas acciones son irreversibles. Procede con precaución.",
+    "description": "Descripción zona peligrosa"
+  },
+  "appName": {
+    "message": "TimeTracker Pro",
+    "description": "El nombre de la aplicación"
+  },
+  "appDescription": {
+    "message": "Extensión avanzada de seguimiento de tiempo y bloqueo de sitios web para aumentar tu productividad.",
+    "description": "La descripción de la aplicación"
+  },
+  "blockSite": {
+    "message": "Bloquear Sitio",
+    "description": "Texto del botón para bloquear un sitio web"
+  },
+  "unblockSite": {
+    "message": "Desbloquear Sitio",
+    "description": "Texto del botón para desbloquear un sitio web"
+  },
+  "settings": {
+    "message": "Configuración",
+    "description": "Elemento del menú de configuración"
+  },
+  "statistics": {
+    "message": "📊 Estadísticas Completas",
+    "description": "Título de la página de estadísticas"
+  },
+  "todayStats": {
+    "message": "Estadísticas de Hoy",
+    "description": "Título de la sección de estadísticas de hoy"
+  },
+  "productivity": {
+    "message": "Productividad",
+    "description": "Sección de métricas de productividad"
+  },
+  "topSites": {
+    "message": "Sitios Principales",
+    "description": "Título de la sección de sitios principales"
+  },
+  "noData": {
+    "message": "No hay datos disponibles",
+    "description": "Mensaje cuando no hay datos disponibles"
+  },
+  "totalTime": {
+    "message": "Tiempo Total",
+    "description": "Etiqueta del tiempo total gastado"
+  },
+  "visits": {
+    "message": "Visitas",
+    "description": "Etiqueta del número de visitas"
+  },
+  "blocked": {
+    "message": "Bloqueado",
+    "description": "Etiqueta de estado bloqueado"
+  },
+  "active": {
+    "message": "Activo",
+    "description": "Etiqueta de estado activo"
+  },
+  "category": {
+    "message": "Categoría",
+    "description": "Etiqueta de categoría"
+  },
+  "work": {
+    "message": "Trabajo",
+    "description": "Categoría de trabajo"
+  },
+  "entertainment": {
+    "message": "Entretenimiento",
+    "description": "Categoría de entretenimiento"
+  },
+  "social": {
+    "message": "Redes Sociales",
+    "description": "Categoría de redes sociales"
+  },
+  "news": {
+    "message": "Noticias",
+    "description": "Categoría de noticias"
+  },
+  "shopping": {
+    "message": "Compras",
+    "description": "Categoría de compras"
+  },
+  "education": {
+    "message": "Educación",
+    "description": "Categoría de educación"
+  },
+  "other": {
+    "message": "Otros",
+    "description": "Categoría otros"
+  },
+  "timeTracking": {
+    "message": "Seguimiento de Tiempo",
+    "description": "Título de la sección de seguimiento de tiempo"
+  },
+  "siteBlocking": {
+    "message": "Bloqueo de Sitios",
+    "description": "Título de la sección de bloqueo de sitios"
+  },
+  "categories": {
+    "message": "Categorías",
+    "description": "Título de la sección de categorías"
+  },
+  "data": {
+    "message": "Datos",
+    "description": "Título de la sección de datos"
+  },
+  "enable": {
+    "message": "Activar",
+    "description": "Texto del botón activar"
+  },
+  "disable": {
+    "message": "Desactivar",
+    "description": "Texto del botón desactivar"
+  },
+  "save": {
+    "message": "Guardar",
+    "description": "Texto del botón guardar"
+  },
+  "cancel": {
+    "message": "Cancelar",
+    "description": "Texto del botón cancelar"
+  },
+  "delete": {
+    "message": "Eliminar",
+    "description": "Texto del botón eliminar"
+  },
+  "add": {
+    "message": "Añadir",
+    "description": "Texto del botón añadir"
+  },
+  "edit": {
+    "message": "Editar",
+    "description": "Texto del botón editar"
+  },
+  "close": {
+    "message": "Cerrar",
+    "description": "Texto del botón cerrar"
+  },
+  "apply": {
+    "message": "Aplicar",
+    "description": "Texto del botón aplicar"
+  },
+  "reset": {
+    "message": "Restablecer",
+    "description": "Texto del botón restablecer"
+  },
+  "confirm": {
+    "message": "Confirmar",
+    "description": "Texto del botón confirmar"
+  },
+  "yes": {
+    "message": "Sí",
+    "description": "Texto del botón sí"
+  },
+  "no": {
+    "message": "No",
+    "description": "Texto del botón no"
+  },
+  "loading": {
+    "message": "Cargando estadísticas...",
+    "description": "Mensaje de carga"
+  },
+  "error": {
+    "message": "Error",
+    "description": "Mensaje de error"
+  },
+  "success": {
+    "message": "Éxito",
+    "description": "Mensaje de éxito"
+  },
+  "warning": {
+    "message": "Advertencia",
+    "description": "Mensaje de advertencia"
+  },
+  "info": {
+    "message": "Información",
+    "description": "Mensaje de información"
+  },
+  "update": {
+    "message": "Actualizar",
+    "description": "Texto del botón actualizar"
+  },
+  "statsSubtitle": {
+    "message": "Análisis detallado de tu tiempo en línea",
+    "description": "Subtítulo de la página de estadísticas"
+  },
+  "updateStats": {
+    "message": "Actualizar datos",
+    "description": "Tooltip del botón actualizar estadísticas"
+  },
+  "exportData": {
+    "message": "Exportar datos",
+    "description": "Tooltip del botón exportar datos"
+  },
+  "timeFilter": {
+    "message": "Período:",
+    "description": "Etiqueta del filtro de tiempo"
+  },
+  "today": {
+    "message": "Hoy",
+    "description": "Opción de filtro hoy"
+  },
+  "thisWeek": {
+    "message": "Esta Semana",
+    "description": "Opción de filtro esta semana"
+  },
+  "thisMonth": {
+    "message": "Este Mes",
+    "description": "Opción de filtro este mes"
+  },
+  "thisYear": {
+    "message": "Este Año",
+    "description": "Opción de filtro este año"
+  },
+  "allTime": {
+    "message": "Todo el Tiempo",
+    "description": "Opción de filtro todo el tiempo"
+  },
+  "customRange": {
+    "message": "Rango Personalizado",
+    "description": "Opción de filtro rango personalizado"
+  },
+  "from": {
+    "message": "Desde:",
+    "description": "Etiqueta fecha desde"
+  },
+  "to": {
+    "message": "Hasta:",
+    "description": "Etiqueta fecha hasta"
+  },
+  "searchWebsite": {
+    "message": "Buscar sitio web...",
+    "description": "Placeholder buscar sitio web"
+  },
+  "totalSites": {
+    "message": "Sitios Visitados",
+    "description": "Etiqueta total de sitios visitados"
+  },
+  "totalVisits": {
+    "message": "Visitas Totales",
+    "description": "Etiqueta total de visitas"
+  },
+  "avgSession": {
+    "message": "Sesión Promedio",
+    "description": "Etiqueta duración promedio de sesión"
+  },
+  "chartTitle": {
+    "message": "Distribución del Tiempo",
+    "description": "Título del gráfico"
+  },
+  "websiteDetails": {
+    "message": "Detalle por Sitio Web",
+    "description": "Título de la sección de detalles del sitio web"
+  },
+  "allCategories": {
+    "message": "Todas las Categorías",
+    "description": "Opción de filtro todas las categorías"
+  },
+  "sortByTime": {
+    "message": "Ordenar por Tiempo",
+    "description": "Opción ordenar por tiempo"
+  },
+  "sortByVisits": {
+    "message": "Ordenar por Visitas",
+    "description": "Opción ordenar por visitas"
+  },
+  "sortByDomain": {
+    "message": "Ordenar por Dominio",
+    "description": "Opción ordenar por dominio"
+  },
+  "website": {
+    "message": "Sitio Web",
+    "description": "Encabezado de columna sitio web"
+  },
+  "time": {
+    "message": "Tiempo",
+    "description": "Encabezado de columna tiempo"
+  },
+  "lastVisit": {
+    "message": "Última Visita",
+    "description": "Encabezado de columna última visita"
+  },
+  "percentage": {
+    "message": "% del Total",
+    "description": "Encabezado de columna porcentaje"
+  },
+  "actions": {
+    "message": "Acciones",
+    "description": "Encabezado de columna acciones"
+  },
+  "categoryStats": {
+    "message": "Estadísticas por Categoría",
+    "description": "Título de la sección de estadísticas por categoría"
+  },
+  "changeCategory": {
+    "message": "Cambiar Categoría",
+    "description": "Título del modal cambiar categoría"
+  },
+  "sites": {
+    "message": "Sitios",
+    "description": "Etiqueta sitios"
+  },
+  "noDataToShow": {
+    "message": "No hay datos para mostrar",
+    "description": "Mensaje sin datos disponibles"
+  },
+  "block": {
+    "message": "Bloquear",
+    "description": "Texto del botón bloquear"
+  },
+  "unblock": {
+    "message": "Desbloquear",
+    "description": "Texto del botón desbloquear"
+  },
+  "selectBothDates": {
+    "message": "Por favor selecciona ambas fechas",
+    "description": "Mensaje de error para selección de fechas"
+  },
+  "couldNotLoadData": {
+    "message": "No se pudieron cargar los datos",
+    "description": "Mensaje de error para carga de datos"
+  },
+  "errorLoadingStats": {
+    "message": "Error al cargar las estadísticas",
+    "description": "Mensaje de error para carga de estadísticas"
+  },
+  "siteBlocked": {
+    "message": "Sitio bloqueado",
+    "description": "Notificación sitio bloqueado"
+  },
+  "siteUnblocked": {
+    "message": "Sitio desbloqueado",
+    "description": "Notificación sitio desbloqueado"
+  },
+  "errorToggleBlock": {
+    "message": "Error al cambiar el estado de bloqueo",
+    "description": "Mensaje de error para cambio de bloqueo"
+  },
+  "categoryUpdated": {
+    "message": "Categoría actualizada para {domain}",
+    "description": "Mensaje de éxito actualización de categoría"
+  },
+  "errorUpdateCategory": {
+    "message": "Error al actualizar la categoría",
+    "description": "Mensaje de error para actualización de categoría"
+  },
+  "noDataToExport": {
+    "message": "No hay datos para exportar",
+    "description": "Mensaje de error para exportación de datos"
+  },
+  "dataExported": {
+    "message": "Datos exportados correctamente",
+    "description": "Mensaje de éxito para exportación de datos"
+  },
+  "readable": {
+    "message": "legible",
+    "description": "Etiqueta formato legible"
+  },
+  "blockedMessage": {
+    "message": "Este sitio ha sido bloqueado por TimeTracker Pro para ayudarte a mantener la productividad y el enfoque en tus tareas importantes.",
+    "description": "Mensaje de sitio bloqueado"
+  },
+  "timeToday": {
+    "message": "Tiempo Hoy",
+    "description": "Etiqueta tiempo hoy"
+  },
+  "visitsToday": {
+    "message": "Visitas Hoy",
+    "description": "Etiqueta visitas hoy"
+  },
+  "timeSaved": {
+    "message": "Tiempo Ahorrado",
+    "description": "Etiqueta tiempo ahorrado"
+  },
+  "unblockTemporarily": {
+    "message": "🔓 Desbloquear Temporalmente",
+    "description": "Texto del botón desbloquear temporalmente"
+  },
+  "configureBlocking": {
+    "message": "⚙️ Configurar Bloqueo",
+    "description": "Texto del botón configurar bloqueo"
+  },
+  "removeBlocking": {
+    "message": "🗑️ Eliminar Bloqueo",
+    "description": "Texto del botón eliminar bloqueo"
+  },
+  "quote": {
+    "message": "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "description": "Texto de cita por defecto"
+  },
+  "quoteAuthor": {
+    "message": "- Robert Collier",
+    "description": "Autor de cita por defecto"
+  },
+  "productivityTipTitle": {
+    "message": "💡 Consejo de Productividad",
+    "description": "Título del consejo de productividad"
+  },
+  "productivityTip": {
+    "message": "Aprovecha este momento para hacer una pausa, respirar profundamente y reflexionar sobre tus objetivos del día. A veces, los mejores insights vienen cuando nos alejamos de las distracciones.",
+    "description": "Consejo de productividad por defecto"
+  },
+  "quote1": {
+    "message": "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "description": "Cita 1"
+  },
+  "quote1Author": {
+    "message": "Robert Collier",
+    "description": "Autor de cita 1"
+  },
+  "quote2": {
+    "message": "La concentración es el secreto de la fuerza.",
+    "description": "Cita 2"
+  },
+  "quote2Author": {
+    "message": "Ralph Waldo Emerson",
+    "description": "Autor de cita 2"
+  },
+  "quote3": {
+    "message": "Lo que obtienes al alcanzar tus metas no es tan importante como en lo que te conviertes al alcanzarlas.",
+    "description": "Cita 3"
+  },
+  "quote3Author": {
+    "message": "Zig Ziglar",
+    "description": "Autor de cita 3"
+  },
+  "quote4": {
+    "message": "La disciplina es el puente entre las metas y los logros.",
+    "description": "Cita 4"
+  },
+  "quote4Author": {
+    "message": "Jim Rohn",
+    "description": "Autor de cita 4"
+  },
+  "quote5": {
+    "message": "No se trata de tener tiempo. Se trata de hacer tiempo.",
+    "description": "Cita 5"
+  },
+  "quote5Author": {
+    "message": "Anónimo",
+    "description": "Autor de cita 5"
+  },
+  "tip1": {
+    "message": "Aprovecha este momento para hacer una pausa, respirar profundamente y reflexionar sobre tus objetivos del día.",
+    "description": "Consejo de productividad 1"
+  },
+  "tip2": {
+    "message": "¿Qué tal si usas estos minutos para beber agua, estirar o hacer ejercicios de respiración?",
+    "description": "Consejo de productividad 2"
+  },
+  "tip3": {
+    "message": "Considera escribir una lista de tareas pendientes o revisar tus prioridades del día.",
+    "description": "Consejo de productividad 3"
+  },
+  "tip4": {
+    "message": "Este es un buen momento para contactar a un amigo o familiar que no has visto en mucho tiempo.",
+    "description": "Consejo de productividad 4"
+  },
+  "tip5": {
+    "message": "¿Por qué no aprovechas para leer un artículo educativo o aprender algo nuevo?",
+    "description": "Consejo de productividad 5"
+  },
+  "tip6": {
+    "message": "Toma un descanso visual: mira por la ventana o enfoca tu vista en algo distante.",
+    "description": "Consejo de productividad 6"
+  },
+  "tip7": {
+    "message": "Es un buen momento para organizar tu espacio de trabajo o escritorio.",
+    "description": "Consejo de productividad 7"
+  },
+  "tip8": {
+    "message": "¿Qué tal si planificas tu próxima comida saludable o preparas un snack nutritivo?",
+    "description": "Consejo de productividad 8"
+  },
+  "blockedBy": {
+    "message": "está bloqueado por",
+    "description": "Mensaje bloqueado por"
+  },
+  "unknownSite": {
+    "message": "sitio desconocido",
+    "description": "Etiqueta sitio desconocido"
+  },
+  "unblockPrompt": {
+    "message": "¿Por cuántos minutos quieres desbloquear este sitio?",
+    "description": "Mensaje de prompt para desbloqueo"
+  },
+  "unblocking": {
+    "message": "Desbloqueando",
+    "description": "Mensaje de estado desbloqueando"
+  },
+  "errorUnblocking": {
+    "message": "Error al desbloquear el sitio",
+    "description": "Mensaje de error al desbloquear"
+  },
+  "communicationError": {
+    "message": "Error de comunicación con la extensión",
+    "description": "Mensaje de error de comunicación"
+  },
+  "permanentUnblockConfirm": {
+    "message": "¿Estás seguro de que quieres eliminar el bloqueo permanente de {site}?",
+    "description": "Confirmación de desbloqueo permanente"
+  },
+  "removingBlock": {
+    "message": "Eliminando bloqueo",
+    "description": "Mensaje de estado eliminando bloqueo"
+  },
+  "blockRemovedPermanently": {
+    "message": "Bloqueo eliminado permanentemente",
+    "description": "Mensaje bloqueo eliminado permanentemente"
+  },
+  "errorRemovingBlock": {
+    "message": "Error al eliminar el bloqueo",
+    "description": "Mensaje de error al eliminar bloqueo"
+  },
+  
+  "welcomeTitle": {
+    "message": "¡Bienvenido a TimeTracker Pro!",
+    "description": "Título de la página de bienvenida"
+  },
+  "welcomeSubtitle": {
+    "message": "Tu nueva herramienta para controlar el tiempo en línea",
+    "description": "Subtítulo de la página de bienvenida"
+  },
+  "installationCompleted": {
+    "message": "✅ Instalación Completada",
+    "description": "Insignia de instalación completada"
+  },
+  "welcomeIntroTitle": {
+    "message": "🎉 ¡Gracias por instalar TimeTracker Pro!",
+    "description": "Título de introducción de bienvenida"
+  },
+  "welcomeIntroDesc": {
+    "message": "TimeTracker Pro es una extensión completa que te ayuda a ser más consciente de cómo pasas tu tiempo en internet. Te permite seguir, analizar y gestionar tu tiempo de navegación de manera inteligente y privada.",
+    "description": "Descripción de introducción de bienvenida"
+  },
+  "welcomeCoffeeDesc": {
+    "message": "Este desarrollo es completamente gratuito y no se cobra nada por este plugin. Pero si valoras el tiempo que dedico desarrollando y manteniendo esta extensión, te agradecería que me compraras un café. ¡La cantidad que tú quieras darme! ☕",
+    "description": "Descripción de café de bienvenida"
+  },
+  "buyMeACoffee": {
+    "message": "Cómprame un Café",
+    "description": "Botón cómprame un café"
+  },
+  "privacyTitle": {
+    "message": "🔒 100% Privado y Seguro",
+    "description": "Título de sección de privacidad"
+  },
+  "privacyDesc": {
+    "message": "Tu privacidad es nuestra prioridad: Todos tus datos se almacenan localmente en tu navegador. No enviamos ninguna información a servidores externos. Solo tú tienes acceso a tus estadísticas de tiempo.",
+    "description": "Descripción de privacidad"
+  },
+  "privacyPoint1": {
+    "message": "✅ Datos almacenados localmente",
+    "description": "Punto de privacidad 1"
+  },
+  "privacyPoint2": {
+    "message": "✅ Sin telemetría o tracking externo",
+    "description": "Punto de privacidad 2"
+  },
+  "privacyPoint3": {
+    "message": "✅ Código abierto y auditable",
+    "description": "Punto de privacidad 3"
+  },
+  "quickStartTitle": {
+    "message": "🚀 Cómo Empezar",
+    "description": "Título de inicio rápido"
+  },
+  "step1Title": {
+    "message": "Abre el Popup",
+    "description": "Título del paso 1"
+  },
+  "step1Desc": {
+    "message": "Haz clic en el icono ⏱️ de TimeTracker Pro en la barra de herramientas para ver tus estadísticas del día.",
+    "description": "Descripción del paso 1"
+  },
+  "step2Title": {
+    "message": "Explora las Estadísticas",
+    "description": "Título del paso 2"
+  },
+  "step2Desc": {
+    "message": "Usa el botón \"📊 Ver Estadísticas Completas\" para análisis detallados y gráficos.",
+    "description": "Descripción del paso 2"
+  },
+  "step3Title": {
+    "message": "Configura a tu Gusto",
+    "description": "Título del paso 3"
+  },
+  "step3Desc": {
+    "message": "Accede a \"⚙️ Ajustes\" para personalizar categorías, bloquear sitios y configurar objetivos.",
+    "description": "Descripción del paso 3"
+  },
+  "quickAccessTip": {
+    "message": "💡 Tip: Para acceso rápido, fija la extensión haciendo clic en el icono de puzzle 🧩 en la barra de herramientas y luego en el pin 📌 junto a TimeTracker Pro.",
+    "description": "Consejo de acceso rápido"
+  },
+  "mainFeaturesTitle": {
+    "message": "✨ Funciones Principales",
+    "description": "Título de funciones principales"
+  },
+  "feature1Title": {
+    "message": "Seguimiento Inteligente",
+    "description": "Título de función 1"
+  },
+  "feature1Desc": {
+    "message": "Rastrea automáticamente el tiempo que pasas en cada sitio web con precisión al minuto.",
+    "description": "Descripción de función 1"
+  },
+  "feature2Title": {
+    "message": "Estadísticas Detalladas",
+    "description": "Título de función 2"
+  },
+  "feature2Desc": {
+    "message": "Analiza tu tiempo por día, semana, mes o períodos personalizados con gráficos visuales.",
+    "description": "Descripción de función 2"
+  },
+  "feature3Title": {
+    "message": "Categorización Automática",
+    "description": "Título de función 3"
+  },
+  "feature3Desc": {
+    "message": "Los sitios se categorizan automáticamente: Trabajo, Entretenimiento, Noticias, etc.",
+    "description": "Descripción de función 3"
+  },
+  "feature4Title": {
+    "message": "Bloqueo de Sitios",
+    "description": "Título de función 4"
+  },
+  "feature4Desc": {
+    "message": "Bloquea sitios distractores o permite acceso temporal para mejorar tu productividad.",
+    "description": "Descripción de función 4"
+  },
+  "feature5Title": {
+    "message": "Objetivos Diarios",
+    "description": "Título de función 5"
+  },
+  "feature5Desc": {
+    "message": "Establece metas de tiempo y monitorea tu progreso hacia una navegación más consciente.",
+    "description": "Descripción de función 5"
+  },
+  "feature6Title": {
+    "message": "Exportar/Importar",
+    "description": "Título de función 6"
+  },
+  "feature6Desc": {
+    "message": "Respalda tus datos o transfiere tu historial entre dispositivos fácilmente.",
+    "description": "Descripción de función 6"
+  },
+  "popupGuideTitle": {
+    "message": "🎮 Guía del Popup",
+    "description": "Título de guía del popup"
+  },
+  "dailySummaryTitle": {
+    "message": "📋 Resumen Diario",
+    "description": "Título de resumen diario"
+  },
+  "dailySummaryDesc": {
+    "message": "Ve tu tiempo total, sitios visitados y número de visitas del día actual.",
+    "description": "Descripción de resumen diario"
+  },
+  "topSitesTitle": {
+    "message": "🏆 Top Sitios",
+    "description": "Título de top sitios"
+  },
+  "topSitesDesc": {
+    "message": "Ranking de los sitios donde más tiempo has pasado hoy, con tiempo y visitas.",
+    "description": "Descripción de top sitios"
+  },
+  "quickActionsTitle": {
+    "message": "🔗 Acciones Rápidas",
+    "description": "Título de acciones rápidas"
+  },
+  "quickActionsDesc": {
+    "message": "📊 Ver Estadísticas Completas: Abre el análisis detallado<br>⚙️ Ajustes: Configura la extensión<br>🔄 Actualizar: Refresca los datos",
+    "description": "Descripción de acciones rápidas"
+  },
+  "tipsTitle": {
+    "message": "💡 Tips para Aprovechar al Máximo",
+    "description": "Título de tips"
+  },
+  "welcomeTip1": {
+    "message": "Busca sitios específicos en la página de estadísticas para encontrar patrones de uso.",
+    "description": "Tip de bienvenida 1"
+  },
+  "welcomeTip2": {
+    "message": "Compara períodos para ver cómo ha cambiado tu comportamiento online con el tiempo.",
+    "description": "Tip de bienvenida 2"
+  },
+  "welcomeTip3": {
+    "message": "Usa el bloqueo temporal cuando necesites acceso breve a sitios distractores.",
+    "description": "Tip de bienvenida 3"
+  },
+  "welcomeTip4": {
+    "message": "Exporta tus datos regularmente para mantener un historial a largo plazo.",
+    "description": "Tip de bienvenida 4"
+  },
+  "startNowTitle": {
+    "message": "🎯 ¡Comienza Ahora!",
+    "description": "Título de comienza ahora"
+  },
+  "startNowDesc": {
+    "message": "TimeTracker Pro ya está funcionando en segundo plano, registrando tu tiempo de navegación.",
+    "description": "Descripción de comienza ahora"
+  },
+  "viewMyPopup": {
+    "message": "📊 Ver Mi Popup",
+    "description": "Botón ver mi popup"
+  },
+  "exploreStats": {
+    "message": "📈 Explorar Estadísticas",
+    "description": "Botón explorar estadísticas"
+  },
+  "goToSettings": {
+    "message": "⚙️ Ir a Configuración",
+    "description": "Botón ir a configuración"
+  },
+  "footerMessage": {
+    "message": "¡Esperamos que TimeTracker Pro te ayude a ser más productivo y consciente de tu tiempo en línea! 🚀",
+    "description": "Mensaje de pie de página"
+  },
+  "footerNote": {
+    "message": "Para soporte o sugerencias, no dudes en contactarnos. ¡Gracias por elegir TimeTracker Pro!",
+    "description": "Nota de pie de página"
+  },
+  
+  "siteBlocked": {
+    "message": "Sitio Bloqueado",
+    "description": "Título para página de sitio bloqueado"
+  },
+  "blockedBy": {
+    "message": "bloqueado por",
+    "description": "Texto para mensaje bloqueado por"
+  },
+  "blockedMessage": {
+    "message": "Este sitio ha sido bloqueado por TimeTracker Pro para ayudarte a mantener la productividad y enfocarte en tus tareas importantes.",
+    "description": "Mensaje mostrado en páginas bloqueadas"
+  },
+  "unknownSite": {
+    "message": "Sitio Desconocido",
+    "description": "Texto de respaldo para sitios desconocidos"
+  },
+  "unblockTemporarily": {
+    "message": "Desbloquear Temporalmente",
+    "description": "Botón para desbloquear sitio temporalmente"
+  },
+  "configureBlocking": {
+    "message": "Configurar Bloqueo",
+    "description": "Botón para configurar bloqueo"
+  },
+  "removeBlocking": {
+    "message": "Eliminar Bloqueo",
+    "description": "Botón para eliminar bloqueo permanentemente"
+  },
+  "timeToday": {
+    "message": "Tiempo Hoy",
+    "description": "Etiqueta para estadística de tiempo hoy"
+  },
+  "visitsToday": {
+    "message": "Visitas Hoy",
+    "description": "Etiqueta para estadística de visitas hoy"
+  },
+  "timeSaved": {
+    "message": "Tiempo Ahorrado",
+    "description": "Etiqueta para estadística de tiempo ahorrado"
+  },
+  "productivityTipTitle": {
+    "message": "Consejo de Productividad",
+    "description": "Título para sección de consejo de productividad"
+  },
+  "productivityTip": {
+    "message": "Aprovecha este momento para pausar, respirar profundamente y reflexionar sobre tus objetivos del día. A veces las mejores ideas surgen cuando nos alejamos de las distracciones.",
+    "description": "Consejo de productividad por defecto"
+  },
+  "quote": {
+    "message": "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "description": "Cita por defecto"
+  },
+  "quoteAuthor": {
+    "message": "Robert Collier",
+    "description": "Autor de cita por defecto"
+  },
+  
+  "quote1": {
+    "message": "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+    "description": "Cita motivacional 1"
+  },
+  "quote1Author": {
+    "message": "Robert Collier",
+    "description": "Autor de cita 1"
+  },
+  "quote2": {
+    "message": "La concentración es el secreto de la fuerza.",
+    "description": "Cita motivacional 2"
+  },
+  "quote2Author": {
+    "message": "Ralph Waldo Emerson",
+    "description": "Autor de cita 2"
+  },
+  "quote3": {
+    "message": "Lo que obtienes al lograr tus objetivos no es tan importante como en lo que te conviertes al lograr tus objetivos.",
+    "description": "Cita motivacional 3"
+  },
+  "quote3Author": {
+    "message": "Zig Ziglar",
+    "description": "Autor de cita 3"
+  },
+  "quote4": {
+    "message": "La disciplina es el puente entre los objetivos y el logro.",
+    "description": "Cita motivacional 4"
+  },
+  "quote4Author": {
+    "message": "Jim Rohn",
+    "description": "Autor de cita 4"
+  },
+  "quote5": {
+    "message": "No se trata de tener tiempo. Se trata de hacer tiempo.",
+    "description": "Cita motivacional 5"
+  },
+  "quote5Author": {
+    "message": "Anónimo",
+    "description": "Autor de cita 5"
+  },
+  
+  "tip1": {
+    "message": "Aprovecha este momento para pausar, respirar profundamente y reflexionar sobre tus objetivos del día.",
+    "description": "Consejo de productividad 1"
+  },
+  "tip2": {
+    "message": "¿Qué tal usar estos minutos para beber agua, estirarte o hacer ejercicios de respiración?",
+    "description": "Consejo de productividad 2"
+  },
+  "tip3": {
+    "message": "Considera escribir una lista de tareas o revisar tus prioridades diarias.",
+    "description": "Consejo de productividad 3"
+  },
+  "tip4": {
+    "message": "Este es un buen momento para contactar a un amigo o familiar que no has visto en un tiempo.",
+    "description": "Consejo de productividad 4"
+  },
+  "tip5": {
+    "message": "¿Por qué no aprovechar este tiempo para leer un artículo educativo o aprender algo nuevo?",
+    "description": "Consejo de productividad 5"
+  },
+  "tip6": {
+    "message": "Toma un descanso visual: mira por la ventana o enfoca tu vista en algo distante.",
+    "description": "Consejo de productividad 6"
+  },
+  "tip7": {
+    "message": "Es un buen momento para organizar tu espacio de trabajo o escritorio.",
+    "description": "Consejo de productividad 7"
+  },
+  "tip8": {
+    "message": "¿Qué tal planificar tu próxima comida saludable o preparar un snack nutritivo?",
+    "description": "Consejo de productividad 8"
+  }
+} 

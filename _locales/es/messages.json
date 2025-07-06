@@ -146,6 +146,19 @@
     "description": "Estado notificaciones deshabilitadas"
   },
   
+  "mouseMovement": {
+    "message": "Movimiento del ratón",
+    "description": "Opción movimiento del ratón"
+  },
+  "enableMouseMovement": {
+    "message": "Pausar tracking sin movimiento del ratón",
+    "description": "Checkbox habilitar detección de movimiento del ratón"
+  },
+  "mouseMovementTooltip": {
+    "message": "Cuando no se detecte movimiento del ratón durante el tiempo establecido (mínimo 1 minuto), dejará de contar el tiempo en la pestaña activa",
+    "description": "Tooltip explicativo para la función de movimiento del ratón"
+  },
+  
   "categories": {
     "message": "Categorías",
     "description": "Sección categorías"

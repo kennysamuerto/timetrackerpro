@@ -146,6 +146,19 @@
     "description": "Notifications disabled status"
   },
   
+  "mouseMovement": {
+    "message": "Mouse Movement",
+    "description": "Mouse movement option"
+  },
+  "enableMouseMovement": {
+    "message": "Pause tracking without mouse movement",
+    "description": "Enable mouse movement detection checkbox"
+  },
+  "mouseMovementTooltip": {
+    "message": "When no mouse movement is detected for the set time (minimum 1 minute), it will stop counting time on the active tab",
+    "description": "Tooltip explanation for mouse movement function"
+  },
+  
   "categories": {
     "message": "Categories",
     "description": "Categories section"

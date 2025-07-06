@@ -3,10 +3,15 @@ class TimeTracker {
     this.currentTab = null;
     this.startTime = null;
     this.isActive = true;
+    this.isUserActive = true; // Nueva propiedad para rastrear actividad del usuario
+    this.mouseMovementSettings = { enabled: false, timeout: 60000 };
     this.init();
   }
 
-  init() {
+  async init() {
+    // Cargar configuración inicial
+    await this.loadMouseMovementSettings();
+    
     // Configurar listeners
     chrome.tabs.onActivated.addListener(this.handleTabActivated.bind(this));
     chrome.tabs.onUpdated.addListener(this.handleTabUpdated.bind(this));
@@ -110,7 +115,9 @@ class TimeTracker {
   }
 
   async saveCurrentSession() {
-    if (this.currentTab && this.startTime && this.isActive) {
+    // Solo guardar si el usuario está activo (o si la función está deshabilitada)
+    if (this.currentTab && this.startTime && this.isActive && 
+        (!this.mouseMovementSettings.enabled || this.isUserActive)) {
       const timeSpent = Date.now() - this.startTime;
       await this.saveTimeData(this.currentTab, timeSpent, false); // false = no incrementar visitas
       this.startTime = Date.now(); // Reiniciar el contador
@@ -238,6 +245,62 @@ class TimeTracker {
     
     await this.setStorageData(data);
   }
+
+  async loadMouseMovementSettings() {
+    try {
+      const data = await this.getStorageData();
+      const settings = data.settings || {};
+      this.mouseMovementSettings = {
+        enabled: settings.mouseMovementEnabled === true,
+        timeout: Math.max(60000, settings.inactivityTimeout || 60000)
+      };
+    } catch (error) {
+      console.error('Error loading mouse movement settings:', error);
+    }
+  }
+
+  handleUserActivityChange(isActive, tabUrl) {
+    // Solo procesar si la función está habilitada
+    if (!this.mouseMovementSettings.enabled) return;
+    
+    // Verificar si el cambio es para la pestaña actual
+    if (this.currentTab && this.currentTab.url === tabUrl) {
+      const wasUserActive = this.isUserActive;
+      this.isUserActive = isActive;
+      
+      console.log(`User activity changed: ${wasUserActive} -> ${isActive} for ${tabUrl}`);
+      
+      if (wasUserActive && !isActive) {
+        // Usuario se volvió inactivo: pausar tracking pero mantener contexto
+        this.pauseTracking();
+      } else if (!wasUserActive && isActive) {
+        // Usuario se volvió activo: reanudar tracking
+        this.resumeUserTracking();
+      }
+    }
+  }
+
+  pauseTracking() {
+    if (this.currentTab && this.startTime && this.isActive) {
+      console.log('Pausing tracking due to user inactivity');
+      // Guardar el tiempo acumulado hasta ahora
+      const timeSpent = Date.now() - this.startTime;
+      this.saveTimeData(this.currentTab, timeSpent, false); // false = no incrementar visitas
+      
+      // Pausar el tracking pero mantener el contexto
+      this.isActive = false;
+      this.startTime = null;
+    }
+  }
+
+  resumeUserTracking() {
+    if (this.currentTab && !this.isActive && this.isUserActive) {
+      console.log('Resuming tracking due to user activity');
+      // Reanudar el tracking
+      this.startTime = Date.now();
+      this.isActive = true;
+    }
+  }
 }
 
 // Inicializar TimeTracker
@@ -280,6 +343,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       
     case 'debug':
       handleDebug().then(sendResponse);
+      return true;
+    
+    case 'userActivityChange':
+      handleUserActivityChange(request).then(sendResponse);
+      return true;
+    
+    case 'updateMouseMovementSettings':
+      updateMouseMovementSettings().then(sendResponse);
       return true;
   }
 });
@@ -473,6 +544,33 @@ async function handleDebug() {
       }
     };
   }
+}
+
+async function handleUserActivityChange(request) {
+  timeTracker.handleUserActivityChange(request.isActive, request.url);
+  return { success: true };
+}
+
+async function updateMouseMovementSettings() {
+  // Recargar configuración en el timeTracker
+  await timeTracker.loadMouseMovementSettings();
+  
+  // Notificar a todos los content scripts sobre el cambio
+  const tabs = await chrome.tabs.query({});
+  tabs.forEach(tab => {
+    if (tab.url && !tab.url.startsWith('chrome://')) {
+      chrome.tabs.sendMessage(tab.id, {
+        action: 'updateMouseMovementSettings',
+        enabled: timeTracker.mouseMovementSettings.enabled,
+        timeout: timeTracker.mouseMovementSettings.timeout
+      }).catch(error => {
+        // Ignorar errores si el content script no está disponible
+        console.debug('Could not update mouse movement settings for tab:', tab.id, error);
+      });
+    }
+  });
+  
+  return { success: true };
 }
 
 function calculateStats(data, period, dateRange = null) {

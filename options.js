@@ -225,8 +225,12 @@ class OptionsManager {
         // Configuración general
         document.getElementById('trackingEnabled').checked = this.settings.trackingEnabled !== false;
         document.getElementById('showNotifications').checked = this.settings.showNotifications !== false;
+        document.getElementById('mouseMovementEnabled').checked = this.settings.mouseMovementEnabled === true;
         document.getElementById('dailyGoal').value = Math.floor((this.settings.dailyGoal || 8 * 60 * 60 * 1000) / (60 * 60 * 1000));
         document.getElementById('trackingInterval').value = this.settings.trackingInterval || 1;
+
+        // Actualizar tooltips dinámicamente
+        this.updateTooltips();
 
         // Categorías
         await this.renderCategories();
@@ -346,18 +350,43 @@ class OptionsManager {
         blockedList.innerHTML = html;
     }
 
+    updateTooltips() {
+        if (this.i18nReady) {
+            const tooltipElements = document.querySelectorAll('[data-tooltip]');
+            tooltipElements.forEach(element => {
+                const tooltipKey = element.getAttribute('data-tooltip');
+                const tooltipText = getMessage(tooltipKey);
+                element.setAttribute('data-tooltip-text', tooltipText);
+            });
+        }
+    }
+
     async saveGeneralSettings() {
         try {
             const data = await this.getStorageData();
             
             if (!data.settings) data.settings = {};
             
+            const previousMouseMovementEnabled = data.settings.mouseMovementEnabled;
+            
             data.settings.trackingEnabled = document.getElementById('trackingEnabled').checked;
             data.settings.showNotifications = document.getElementById('showNotifications').checked;
+            data.settings.mouseMovementEnabled = document.getElementById('mouseMovementEnabled').checked;
             data.settings.dailyGoal = parseInt(document.getElementById('dailyGoal').value) * 60 * 60 * 1000;
             data.settings.trackingInterval = parseInt(document.getElementById('trackingInterval').value);
 
             await this.setStorageData(data);
+            
+            // Si cambió la configuración del mouse movement, notificar al background script
+            if (previousMouseMovementEnabled !== data.settings.mouseMovementEnabled) {
+                try {
+                    await chrome.runtime.sendMessage({
+                        action: 'updateMouseMovementSettings'
+                    });
+                } catch (error) {
+                    console.error('Error notifying mouse movement settings change:', error);
+                }
+            }
             
             const successMessage = this.i18nReady ? getMessage('settingsSaved') : 'Configuración guardada correctamente';
             this.showAlert(successMessage, 'success');

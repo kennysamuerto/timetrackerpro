@@ -16,6 +16,9 @@ A complete and professional Chrome extension that allows you to control the time
 - **Real-time**: Precise tracking of time on each web page
 - **Automatic detection**: Detects tab and window changes
 - **Smart pauses**: Pauses when you switch windows or applications
+- **Mouse activity detection**: Automatically pauses tracking when no mouse movement for 1 minute
+- **Tab visibility tracking**: Only tracks time when tab is active and visible
+- **Triple verification**: Window focused + tab visible + user active for maximum precision
 
 ### 📊 Complete Statistics
 - **Flexible periods**: View data by day, week, month, or entire history
@@ -24,9 +27,11 @@ A complete and professional Chrome extension that allows you to control the time
 - **Visual charts**: Progress bars and percentages
 
 ### 🏷️ Automatic Categorization
-- **Predefined categories**: Work, Entertainment, News, Shopping, Education, Social Media
+- **10 Predefined categories**: Work, Entertainment, News, Shopping, Education, Social Media, Finance, Travel, Gaming, Tools
+- **100+ Pre-configured sites**: Massive expansion with Spanish and international domains
 - **Custom categories**: Create your own categories
 - **Smart classification**: Automatic categorization based on known domains
+- **International support**: Spanish banks, travel sites, local services
 
 ### 🚫 Site Blocking
 - **Total blocking**: Completely blocks access to websites
@@ -67,6 +72,23 @@ A complete and professional Chrome extension that allows you to control the time
 - **Manage categories**: Add, delete, customize
 - **Configure blocking**: Add sites, manage list
 - **Manage data**: Export, import, clean
+
+## 🆕 Latest Updates (v1.2.1)
+
+### ✨ New in Version 1.2.1
+- **Bug Fixes**: Enhanced stability and performance improvements
+- **Optimized Activity Detection**: More precise user activity tracking
+- **Memory Optimization**: Better memory usage and automatic cleanup
+- **Error Handling**: Improved error management and edge cases
+- **Synchronization**: Better synchronization between tabs and processes
+
+### 🚀 Major Features in Version 1.2.0
+- **Mouse Activity Pause**: Automatically pauses when no movement for 1 minute
+- **Smart Tab Detection**: Only tracks when tab is active and visible
+- **4 New Categories**: Finance, Travel, Gaming, Tools with pre-configured sites
+- **100+ New Sites**: Massive expansion of Spanish and international domains
+- **Advanced Activity Detection**: Mouse, keyboard, scroll, touch, wheel events
+- **Improved Performance**: Data saving every 10 seconds (vs 30s previously)
 
 ## 🛠️ Development
 
@@ -144,6 +166,9 @@ Una extensión completa y profesional para Chrome que te permite controlar el ti
 - **Tiempo real**: Seguimiento preciso del tiempo en cada página web
 - **Detección automática**: Detecta cambios de pestañas y ventanas
 - **Pausas inteligentes**: Se pausa cuando cambias de ventana o aplicación
+- **Detección de actividad del ratón**: Pausa automáticamente el tracking cuando no hay movimiento por 1 minuto
+- **Seguimiento de visibilidad**: Solo rastrea tiempo cuando la pestaña está activa y visible
+- **Triple verificación**: Ventana enfocada + pestaña visible + usuario activo para máxima precisión
 
 ### 📊 Estadísticas Completas
 - **Períodos flexibles**: Visualiza datos por día, semana, mes o todo el historial
@@ -152,9 +177,11 @@ Una extensión completa y profesional para Chrome que te permite controlar el ti
 - **Gráficos visuales**: Barras de progreso y porcentajes
 
 ### 🏷️ Categorización Automática
-- **Categorías predefinidas**: Trabajo, Entretenimiento, Noticias, Compras, Educación, Redes Sociales
+- **10 Categorías predefinidas**: Trabajo, Entretenimiento, Noticias, Compras, Educación, Redes Sociales, Finanzas, Viajes, Gaming, Herramientas
+- **100+ Sitios preconfigurados**: Expansión masiva con dominios españoles e internacionales
 - **Categorías personalizadas**: Crea tus propias categorías
 - **Clasificación inteligente**: Categorización automática basada en dominios conocidos
+- **Soporte internacional**: Bancos españoles, sitios de viajes, servicios locales
 
 ### 🚫 Bloqueo de Sitios
 - **Bloqueo total**: Bloquea completamente el acceso a sitios web
@@ -195,6 +222,23 @@ Una extensión completa y profesional para Chrome que te permite controlar el ti
 - **Gestiona categorías**: Agregar, eliminar, personalizar
 - **Configura bloqueos**: Agregar sitios, gestionar lista
 - **Administra datos**: Exportar, importar, limpiar
+
+## 🆕 Últimas Actualizaciones (v1.2.1)
+
+### ✨ Novedades en Versión 1.2.1
+- **Corrección de Errores**: Mejoras en estabilidad y rendimiento general
+- **Detección de Actividad Optimizada**: Seguimiento más preciso de la actividad del usuario
+- **Optimización de Memoria**: Mejor uso de memoria y limpieza automática
+- **Manejo de Errores**: Mejora en el manejo de errores y casos edge
+- **Sincronización**: Mejor sincronización entre pestañas y procesos
+
+### 🚀 Características Principales en Versión 1.2.0
+- **Pausa por Actividad del Ratón**: Se pausa automáticamente cuando no hay movimiento por 1 minuto
+- **Detección Inteligente de Pestañas**: Solo rastrea cuando la pestaña está activa y visible
+- **4 Nuevas Categorías**: Finanzas, Viajes, Gaming, Herramientas con sitios preconfigurados
+- **100+ Sitios Nuevos**: Expansión masiva de dominios españoles e internacionales
+- **Detección Avanzada de Actividad**: Eventos de ratón, teclado, scroll, touch, rueda
+- **Rendimiento Mejorado**: Guardado de datos cada 10 segundos (vs 30s anteriormente)
 
 ## 🛠️ Desarrollo
 

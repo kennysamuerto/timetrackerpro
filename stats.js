@@ -43,7 +43,7 @@ class StatsManager {
             const data = await chrome.storage.local.get(['settings']);
             
             // Categorías predefinidas
-            const predefinedCategories = ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other'];
+            const predefinedCategories = ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'finanzas', 'viajes', 'gaming', 'herramientas', 'other'];
             
             // Categorías personalizadas
             const customCategories = data.settings?.categories || [];
@@ -634,6 +634,10 @@ class StatsManager {
             'shopping': '#45b7d1',
             'education': '#96ceb4',
             'social': '#feca57',
+            'finanzas': '#28a745',
+            'viajes': '#fd7e14',
+            'gaming': '#e83e8c',
+            'herramientas': '#6f42c1',
             'other': '#6c757d'
         };
         return colors[category] || '#6c757d';

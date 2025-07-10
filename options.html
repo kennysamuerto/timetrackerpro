@@ -509,10 +509,17 @@
             font-size: 14px;
             position: relative;
             transition: color 0.2s ease;
+            vertical-align: middle;
         }
 
         .info-icon:hover {
             color: #5a67d8;
+        }
+
+        /* Specific styling for info icons in form labels */
+        .form-group label .info-icon {
+            margin-left: 6px;
+            font-size: 13px;
         }
 
         /* Tooltip styles */
@@ -584,6 +591,7 @@
                     <div class="checkbox-group">
                         <input type="checkbox" id="trackingEnabled" checked>
                         <label for="trackingEnabled" data-i18n="enableTimeTracking">Activar seguimiento de tiempo</label>
+                        <span class="info-icon" data-tooltip="enableTimeTrackingTooltip">ℹ️</span>
                     </div>
                 </div>
 
@@ -591,24 +599,25 @@
                     <div class="checkbox-group">
                         <input type="checkbox" id="showNotifications" checked>
                         <label for="showNotifications" data-i18n="enableNotifications">Mostrar notificaciones</label>
+                        <span class="info-icon" data-tooltip="enableNotificationsTooltip">ℹ️</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="checkbox-group">
                         <input type="checkbox" id="mouseMovementEnabled">
-                        <label for="mouseMovementEnabled" data-i18n="enableMouseMovement">Pausar tracking sin movimiento del ratón</label>
+                        <label for="mouseMovementEnabled" data-i18n="enableMouseMovement">Pausar tracking sin movimiento del ratón tras un minuto sin movimiento</label>
                         <span class="info-icon" data-tooltip="mouseMovementTooltip">ℹ️</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="dailyGoal" data-i18n="dailyGoal">Objetivo diario (horas)</label>
+                    <label for="dailyGoal" data-i18n="dailyGoal">Objetivo diario (horas) <span class="info-icon" data-tooltip="dailyGoalTooltip">ℹ️</span></label>
                     <input type="number" id="dailyGoal" min="1" max="24" value="8">
                 </div>
 
                 <div class="form-group">
-                    <label for="trackingInterval" data-i18n="trackingInterval">Intervalo de seguimiento (minutos)</label>
+                    <label for="trackingInterval" data-i18n="trackingInterval">Intervalo de seguimiento (minutos) <span class="info-icon" data-tooltip="trackingIntervalTooltip">ℹ️</span></label>
                     <select id="trackingInterval">
                         <option value="1">1 minuto</option>
                         <option value="5">5 minutos</option>

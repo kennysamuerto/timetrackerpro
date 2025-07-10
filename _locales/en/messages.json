@@ -151,12 +151,29 @@
     "description": "Mouse movement option"
   },
   "enableMouseMovement": {
-    "message": "Pause tracking without mouse movement",
+    "message": "Pause tracking without mouse movement after one minute without movement",
     "description": "Enable mouse movement detection checkbox"
   },
   "mouseMovementTooltip": {
-    "message": "When no mouse movement is detected for the set time (minimum 1 minute), it will stop counting time on the active tab",
+    "message": "When no mouse movement, clicks, keys, or scroll is detected for a full minute, it will automatically pause time counting on the active tab. It will resume as soon as any user activity is detected",
     "description": "Tooltip explanation for mouse movement function"
+  },
+  
+  "enableTimeTrackingTooltip": {
+    "message": "Controls whether the extension should track time spent on web pages. If disabled, no time will be recorded on any page until re-enabled",
+    "description": "Tooltip explanation for enable time tracking"
+  },
+  "enableNotificationsTooltip": {
+    "message": "Controls whether to show system notifications for save confirmations, block/unblock alerts, and informational messages. If disabled, the extension will work silently",
+    "description": "Tooltip explanation for enable notifications"
+  },
+  "dailyGoalTooltip": {
+    "message": "Sets your daily time usage goal in hours. This value will be used for future statistics and productivity alerts. You can set between 1 and 24 hours",
+    "description": "Tooltip explanation for daily goal"
+  },
+  "trackingIntervalTooltip": {
+    "message": "Defines how often data is automatically saved. Shorter intervals = higher precision but more resource usage. Longer intervals = lower precision but better performance",
+    "description": "Tooltip explanation for tracking interval"
   },
   
   "categories": {
@@ -186,6 +203,22 @@
   "education": {
     "message": "Education",
     "description": "Education category"
+  },
+  "finanzas": {
+    "message": "Finance",
+    "description": "Finance category"
+  },
+  "viajes": {
+    "message": "Travel",
+    "description": "Travel category"
+  },
+  "gaming": {
+    "message": "Gaming",
+    "description": "Gaming category"
+  },
+  "herramientas": {
+    "message": "Tools",
+    "description": "Tools category"
   },
   "other": {
     "message": "Other",

@@ -4,7 +4,10 @@ class TimeTracker {
     this.startTime = null;
     this.isActive = true;
     this.isUserActive = true; // Nueva propiedad para rastrear actividad del usuario
+    this.isTabVisible = true; // Nueva propiedad para rastrear visibilidad de la pestaña
+    this.isWindowFocused = true; // Nueva propiedad para rastrear foco de ventana
     this.mouseMovementSettings = { enabled: false, timeout: 60000 };
+    this.activeTabId = null; // ID de la pestaña activa actual
     this.init();
   }
 
@@ -19,8 +22,11 @@ class TimeTracker {
     chrome.runtime.onStartup.addListener(this.handleStartup.bind(this));
     chrome.runtime.onInstalled.addListener(this.handleInstalled.bind(this));
     
-    // Configurar alarma para guardar datos periódicamente (cada 30 segundos)
-    chrome.alarms.create('saveData', { periodInMinutes: 0.5 });
+    // Listener para mensajes del content script
+    chrome.runtime.onMessage.addListener(this.handleMessage.bind(this));
+    
+    // Configurar alarma para guardar datos periódicamente (cada 10 segundos)
+    chrome.alarms.create('saveData', { periodInMinutes: 1/6 }); // 10 segundos
     chrome.alarms.onAlarm.addListener(this.handleAlarm.bind(this));
     
     // Inicializar con la pestaña activa
@@ -31,6 +37,7 @@ class TimeTracker {
     try {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (tab) {
+        this.activeTabId = tab.id;
         this.startTracking(tab);
       }
     } catch (error) {
@@ -38,21 +45,99 @@ class TimeTracker {
     }
   }
 
+  handleMessage(message, sender, sendResponse) {
+    switch (message.action) {
+      case 'userActivityChange':
+        this.handleUserActivityChange(message.isActive, message.url, sender.tab);
+        break;
+      case 'tabVisibilityChange':
+        this.handleTabVisibilityChange(message.isVisible, sender.tab);
+        break;
+    }
+  }
+
+  handleUserActivityChange(isActive, tabUrl, senderTab) {
+    // Solo procesar si es de la pestaña activa actual
+    if (!senderTab || senderTab.id !== this.activeTabId) {
+      return;
+    }
+    
+    const wasActive = this.shouldTrack();
+    this.isUserActive = isActive;
+    const isActiveNow = this.shouldTrack();
+    
+    console.log(`User activity changed: ${isActive ? 'active' : 'inactive'} on tab ${senderTab.id}`);
+    
+    // Si cambió el estado de tracking
+    if (wasActive !== isActiveNow) {
+      if (isActiveNow) {
+        this.resumeUserTracking();
+      } else {
+        this.pauseTracking();
+      }
+    }
+  }
+
+  handleTabVisibilityChange(isVisible, senderTab) {
+    // Solo procesar si es de la pestaña activa actual
+    if (!senderTab || senderTab.id !== this.activeTabId) {
+      return;
+    }
+    
+    const wasActive = this.shouldTrack();
+    this.isTabVisible = isVisible;
+    const isActiveNow = this.shouldTrack();
+    
+    console.log(`Tab visibility changed: ${isVisible ? 'visible' : 'hidden'} on tab ${senderTab.id}`);
+    
+    // Si cambió el estado de tracking
+    if (wasActive !== isActiveNow) {
+      if (isActiveNow) {
+        this.resumeUserTracking();
+      } else {
+        this.pauseTracking();
+      }
+    }
+  }
+
+  shouldTrack() {
+    // Solo trackear si:
+    // 1. La ventana está enfocada
+    // 2. La pestaña está visible
+    // 3. El usuario está activo (o la función está deshabilitada)
+    return this.isWindowFocused && 
+           this.isTabVisible && 
+           (!this.mouseMovementSettings.enabled || this.isUserActive);
+  }
+
   handleTabActivated(activeInfo) {
+    console.log(`Tab activated: ${activeInfo.tabId}`);
+    this.activeTabId = activeInfo.tabId;
     this.switchTab(activeInfo.tabId);
   }
 
   handleTabUpdated(tabId, changeInfo, tab) {
-    if (changeInfo.status === 'complete' && tab.active) {
+    if (changeInfo.status === 'complete' && tab.active && tabId === this.activeTabId) {
+      console.log(`Tab updated: ${tabId}`);
       this.switchTab(tabId);
     }
   }
 
   handleWindowFocus(windowId) {
-    if (windowId === chrome.windows.WINDOW_ID_NONE) {
-      this.stopTracking();
-    } else {
-      this.resumeTracking();
+    const wasFocused = this.isWindowFocused;
+    this.isWindowFocused = windowId !== chrome.windows.WINDOW_ID_NONE;
+    
+    console.log(`Window focus changed: ${this.isWindowFocused ? 'focused' : 'unfocused'}`);
+    
+    const wasActive = this.shouldTrack();
+    const isActiveNow = this.shouldTrack();
+    
+    if (wasActive !== isActiveNow) {
+      if (isActiveNow && this.currentTab) {
+        this.resumeUserTracking();
+      } else {
+        this.pauseTracking();
+      }
     }
   }
 
@@ -77,12 +162,20 @@ class TimeTracker {
 
   async switchTab(tabId) {
     await this.stopTracking();
-    const tab = await chrome.tabs.get(tabId);
-    this.startTracking(tab);
+    try {
+      const tab = await chrome.tabs.get(tabId);
+      // Reinicializar estado cuando cambiamos de pestaña
+      this.isTabVisible = true;
+      this.isUserActive = true;
+      this.startTracking(tab);
+    } catch (error) {
+      console.error('Error switching tab:', error);
+    }
   }
 
   startTracking(tab) {
     if (!tab || !tab.url || tab.url.startsWith('chrome://')) {
+      console.log('Skipping tracking for invalid tab:', tab?.url);
       return;
     }
 
@@ -93,32 +186,43 @@ class TimeTracker {
       domain: this.extractDomain(tab.url)
     };
     
-    this.startTime = Date.now();
-    this.isActive = true;
+    // Solo iniciar el tracking si todas las condiciones se cumplen
+    if (this.shouldTrack()) {
+      this.startTime = Date.now();
+      this.isActive = true;
+      console.log('Started tracking:', this.currentTab.domain);
+    } else {
+      this.startTime = null;
+      this.isActive = false;
+      console.log('Tracking paused due to conditions:', this.currentTab.domain);
+    }
   }
 
   async stopTracking() {
     if (this.currentTab && this.startTime && this.isActive) {
       const timeSpent = Date.now() - this.startTime;
+      console.log(`Stopping tracking for ${this.currentTab.domain}: ${timeSpent}ms`);
       await this.saveTimeData(this.currentTab, timeSpent);
     }
     
     this.currentTab = null;
     this.startTime = null;
+    this.isActive = false;
   }
 
   resumeTracking() {
-    if (this.currentTab && !this.isActive) {
+    if (this.currentTab && !this.isActive && this.shouldTrack()) {
       this.startTime = Date.now();
       this.isActive = true;
+      console.log('Resumed tracking:', this.currentTab.domain);
     }
   }
 
   async saveCurrentSession() {
-    // Solo guardar si el usuario está activo (o si la función está deshabilitada)
-    if (this.currentTab && this.startTime && this.isActive && 
-        (!this.mouseMovementSettings.enabled || this.isUserActive)) {
+    // Solo guardar si el tracking está activo y todas las condiciones se cumplen
+    if (this.currentTab && this.startTime && this.isActive && this.shouldTrack()) {
       const timeSpent = Date.now() - this.startTime;
+      console.log(`Saving session for ${this.currentTab.domain}: ${timeSpent}ms`);
       await this.saveTimeData(this.currentTab, timeSpent, false); // false = no incrementar visitas
       this.startTime = Date.now(); // Reiniciar el contador
     }
@@ -188,12 +292,61 @@ class TimeTracker {
     const normalizedDomain = this.normalizeDomain(domain);
     
     const categories = {
-      'Trabajo': ['github.com', 'stackoverflow.com', 'linkedin.com', 'slack.com', 'zoom.us', 'teams.microsoft.com'],
-      'Entretenimiento': ['youtube.com', 'netflix.com', 'twitch.tv', 'spotify.com', 'instagram.com', 'tiktok.com'],
-      'Noticias': ['bbc.com', 'cnn.com', 'elmundo.es', 'elpais.com', 'marca.com', 'as.com'],
-      'Compras': ['amazon.com', 'ebay.com', 'aliexpress.com', 'pccomponentes.com', 'elcorteingles.es'],
-      'Educación': ['coursera.org', 'udemy.com', 'khan academy.org', 'edx.org', 'wikipedia.org'],
-      'Redes Sociales': ['facebook.com', 'twitter.com', 'instagram.com', 'reddit.com', 'discord.com']
+      'work': [
+        'github.com', 'stackoverflow.com', 'linkedin.com', 'slack.com', 'zoom.us', 'teams.microsoft.com',
+        'gitlab.com', 'bitbucket.org', 'jira.atlassian.com', 'trello.com', 'notion.so', 'figma.com',
+        'canva.com', 'drive.google.com', 'dropbox.com', 'asana.com', 'monday.com', 'freelancer.com',
+        'upwork.com', 'fiverr.com', 'workana.com', 'infojobs.net', 'indeed.com'
+      ],
+      'entertainment': [
+        'youtube.com', 'netflix.com', 'twitch.tv', 'spotify.com', 'tiktok.com', 'primevideo.com',
+        'disneyplus.com', 'hbo.com', 'max.com', 'atresplayer.com', 'rtve.es', 'mitele.es',
+        'crunchyroll.com', 'dazn.com', 'apple.com/tv', 'paramount.com', '9gag.com', 'imgur.com'
+      ],
+      'news': [
+        'bbc.com', 'cnn.com', 'elmundo.es', 'elpais.com', 'marca.com', 'as.com', 'abc.es',
+        'lavanguardia.com', 'elconfidencial.com', '20minutos.es', 'publico.es', 'eldiario.es',
+        'expansion.com', 'cincodias.elpais.com', 'sport.es', 'mundodeportivo.com', 'reuters.com',
+        'theguardian.com', 'nytimes.com', 'washingtonpost.com', 'lemonde.fr', 'clarin.com', 'folha.uol.com.br'
+      ],
+      'shopping': [
+        'amazon.com', 'amazon.es', 'amazon.fr', 'amazon.de', 'amazon.it', 'amazon.co.uk',
+        'amazon.ca', 'amazon.com.mx', 'amazon.com.br', 'amazon.in', 'amazon.com.au', 'amazon.co.jp',
+        'ebay.com', 'aliexpress.com', 'pccomponentes.com', 'elcorteingles.es', 'mediamarkt.es',
+        'carrefour.es', 'mercadolibre.com', 'zalando.es', 'zara.com', 'hm.com', 'ikea.com',
+        'leroy-merlin.es', 'etsy.com', 'shein.com', 'wallapop.com', 'milanuncios.com'
+      ],
+      'education': [
+        'coursera.org', 'udemy.com', 'khan academy.org', 'edx.org', 'wikipedia.org', 'platzi.com',
+        'domestika.org', 'futurelearn.com', 'skillshare.com', 'lynda.com', 'duolingo.com',
+        'babbel.com', 'codecademy.com', 'freecodecamp.org', 'w3schools.com', 'ted.com',
+        'archive.org', 'scholar.google.com'
+      ],
+      'social': [
+        'facebook.com', 'x.com', 'instagram.com', 'reddit.com', 'discord.com', 'whatsapp.com',
+        'telegram.org', 'snapchat.com', 'pinterest.com', 'tumblr.com', 'mastodon.social',
+        'threads.net', 'clubhouse.com', 'vk.com', 'weibo.com'
+      ],
+      'finanzas': [
+        'bankinter.es', 'bbva.es', 'santander.es', 'caixabank.es', 'paypal.com', 'revolut.com',
+        'n26.com', 'investing.com', 'yahoo.com/finance', 'marketwatch.com', 'coinbase.com',
+        'binance.com', 'kraken.com'
+      ],
+      'viajes': [
+        'booking.com', 'airbnb.com', 'skyscanner.es', 'tripadvisor.com', 'expedia.com',
+        'kayak.com', 'renfe.com', 'ryanair.com', 'vueling.com', 'iberia.com', 'hotels.com',
+        'agoda.com', 'hostelworld.com'
+      ],
+      'gaming': [
+        'steam.com', 'epicgames.com', 'battle.net', 'roblox.com', 'minecraft.net',
+        'valorant.com', 'leagueoflegends.com', 'twitch.tv', 'chess.com', 'lichess.org',
+        'ign.com', 'gamespot.com', 'polygon.com'
+      ],
+      'herramientas': [
+        'gmail.com', 'outlook.com', 'protonmail.com', 'drive.google.com', 'onedrive.com',
+        'icloud.com', 'wetransfer.com', 'mega.nz', 'dropbox.com', 'box.com', 'translate.google.com',
+        'deepl.com', 'grammarly.com', 'canva.com', 'photopea.com', 'tinypng.com'
+      ]
     };
     
     for (const [category, domains] of Object.entries(categories)) {
@@ -235,7 +388,7 @@ class TimeTracker {
         trackingEnabled: true,
         showNotifications: true,
         dailyGoal: 8 * 60 * 60 * 1000, // 8 horas en milisegundos
-        categories: ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other']
+        categories: ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'finanzas', 'viajes', 'gaming', 'herramientas', 'other']
       };
     }
     
@@ -259,34 +412,14 @@ class TimeTracker {
     }
   }
 
-  handleUserActivityChange(isActive, tabUrl) {
-    // Solo procesar si la función está habilitada
-    if (!this.mouseMovementSettings.enabled) return;
-    
-    // Verificar si el cambio es para la pestaña actual
-    if (this.currentTab && this.currentTab.url === tabUrl) {
-      const wasUserActive = this.isUserActive;
-      this.isUserActive = isActive;
-      
-      console.log(`User activity changed: ${wasUserActive} -> ${isActive} for ${tabUrl}`);
-      
-      if (wasUserActive && !isActive) {
-        // Usuario se volvió inactivo: pausar tracking pero mantener contexto
-        this.pauseTracking();
-      } else if (!wasUserActive && isActive) {
-        // Usuario se volvió activo: reanudar tracking
-        this.resumeUserTracking();
-      }
-    }
-  }
-
   pauseTracking() {
     if (this.currentTab && this.startTime && this.isActive) {
-      console.log('Pausing tracking due to user inactivity');
       // Guardar el tiempo acumulado hasta ahora
       const timeSpent = Date.now() - this.startTime;
-      this.saveTimeData(this.currentTab, timeSpent, false); // false = no incrementar visitas
-      
+      if (timeSpent > 0) {
+        console.log(`Pausing tracking for ${this.currentTab.domain}: saving ${timeSpent}ms`);
+        this.saveTimeData(this.currentTab, timeSpent, false); // false = no incrementar visitas
+      }
       // Pausar el tracking pero mantener el contexto
       this.isActive = false;
       this.startTime = null;
@@ -294,8 +427,8 @@ class TimeTracker {
   }
 
   resumeUserTracking() {
-    if (this.currentTab && !this.isActive && this.isUserActive) {
-      console.log('Resuming tracking due to user activity');
+    if (this.currentTab && !this.isActive && this.shouldTrack()) {
+      console.log(`Resuming tracking for ${this.currentTab.domain}`);
       // Reanudar el tracking
       this.startTime = Date.now();
       this.isActive = true;
@@ -346,7 +479,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       return true;
     
     case 'userActivityChange':
-      handleUserActivityChange(request).then(sendResponse);
+      // Ahora se maneja directamente en el handleMessage del TimeTracker
+      sendResponse({ success: true });
       return true;
     
     case 'updateMouseMovementSettings':
@@ -546,10 +680,7 @@ async function handleDebug() {
   }
 }
 
-async function handleUserActivityChange(request) {
-  timeTracker.handleUserActivityChange(request.isActive, request.url);
-  return { success: true };
-}
+
 
 async function updateMouseMovementSettings() {
   // Recargar configuración en el timeTracker

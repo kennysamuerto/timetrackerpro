@@ -243,7 +243,7 @@ class OptionsManager {
         const categoryList = document.getElementById('categoryList');
         
         // Categorías predefinidas (siempre usar keys)
-        const predefinedCategoryKeys = ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other'];
+        const predefinedCategoryKeys = ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'finanzas', 'viajes', 'gaming', 'herramientas', 'other'];
 
         // Incluir categorías personalizadas (normalizar a keys)
         const customCategoryKeys = this.categories.map(cat => normalizeCategoryToKey(cat));

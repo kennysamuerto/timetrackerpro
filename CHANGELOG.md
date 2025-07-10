@@ -1,5 +1,71 @@
 # Changelog - TimeTracker Pro
 
+## [1.2.1] - 09-07-2025
+
+### 🐛 Correcciones y Arreglos
+- **Estabilidad General**: Mejoras en la estabilidad general del sistema de tracking
+- **Detección de Actividad**: Optimizada la detección de actividad del usuario para mayor precisión
+- **Rendimiento**: Optimizaciones de rendimiento en el procesamiento de datos
+- **Sincronización**: Mejoras en la sincronización entre pestañas y procesos
+- **Precisión del Tracking**: Ajustes menores para mejorar la precisión del seguimiento
+- **Limpieza de Memoria**: Optimizaciones en el uso de memoria y limpieza automática
+
+### 🔧 Mejoras Técnicas
+- **Algoritmo de Seguimiento**: Mejoras en el algoritmo de seguimiento de tiempo
+- **Manejo de Errores**: Mejor manejo de errores y casos edge
+- **Logging**: Optimizado el sistema de logging para mejor rendimiento
+- **Configuración**: Ajustes menores en la configuración por defecto
+
+---
+
+## [1.2.0] - 09-07-2025
+
+### ✨ Funcionalidades Principales
+- **Pausa Automática por Inactividad**: El tracking se pausa automáticamente cuando no mueves el ratón durante 1 minuto
+- **Detección Inteligente de Pestañas**: Solo rastrea tiempo cuando la pestaña está realmente activa y visible
+- **Tracking de Tiempo Real**: Sistema mejorado que solo registra el tiempo que verdaderamente pasas usando un sitio web
+- **Categorización Masiva Expandida**: Más de 100 sitios web agregados a las categorías existentes
+- **4 Nuevas Categorías**: Finanzas, Viajes, Gaming y Herramientas con sitios preconfigurados
+- **Sitios Internacionales**: Agregados dominios españoles e internacionales populares
+
+### 🔧 Mejoras y Automatización
+- **Detección Avanzada de Actividad**: Detecta movimiento del ratón, clics, teclado, scroll, touch y rueda del ratón
+- **Seguimiento Más Frecuente**: Guardado de datos cada 10 segundos en lugar de 30 para mayor precisión
+- **Triple Verificación**: Ventana enfocada + pestaña visible + usuario activo para máxima precisión
+- **Comunicación Mejorada**: Mejor sincronización entre content script y background
+- **Logging Detallado**: Logs completos para debugging y verificación de funcionamiento
+- **Estado Inicial Correcto**: Detección precisa del estado al cargar pestañas nuevas
+
+### 🏷️ Categorías Expandidas
+- **Trabajo**: +10 sitios (GitLab, Figma, Notion, Trello, Workana, InfoJobs, etc.)
+- **Entretenimiento**: +8 sitios (Prime Video, Disney+, Atresplayer, RTVE, etc.)
+- **Noticias**: +10 sitios (ABC, La Vanguardia, El Confidencial, Reuters, etc.)
+- **Compras**: +15 sitios (Amazon internacional, MediaMarkt, Carrefour, etc.)
+- **Educación**: +8 sitios (Platzi, MasterClass, Duolingo, etc.)
+- **Redes Sociales**: Reorganización y mejora (Instagram movido desde Entretenimiento)
+
+### 🆕 Nuevas Categorías
+- **💰 Finanzas**: Bankinter, BBVA, Santander, CaixaBank, PayPal, Revolut, N26, Investing, Coinbase, Binance
+- **✈️ Viajes**: Booking, Airbnb, Skyscanner, TripAdvisor, Expedia, Renfe, Ryanair, Vueling, Iberia
+- **🎮 Gaming**: Steam, Epic Games, Battle.net, Roblox, Minecraft, Valorant, League of Legends, Chess.com
+- **🛠️ Herramientas**: Gmail, Drive, OneDrive, WeTransfer, Translate, DeepL, Grammarly, Canva, Photopea
+
+### 🐛 Correcciones y Arreglos
+- **Tracking en Pestañas Inactivas**: Corregido el problema donde seguía registrando tiempo al cambiar de pestaña
+- **Detección de Ratón Inconsistente**: Solucionados problemas de detección de actividad del usuario
+- **Pausa/Reanudación Inteligente**: El tiempo se guarda correctamente antes de pausar y se reanuda solo cuando es necesario
+- **Comunicación Background-Content**: Eliminada duplicación de funciones y mejorada la sincronización
+- **Precisión del Tracking**: Solo registra tiempo cuando realmente estás usando el sitio web
+- **Limpieza de Código**: Eliminadas funciones duplicadas y código redundante
+
+### 🎨 Mejoras de Interfaz
+- **Configuración de Movimiento del Ratón**: Interfaz mejorada con tooltips informativos
+- **Categorías Actualizadas**: Mejor organización y visualización de categorías
+- **Compatibilidad Internacional**: Mejor soporte para sitios web internacionales
+- **Opciones Más Intuitivas**: Configuración más clara y fácil de usar
+
+---
+
 ## [1.1.2] - 05-07-2025
 
 ### 🐛 Correcciones Críticas

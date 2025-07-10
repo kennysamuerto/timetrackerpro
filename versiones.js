@@ -95,6 +95,22 @@ style.textContent = `
         border-left: 5px solid #ff9800;
     }
     
+    /* Destacar versión 1.2.1 */
+    .version-item:first-child {
+        background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        border-left: 5px solid #9c27b0;
+        box-shadow: 0 6px 20px rgba(156, 39, 176, 0.2);
+        transform: scale(1.02);
+    }
+    
+    .version-item:first-child .version-info h3 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1.3em;
+    }
+    
     .version-info {
         display: flex;
         justify-content: space-between;
@@ -120,6 +136,16 @@ style.textContent = `
     .version-type.release {
         background: #d4edda;
         color: #155724;
+    }
+    
+    .version-type.feature {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        color: #0d47a1;
+    }
+    
+    .version-type.fix {
+        background: #fff3e0;
+        color: #e65100;
     }
     
     .version-type.upcoming {

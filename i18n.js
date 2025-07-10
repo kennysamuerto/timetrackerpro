@@ -523,7 +523,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 // Categoria mapping helper functions
 function getCategoryKeys() {
-    return ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'other'];
+    return ['work', 'entertainment', 'news', 'shopping', 'education', 'social', 'finanzas', 'viajes', 'gaming', 'herramientas', 'other'];
 }
 
 function getCategoryKey(translatedCategory) {

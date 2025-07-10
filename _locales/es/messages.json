@@ -151,12 +151,29 @@
     "description": "Opción movimiento del ratón"
   },
   "enableMouseMovement": {
-    "message": "Pausar tracking sin movimiento del ratón",
+    "message": "Pausar tracking sin movimiento del ratón tras un minuto sin movimiento",
     "description": "Checkbox habilitar detección de movimiento del ratón"
   },
   "mouseMovementTooltip": {
-    "message": "Cuando no se detecte movimiento del ratón durante el tiempo establecido (mínimo 1 minuto), dejará de contar el tiempo en la pestaña activa",
+    "message": "Cuando no se detecte movimiento del ratón, clicks, teclas o scroll durante 1 minuto completo, automáticamente pausará el conteo de tiempo en la pestaña activa. Se reanudará en cuanto detecte cualquier actividad del usuario",
     "description": "Tooltip explicativo para la función de movimiento del ratón"
+  },
+  
+  "enableTimeTrackingTooltip": {
+    "message": "Controla si la extensión debe rastrear el tiempo que pasas en páginas web. Si se desactiva, no se registrará tiempo en ninguna página hasta que se vuelva a activar",
+    "description": "Tooltip explicativo para activar seguimiento de tiempo"
+  },
+  "enableNotificationsTooltip": {
+    "message": "Controla si mostrar notificaciones del sistema para confirmaciones de guardado, alertas de bloqueo/desbloqueo y mensajes informativos. Si se desactiva, la extensión funcionará silenciosamente",
+    "description": "Tooltip explicativo para mostrar notificaciones"
+  },
+  "dailyGoalTooltip": {
+    "message": "Define tu objetivo diario de tiempo de uso en horas. Este valor se utilizará para estadísticas futuras y alertas de productividad. Puedes establecer entre 1 y 24 horas",
+    "description": "Tooltip explicativo para objetivo diario"
+  },
+  "trackingIntervalTooltip": {
+    "message": "Define cada cuánto tiempo se guardan automáticamente los datos. Intervalos menores = mayor precisión pero más uso de recursos. Intervalos mayores = menor precisión pero mejor rendimiento",
+    "description": "Tooltip explicativo para intervalo de seguimiento"
   },
   
   "categories": {
@@ -186,6 +203,22 @@
   "education": {
     "message": "Educación",
     "description": "Categoría educación"
+  },
+  "finanzas": {
+    "message": "Finanzas",
+    "description": "Categoría finanzas"
+  },
+  "viajes": {
+    "message": "Viajes",
+    "description": "Categoría viajes"
+  },
+  "gaming": {
+    "message": "Gaming",
+    "description": "Categoría gaming"
+  },
+  "herramientas": {
+    "message": "Herramientas",
+    "description": "Categoría herramientas"
   },
   "other": {
     "message": "Otros",
